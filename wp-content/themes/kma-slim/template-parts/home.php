@@ -1,0 +1,31 @@
+<?php
+
+use Includes\Modules\Slider\BulmaSlider;
+/**
+ * @package KMA
+ * @subpackage kmaslim
+ * @since 1.0
+ * @version 1.2
+ */
+$headline = ( $post->page_information_headline != '' ? $post->page_information_headline : $post->post_title );
+$subhead  = ( $post->page_information_subhead != '' ? $post->page_information_subhead : '' );
+
+include(locate_template('template-parts/partials/top.php'));
+?>
+<div id="mid">
+    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+        <div class="section-wrapper" >
+
+            <slider>
+                <?php
+                $slider = new BulmaSlider();
+                echo $slider->getSlider('home-page-slider');
+                ?>
+            </slider>
+
+        </div>
+
+    </article><!-- #post-## -->
+</div>
+<?php include(locate_template('template-parts/partials/bot.php')); ?>
