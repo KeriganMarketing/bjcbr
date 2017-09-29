@@ -24,7 +24,11 @@ var app = new Vue({
 
     data: {
         isOpen: false,
-        modalOpen: ''
+        modalOpen: '',
+        scrollPosition: 0,
+        footerStuck: false,
+        clientHeight: 0,
+        windowHeight: 0
     },
 
     methods: {
@@ -33,7 +37,25 @@ var app = new Vue({
             this.isOpen = !this.isOpen;
         },
 
+        handleScroll(){
+            this.scrollPosition = window.scrollY;
+        }
+
     },
+
+    mounted: function() {
+        this.footerStuck = window.innerHeight > this.$root.$el.clientHeight ? true : false;
+        this.clientHeight = this.$root.$el.clientHeight;
+        this.windowHeight = window.innerHeight;
+    },
+
+    created: function () {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+
+    destroyed: function () {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
 
 });
 

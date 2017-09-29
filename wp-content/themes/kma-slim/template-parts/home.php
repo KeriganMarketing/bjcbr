@@ -15,7 +15,7 @@ include(locate_template('template-parts/partials/top.php'));
 <div id="mid">
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-        <div class="section-wrapper" >
+        <div class="section-wrapper home-slider" >
 
             <slider>
                 <?php
@@ -23,6 +23,36 @@ include(locate_template('template-parts/partials/top.php'));
                 echo $slider->getSlider('home-page-slider');
                 ?>
             </slider>
+
+        </div>
+
+        <div class="section-wrapper home-page-text" >
+
+
+
+        </div>
+
+        <div class="section-wrapper doctor-carousel" >
+
+
+
+        </div>
+
+        <div class="section-wrapper specialties-area" >
+
+
+
+        </div>
+
+        <div class="section-wrapper clinic-news" >
+
+
+
+        </div>
+
+        <div class="section-wrapper enews-signup" >
+
+
 
         </div>
 

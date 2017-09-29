@@ -12,7 +12,6 @@ body {
 }
 
 #app {
-  height: 100vh;
   display: flex;
   flex-direction: column;
 
@@ -177,7 +176,7 @@ body {
       position: absolute;
       background-color: #e6e2b7;
       width: 150%;
-      height: 99px;
+      height: 105px;
       margin-left: 3rem;
       z-index: -1;
       -webkit-transform: skewX(-25deg);
@@ -215,9 +214,36 @@ body {
 
 }
 
+.sticky-logo {
+  width: 100%;
+  position: absolute;
+  text-align: right;
+
+  @media screen and (min-width: $desktop) {
+    padding-top:120px;
+  }
+
+  img {
+    width: 220px;
+    max-width:90%;
+  }
+}
+
+.home {
+  .sticky-logo {
+    text-align: left;
+
+    img {
+      width: 440px;
+    }
+  }
+}
+
 @media screen and (min-width: $desktop) {
   .top-pad {
-    height: 100px;
+    height: 0px;
+    width:100%;
+    padding-top:100px;
   }
 }
 
@@ -260,7 +286,6 @@ body {
 
       section {
         position: relative;
-        z-index: 101;
         text-align: left;
         .subtitle, .title {
           color:#FFF;
@@ -314,11 +339,6 @@ body {
   }
 }
 
-#mid {
-
-
-}
-
 //Helpers
 .button {
   font-size: .9em !important;
@@ -347,18 +367,123 @@ body {
   }
 }
 
+
+//MID
+#mid {
+
+}
+
+footer.stuck {
+  position: absolute;
+  width:100%;
+  bottom:0;
+}
+
 //Footer (move for render blocking?)
 #bot {
   position: relative;
   z-index: 1;
-  background-color: #e9eef2;
+  background-color: #333333;
+  padding: 45px 0 0;
 
-  .social {
-    svg {
-      max-width: 45px;
-      margin: .5rem .9rem;
+  .locations {
+    padding-bottom:15px;
+
+    .location {
+      h3, p {
+        color: #FFF;
+        margin: 0;
+      }
+
+      h3 {
+        font-size: 20px;
+        font-weight: 700;
+        padding: 15px 0;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 1.6em;
+
+        a {
+          color: #cdde65;
+        }
+      }
     }
   }
+
+  .watermark {
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    .footer-watermark {
+      margin-bottom: -60px;
+    }
+  }
+}
+#bot-bot {
+  position: relative;
+  z-index: 1;
+  background-color: #191a1b;
+  padding: 30px 0;
+
+  .the-end {
+    display: flex;
+    justify-content: flex-start;
+
+    .social {
+      svg {
+        width: 40px;
+        margin: .1rem .9rem;
+      }
+    }
+
+    .copyright-section {
+
+      .footer-nav {
+        display: flex;
+
+        .navbar-item {
+          padding: 0 0 0 .25rem;
+          color: #FFF;
+          font-size: 14px;
+
+          a.navbar-item, .navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
+            background-color: transparent;
+            color: #cdde65;
+            padding: 0 .25rem 0 .5em;
+          }
+
+        }
+
+        .navbar-item::before {
+          content: "|"
+        }
+        .navbar-item:first-child::before {
+          content: "";
+        }
+
+      }
+
+      .signoff {
+        padding: .25rem 0 .25rem .75rem;
+
+        p {
+          color:#FFF;
+          font-size: 14px;
+
+          a {
+            text-decoration: underline;
+            color:#FFF;
+          }
+        }
+      }
+
+    }
+
+  }
+
+
 
 
 

@@ -54,9 +54,11 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
     </div>
 </header>
 <div class="top-pad"></div>
-<div class="container" style="display: none;">
-<a class="navbar-item" href="/">
-    <img class="logo" src="<?php echo get_template_directory_uri() . '/img/bjc-logo.png'; ?>"
-         alt="Bone & Joint Clinic of Baton Rouge">
-</a>
+<div class="sticky-logo">
+    <div class="container" >
+        <a href="/">
+            <img class="logo" src="<?php echo get_template_directory_uri() . '/img/bjc-logo.png'; ?>"
+                 alt="Bone & Joint Clinic of Baton Rouge">
+        </a>
+    </div>
 </div>

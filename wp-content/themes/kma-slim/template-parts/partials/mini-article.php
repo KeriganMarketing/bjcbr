@@ -1,9 +1,9 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Bryan
- * Date: 7/13/2017
- * Time: 12:02 PM
+ * @package KMA
+ * @subpackage kmaslim
+ * @since 1.0
+ * @version 1.2
  */
 
 $headline = ($post->page_information_headline != '' ? $post->page_information_headline : $post->post_title);
