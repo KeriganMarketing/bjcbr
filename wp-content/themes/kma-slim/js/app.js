@@ -7,19 +7,22 @@ import tab from './components/tab.vue';
 import slider from './components/slider.vue';
 import slide from './components/slide.vue';
 import GoogleMap from './components/GoogleMap.vue';
+import VueCarousel from 'vue-carousel';
 
 var app = new Vue({
 
     el: '#app',
 
     components: {
-        message,
-        modal,
-        tabs,
-        tab,
-        slider,
-        slide,
-        GoogleMap
+        'message': message,
+        'modal': modal,
+        'tabs': tabs,
+        'tab': tab,
+        'bulma-slider': slider,
+        'bulma-slide': slide,
+        'google-map': GoogleMap,
+        'carousel': VueCarousel.Carousel,
+        'slide': VueCarousel.Slide
     },
 
     data: {

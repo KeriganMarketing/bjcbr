@@ -1,6 +1,7 @@
 <?php
 
 use Includes\Modules\Slider\BulmaSlider;
+use Includes\Modules\Team\Physicians;
 /**
  * @package KMA
  * @subpackage kmaslim
@@ -17,12 +18,12 @@ include(locate_template('template-parts/partials/top.php'));
 
         <div class="section-wrapper home-slider" >
 
-            <slider>
+            <bulma-slider>
                 <?php
                 $slider = new BulmaSlider();
                 echo $slider->getSlider('home-page-slider');
                 ?>
-            </slider>
+            </bulma-slider>
 
         </div>
 
@@ -33,9 +34,15 @@ include(locate_template('template-parts/partials/top.php'));
         </div>
 
         <div class="section-wrapper doctor-carousel" >
-
-
-
+            <carousel>
+                <?php
+                $physicians = new Physicians();
+                foreach($physicians->getPhysicians() as $num => $physician){ ?>
+                    <slide>
+                        <?php echo $num; ?>
+                    </slide>
+                <?php } ?>
+            </carousel>
         </div>
 
         <div class="section-wrapper specialties-area" >
