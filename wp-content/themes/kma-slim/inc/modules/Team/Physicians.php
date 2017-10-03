@@ -11,20 +11,23 @@ namespace Includes\Modules\Team;
 use Includes\Modules\CPT\CustomPostType;
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined('ABSPATH')) {
     exit;
 }
 
-class Physicians {
+class Physicians
+{
 
-    public function __construct() {
+    public function __construct()
+    {
     }
 
-    public function createPostType() {
+    public function createPostType()
+    {
 
-        $team = new CustomPostType( 'Physician',
+        $team = new CustomPostType('Physician',
             [
-                'supports'           => [ 'title', 'editor', 'author' ],
+                'supports'           => ['title', 'editor', 'author'],
                 'menu_icon'          => 'dashicons-businessman',
                 'has_archive'        => false,
                 'menu_position'      => null,
@@ -46,10 +49,9 @@ class Physicians {
         $team->addMetaBox(
             'Contact Info',
             [
-                'Title'        => 'text',
                 'Photo'        => 'image',
-                'Email'        => 'text',
-                'Phone'        => 'text',
+                'Specialties'  => 'textarea',
+                'YouTube Code' => 'text',
             ]
         );
 
@@ -65,8 +67,8 @@ class Physicians {
             function ($defaults) {
                 $defaults = [
                     'title'       => 'Name',
-                    'wtitle'      => 'Title',
-                    'email'       => 'Email Address',
+                    'specialties' => 'Specialties',
+                    'ytcode'      => 'YouTube Code',
                     'photo'       => 'Photo'
                 ];
 
@@ -77,17 +79,17 @@ class Physicians {
             switch ($column_name) {
                 case 'photo':
                     $photo = get_post_meta($post_ID, 'contact_info_photo', true);
-                    echo(isset($photo) ? '<img src ="' . $photo . '" class="img-fluid" style="width:400px; max-width:100%;" >' : null);
+                    echo(isset($photo) ? '<img src ="' . $photo . '" class="img-fluid" style="width:200px; max-width:100%;" >' : null);
                     break;
 
-                case 'email':
-                    $object = get_post_meta($post_ID, 'contact_info_email', true);
-                    echo(isset($object) ? date('M j, Y', strtotime($object)) : null);
+                case 'specialties':
+                    $object = get_post_meta($post_ID, 'contact_info_specialties', true);
+                    echo(isset($object) ? $object : null);
                     break;
 
-                case 'wtitle':
-                    $object = get_post_meta($post_ID, 'contact_info_title', true);
-                    echo(isset($object) ? date('M j, Y', strtotime($object)) : null);
+                case 'ytcode':
+                    $object = get_post_meta($post_ID, 'contact_info_youtube_code', true);
+                    echo(isset($object) ? $object : null);
                     break;
 
             }
@@ -95,7 +97,8 @@ class Physicians {
 
     }
 
-    public function getPhysicians( $args = [] ) {
+    public function getPhysicians($args = [])
+    {
 
         $request = [
             'post_type'      => 'physician',
@@ -106,44 +109,45 @@ class Physicians {
             'post_status'    => 'publish',
         ];
 
-        $request = get_posts( array_merge( $request, $args ) );
+        $request = get_posts(array_merge($request, $args));
 
         $output = [];
-        foreach ( $request as $item ) {
+        foreach ($request as $item) {
 
-            array_push( $output, [
-                'id'         => ( isset( $itemID ) ? $item->ID : null ),
-                'name'       => $item->post_title,
-                'title'      => ( isset( $item->contact_info_title ) ? $item->contact_info_title : null ),
-                'email'      => ( isset( $item->contact_info_email ) ? $item->contact_info_email : null ),
-                'phone'      => ( isset( $item->contact_info_phone ) ? $item->contact_info_phone : null ),
-                'slug'       => ( isset( $item->post_name ) ? $item->post_name : null ),
-                'thumbnail'  => ( isset( $item->contact_info_photo ) ? $item->contact_info_photo : null ),
-                'link'       => get_permalink( $item->ID ),
-            ] );
+            array_push($output, [
+                'id'           => (isset($itemID) ? $item->ID : null),
+                'name'         => $item->post_title,
+                'slug'         => (isset($item->post_name) ? $item->post_name : null),
+                'specialties'  => (isset($item->contact_info_specialties) ? $item->contact_info_specialties : null),
+                'youtube_code' => (isset($item->contact_info_youtube_code) ? $item->contact_info_youtube_code : null),
+                'photo'        => (isset($item->contact_info_photo) ? $item->contact_info_photo : null),
+                'link'         => get_permalink($item->ID),
+            ]);
 
         }
 
         return $output;
     }
 
-    public function getSingle( $name ) {
+    public function getSingle($name)
+    {
 
-        $output = $this->getPhysicians( [
+        $output = $this->getPhysicians([
             'title'          => $name,
             'posts_per_page' => 1,
-        ] );
+        ]);
 
         return $output[0];
     }
 
-    public function getPhysicianNames() {
+    public function getPhysicianNames()
+    {
 
         $request = $this->getPhysicians([]);
 
         $output = [];
-        foreach ( $request as $item ) {
-            array_push( $output, ( isset( $item->post_title ) ? $item->post_title : null ) );
+        foreach ($request as $item) {
+            array_push($output, (isset($item->post_title) ? $item->post_title : null));
         }
 
         return $output;

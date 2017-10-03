@@ -17,7 +17,8 @@
     "vue": "^2.4.4"
   },
   "dependencies": {
-    "vue-slick": "1.1.11",
+    "de-indent": "^1.0.2",
+    "vue-slick": "^1.1.11",
     "vue-smooth-scroll": "^1.0.13",
     "vue-template-compiler": "^2.4.4"
   }

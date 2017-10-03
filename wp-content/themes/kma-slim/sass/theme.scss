@@ -372,6 +372,7 @@ body {
     justify-self: center;
     text-align: center;
     display: inline-block;
+    overflow: hidden;
   }
 }
 
@@ -380,17 +381,262 @@ body {
 
 }
 
-//Physician Carousel
-.slick-slider {
-  display: flex;
-  padding: 2rem;
-  justify-content: center;
-  align-items: center;
+.home-page-text {
+  padding: 5rem 0;
 
-  i.fa {
-    font-size: 2em;
-    color: #ddd;
+  h1 {
+    color: #7fa53f;
+    margin-bottom:2rem;
+
+    @media screen and (min-width: $tablet) {
+      font-size:40px;
+    }
+    @media screen and (min-width: $desktop) {
+      font-size:55px;
+    }
+    @media screen and (min-width: $fullhd) {
+      font-size:66px;
+    }
   }
+
+  p {
+
+    @media screen and (min-width: $tablet) {
+      font-size:18px;
+    }
+    @media screen and (min-width: $desktop) {
+      font-size:20px;
+    }
+    @media screen and (min-width: $fullhd) {
+      font-size:26px;
+    }
+  }
+}
+
+//Physician Carousel
+.doctor-carousel {
+  padding: 0 0 4rem;
+
+  .slick-slider {
+    display: flex;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+
+    .bubble-icon {
+      border: 1px solid #7fa53f;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      height: 50px;
+      min-width: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      i.fa {
+        font-size: 1.5em;
+        color: #7fa53f;
+      }
+
+    }
+
+    .bubble-icon:hover {
+      border: 1px solid #fff;
+      background-color: #7fa53f;
+      i.fa {
+        color: #FFF;
+      }
+    }
+
+    .bubble-icon.left {
+      padding-right: .35rem;
+    }
+    .bubble-icon.right {
+      padding-left: .35rem;
+    }
+
+    .mini-physician-thumb {
+      margin-bottom: 1rem;
+
+      .image {
+        width: 150px;
+        height: 150px;
+      }
+
+      .physician-name {
+        font-size: 20px;
+        text-transform: uppercase;
+        margin: 1rem 0;
+      }
+
+      .physician-specialties {
+        font-size: 18px;
+        line-height: 1.4em;
+      }
+
+      .physician-link {
+        margin: 1rem 0;
+        font-size: 12px;
+        text-transform: uppercase;
+
+        a {
+          text-decoration: underline;
+        }
+      }
+
+    }
+
+  }
+}
+
+.specialties-area {
+  padding: 0 0 10rem;
+  background-color: #e3c676;
+  background-position: center;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
+
+  @media screen and (min-width: $tablet) {
+    background-image:url('/wp-content/themes/kma-slim/img/golfer.jpg');
+  }
+
+  .patient-center-actions {
+    background-color: rgba(251,250,248,.7);
+    text-align: center;
+
+    .column {
+      min-height: 150px;
+      padding:0;
+      text-align: center;
+
+      a.portal-button {
+        -webkit-transition: all linear 1s;
+        -moz-transition: all linear 1s;
+        -ms-transition: all linear 1s;
+        -o-transition: all linear 1s;
+        transition: all linear 1s;
+        display: block;
+        height:100%;
+        padding: 1rem;
+
+        .icon {
+          display: flex;
+          width:100%;
+          text-align: center;
+          align-items: center;
+          justify-content: center;
+          height: 80px;
+
+          svg {
+            height: 50px;
+            fill: rgba(153,150,166,.6);
+          }
+        }
+
+        .button-label {
+          color: #7fa53f;
+          font-size: 14px;
+          padding:1rem 0;
+        }
+
+      }
+      a.portal-button:hover {
+        background-color: rgba(251,250,248,.5);
+
+        .icon {
+
+          svg {
+            fill: rgba(153,150,166,.8);
+          }
+        }
+      }
+    }
+
+    .column:last-child::after,
+    .column::before {
+      content: "";
+      width: 1px;
+      top: 0;
+      display: block;
+      height: 100%;
+      position: absolute;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e1e1cc+100 */
+      background: #ffffff; /* Old browsers */
+      background: -moz-linear-gradient(top, #ffffff 0%, #e1e1cc 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, #ffffff 0%,#e1e1cc 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, #ffffff 0%,#e1e1cc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e1e1cc',GradientType=0 ); /* IE6-9 */
+    }
+    .column:last-child::after {
+      right: -.75em;
+    }
+  }
+
+  h2 {
+    margin: 4rem 2rem;
+    font-size:20px;
+
+    @media screen and (min-width: $tablet) {
+      font-size:30px;
+    }
+    @media screen and (min-width: $desktop) {
+      font-size:40px;
+      margin: 4rem 0;
+    }
+    @media screen and (min-width: $fullhd) {
+      font-size:50px;
+      margin: 4rem 9rem 4rem 0;
+    }
+  }
+
+  h2.line-right {
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+
+    strong {
+      padding: 0 4rem 0 1rem;
+    }
+
+    span.line {
+      width: 100%;
+      border-bottom: 1px solid rgba(100,100,100,.5);
+    }
+  }
+
+  .specialties-grid {
+    padding: 0 2em;
+
+    @media screen and (min-width: $desktop) {
+      padding: 0;
+    }
+
+    @media screen and (min-width: $fullhd) {
+      padding: 0 9rem;
+    }
+
+    .specialty-button {
+      padding:.5rem;
+      a {
+        display: block;
+        text-align: center;
+        text-transform: none;
+        font-size: 1.4em !important;
+        line-height: 1em !important;
+        height: 3em;
+        border:none;
+        background-color: rgba(255,255,255,.7);
+      }
+      a:hover {
+        background-color: rgba(255,255,255,1);
+      }
+    }
+  }
+
+
 }
 
 footer.stuck {

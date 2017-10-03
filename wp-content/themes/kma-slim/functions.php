@@ -10,8 +10,11 @@ use Includes\Modules\Social\SocialSettingsPage;
 use Includes\Modules\Layouts\Layouts;
 use Includes\Modules\Slider\BulmaSlider;
 use Includes\Modules\Team\Physicians;
+use Includes\Modules\Helpers\CleanWP;
 
 require('vendor/autoload.php');
+
+new CleanWP();
 
 $socialLinks = new SocialSettingsPage();
 if (is_admin()) {
@@ -92,11 +95,3 @@ function kmaslim_scripts()
 }
 
 add_action('wp_enqueue_scripts', 'kmaslim_scripts');
-
-//remove unneeded WordPress scripts
-remove_action('wp_head', 'rsd_link');
-remove_action('wp_head', 'wlwmanifest_link');
-remove_action('wp_head', 'wp_generator');
-remove_action('wp_head', 'start_post_rel_link');
-remove_action('wp_head', 'index_rel_link');
-remove_action('wp_head', 'adjacent_posts_rel_link');

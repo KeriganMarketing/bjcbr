@@ -31,23 +31,14 @@ var app = new Vue({
         footerStuck: false,
         clientHeight: 0,
         windowHeight: 0,
+        windowWidth: 0,
         slickOptions: {
-            slidesToShow: 3,
-            slidesToScroll: 1,
             arrows: true,
             autoplay: true,
-            autoplaySpeed: 2000,
-            prevArrow: '<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>',
-            nextArrow: '<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>',
-            responsive: [
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
+            autoplaySpeed: 3000,
+            prevArrow: '<span class="bubble-icon left" ><i class="fa" aria-hidden="true">&#9664;</i></span>',
+            nextArrow: '<span class="bubble-icon right" ><i class="fa" aria-hidden="true">&#9658;</i></span>',
+            slidesToScroll: 1
         }
     },
 
@@ -67,6 +58,12 @@ var app = new Vue({
         this.footerStuck = window.innerHeight > this.$root.$el.clientHeight ? true : false;
         this.clientHeight = this.$root.$el.clientHeight;
         this.windowHeight = window.innerHeight;
+        this.windowWidth = window.innerWidth;
+
+        if(this.windowWidth > 1008){
+            this.slickOptions.slidesToShow = 3;
+            this.$refs.slick.reSlick();
+        }
     },
 
     created: function () {
