@@ -7,7 +7,7 @@ import tab from './components/tab.vue';
 import slider from './components/slider.vue';
 import slide from './components/slide.vue';
 import GoogleMap from './components/GoogleMap.vue';
-import VueCarousel from 'vue-carousel';
+import Slick from 'vue-slick';
 
 var app = new Vue({
 
@@ -21,8 +21,7 @@ var app = new Vue({
         'bulma-slider': slider,
         'bulma-slide': slide,
         'google-map': GoogleMap,
-        'carousel': VueCarousel.Carousel,
-        'slide': VueCarousel.Slide
+        'slick': Slick
     },
 
     data: {
@@ -31,7 +30,25 @@ var app = new Vue({
         scrollPosition: 0,
         footerStuck: false,
         clientHeight: 0,
-        windowHeight: 0
+        windowHeight: 0,
+        slickOptions: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: true,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            prevArrow: '<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>',
+            nextArrow: '<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>',
+            responsive: [
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        }
     },
 
     methods: {

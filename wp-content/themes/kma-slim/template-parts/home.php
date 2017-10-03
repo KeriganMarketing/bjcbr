@@ -34,15 +34,17 @@ include(locate_template('template-parts/partials/top.php'));
         </div>
 
         <div class="section-wrapper doctor-carousel" >
-            <carousel>
-                <?php
-                $physicians = new Physicians();
-                foreach($physicians->getPhysicians() as $num => $physician){ ?>
-                    <slide>
-                        <?php echo $num; ?>
-                    </slide>
-                <?php } ?>
-            </carousel>
+            <div class="container">
+                <slick ref="slick" :options="slickOptions">
+                    <?php
+                    $physicians = new Physicians();
+                    foreach($physicians->getPhysicians() as $num => $physician){ ?>
+                        <div class="slick-item">
+                            <?php include(locate_template('template-parts/partials/mini-physician-thumb.php')); ?>
+                        </div>
+                    <?php } ?>
+                </slick>
+            </div>
         </div>
 
         <div class="section-wrapper specialties-area" >

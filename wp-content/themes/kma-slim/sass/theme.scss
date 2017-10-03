@@ -367,10 +367,30 @@ body {
   }
 }
 
+.is-centered {
+  .image {
+    justify-self: center;
+    text-align: center;
+    display: inline-block;
+  }
+}
 
 //MID
 #mid {
 
+}
+
+//Physician Carousel
+.slick-slider {
+  display: flex;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+
+  i.fa {
+    font-size: 2em;
+    color: #ddd;
+  }
 }
 
 footer.stuck {
