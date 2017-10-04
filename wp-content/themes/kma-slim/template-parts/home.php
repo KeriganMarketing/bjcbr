@@ -15,7 +15,6 @@ $subhead  = ($post->page_information_subhead != '' ? $post->page_information_sub
 include(locate_template('template-parts/partials/top.php'));
 ?>
 <div id="mid">
-    <h1>This works!</h1>
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
         <div class="section-wrapper home-slider">
