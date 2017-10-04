@@ -8,6 +8,9 @@ import slider from './components/slider.vue';
 import slide from './components/slide.vue';
 import GoogleMap from './components/GoogleMap.vue';
 import Slick from 'vue-slick';
+import VueParallaxJs from 'vue-parallax-js';
+
+window.Vue.use(VueParallaxJs);
 
 var app = new Vue({
 
@@ -55,7 +58,7 @@ var app = new Vue({
     },
 
     mounted: function() {
-        this.footerStuck = window.innerHeight > this.$root.$el.clientHeight ? true : false;
+        this.footerStuck = window.innerHeight > this.$root.$el.clientHeight;
         this.clientHeight = this.$root.$el.clientHeight;
         this.windowHeight = window.innerHeight;
         this.windowWidth = window.innerWidth;
@@ -75,4 +78,3 @@ var app = new Vue({
     }
 
 });
-

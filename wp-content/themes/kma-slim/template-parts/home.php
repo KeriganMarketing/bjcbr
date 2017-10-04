@@ -57,6 +57,8 @@ include(locate_template('template-parts/partials/top.php'));
 
         <div class="section-wrapper specialties-area">
 
+            <div v-parallax=".9" class="background-image"></div>
+
             <div class="patient-center-actions">
                 <div class="container">
                     <div class="patient-center-action-container columns">
@@ -104,7 +106,7 @@ include(locate_template('template-parts/partials/top.php'));
                 </div>
             </div>
 
-            <div class="container">
+            <div v-parallax=".1" class="container">
 
                 <h2 class="line-right">Our <strong>specialties</strong><span class="line"></span></h2>
 

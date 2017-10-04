@@ -43,8 +43,57 @@ body {
 
   .section-wrapper {
     clear: both;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
   }
 
+  #MobileNavMenu {
+    display: block;
+    width: 270px;
+    height: 100%;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    position: fixed;
+    overflow: hidden;
+    -webkit-transition: all linear .5s;
+    -moz-transition: all linear .5s;
+    -ms-transition: all linear .5s;
+    -o-transition: all linear .5s;
+    transition: all linear .5s;
+  }
+  #MobileNavMenu.is-active {
+    width: 270px;
+    overflow: scroll;
+    background-color: #FFF;
+  }
+
+  .site-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+
+    -webkit-transition: all linear .5s;
+    -moz-transition: all linear .5s;
+    -ms-transition: all linear .5s;
+    -o-transition: all linear .5s;
+    transition: all linear .5s;
+    position: relative;
+  }
+
+  .site-wrapper.menu-open {
+     transform: translate(-270px, 0);
+     position: fixed;
+    -webkit-box-shadow: 0px 0px 20px rgba(0,0,0,.5);
+    -moz-box-shadow: 0px 0px 20px rgba(0,0,0,.5);
+    box-shadow: 0px 0px 20px rgba(0,0,0,.5);
+   }
+
+  .site-wrapper.full-height {
+    height:100vh;
+  }
 }
 
 //Sticky Header
@@ -57,7 +106,7 @@ body {
   display: -webkit-flex;
   display: flex;
   min-height: 90px;
-  padding: 0 1rem;
+  padding: 0;
 
   //IE override
   @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
@@ -65,7 +114,7 @@ body {
     padding-top: 1.5rem;
 
     a img {
-      border:none;
+      border: none;
     }
   }
 
@@ -75,102 +124,176 @@ body {
     align-items: center;
   }
 
-  .navbar-brand {
-    @media screen and (max-width: $desktop){
-      padding: .3rem 0 0;
+  @media screen and (max-width: $desktop) {
+    .container {
+      width: 100%;
+      margin: 0;
     }
-
-    img {
-      height: 40px;
-    }
-
-    a.navbar-item {
-      @media screen and (max-width: $tablet){
-        padding: .5rem 0;
-      }
-    }
-
-    .navbar-burger {
-      height: 2.25rem;
-      width: 2.6rem;
-      background-color: #000;
-      margin: .9rem 0 1.5rem auto;
-
-      span {
-        background-color: #FFF;
-        display: block;
-        height: 2px;
-        left: 50%;
-        width: 15px;
-      }
-    }
-
-    .navbar-burger::after {
-      content: "menu";
-      position: absolute;
-      bottom: -21px;
-      font-weight:400;
-    }
-
   }
 
-  #main-menu {
-    align-items: flex-end;
-  }
-  .navbar-item {
-    text-align: right;
-    padding: .5rem 1.5rem;
-    color:#FFF;
-    font-weight: normal;
+  .navbar {
 
-    a {
-      display: block;
-      color:#FFF;
-
-      span {
-        display: block;
-        font-size: .8em;
-        line-height: .9em;
-      }
-      span::after {
-        content:"\A";
-      }
+    @media screen and (min-width: $tablet) and (max-width: $desktop) {
+      flex-direction: row-reverse;
     }
-    a.navbar-link::after {
-      right: -10px;
-      content: "\025BE";
-      border: none;
-      -webkit-transform: none;
-      transform: none;
-      margin-top: 0;
-      top: auto;
-      font-size: 1.65em;
-      line-height: 1em;
-      bottom: 18px;
+    @media screen and (min-width: $desktop) and (max-width: $widescreen) {
+      flex-direction: column-reverse;
+    }
+
+    .navbar-brand {
+      overflow: hidden;
+      @media screen and (min-width: $desktop) {
+        display: none;
+      }
+
+      .navbar-burger {
+        height: 2.25rem;
+        width: 2.6rem;
+        background-color: #000;
+        margin: .9rem 0 1.5rem auto;
+
+        span {
+          background-color: #FFF;
+          display: block;
+          height: 2px;
+          left: 50%;
+          width: 15px;
+        }
+      }
+
+    }
+
+    .navbar-start {
+      align-items: flex-end;
+    }
+
+
+    .navbar-item {
+      text-align: right;
+      padding: .5rem 1.5rem;
+      color: #FFF;
+      font-weight: normal;
+
+      @media screen and (min-width: $desktop) {
+        text-align: left;
+        padding: .5em 1.25rem;
+        color: #000;
+      }
+      @media screen and (min-width: $widescreen) {
+        padding: 2.6rem 1rem .7rem;
+        color: #000;
+      }
+      @media screen and (min-width: $fullhd) {
+        padding: 2.6rem 1.5rem .7rem;
+      }
+
+      a {
+        display: block;
+        color: #FFF;
+
+        span {
+          display: block;
+          font-size: .8em;
+          line-height: .9em;
+        }
+        span::after {
+          content: "\A";
+        }
+      }
+      a.navbar-link::after {
+        right: -10px;
+        content: "\025BE";
+        border: none;
+        -webkit-transform: none;
+        transform: none;
+        margin-top: 0;
+        top: auto;
+        font-size: 1.65em;
+        line-height: 1em;
+        bottom: 18px;
+      }
+
+      a {
+        padding: 0.5rem 0;
+        background-color: transparent;
+      }
     }
 
     @media screen and (min-width: $desktop) {
-      text-align: left;
-      padding: 2.6rem 1rem .7rem;
-      color:#000;
+
+      .navbar-start {
+        margin-right: 0;
+      }
+
+      .navbar-dropdown {
+        background-color: #000;
+        padding: 1rem 1.5rem;
+        border-top: 5px solid #e6e2b7;
+      }
 
     }
-    @media screen and (min-width: $fullhd) {
-      padding: 2.6rem 1.5rem .7rem;
+    .navbar-end {
+      background-color: #e6e2b7;
+      flex-direction: row;
+      justify-content: flex-end;
+
+      .navbar-item {
+        text-align: right;
+        justify-content: flex-end;
+        color: #000;
+        display: inline-flex;
+        width: 49%;
+        padding-right: 1.75rem;
+        padding-left: 0;
+        @media screen and (min-width: $desktop){
+          padding-right: 1.5rem;
+          padding-left: 1.5rem;
+        }
+
+        a {
+          color: #000;
+          font-weight: bold;
+
+          span {
+            font-weight: normal;
+          }
+        }
+        a.navbar-link::after {
+          content: "\025B8";
+
+          @media screen and (max-width: $tablet) {
+            right: -22px;
+            position: absolute;
+            content: "\025BE";
+            border: none;
+            -webkit-transform: none;
+            transform: none;
+            margin-top: 0;
+            top: auto;
+            font-size: 1.65em;
+            line-height: 1em;
+            bottom: 8px;
+          }
+        }
+      }
     }
 
-    a {
-      padding: 0.5rem 0;
-      background-color: transparent;
-    }
   }
 
-  @media screen and (min-width: $desktop) {
-
-    .navbar-start {
-      margin-right: 0;
+  @media screen and (min-width: $desktop) and (max-width: $widescreen) {
+    .navbar-end::after {
+      content: "";
+      position: absolute;
+      background-color: #e6e2b7;
+      width: 150%;
+      height: 63px;
+      left: 67%;
+      z-index: -1;
+      -webkit-transform: skewX(25deg);
+      transform: skewX(25deg);
     }
-
+  }
+  @media screen and (min-width:$widescreen){
     .top-slash::before {
       content: "";
       position: absolute;
@@ -183,40 +306,13 @@ body {
       transform: skewX(-25deg);
       bottom: 0;
     }
-
-    .navbar-dropdown {
-      background-color: #000;
-      padding: 1rem 1.5rem;
-      border-top: 5px solid #e6e2b7;
-    }
-
   }
-  .navbar-end {
-    justify-content: flex-end;
-
-    .navbar-item {
-      text-align: right;
-      color: #000;
-
-      a {
-        color: #000;
-        font-weight: bold;
-
-        span {
-          font-weight:normal;
-        }
-      }
-      a.navbar-link::after {
-        content: "\025B8";
-      }
-    }
-  }
-
 }
 
 .sticky-logo {
   width: 100%;
   position: absolute;
+  z-index: 2;
   text-align: right;
 
   @media screen and (min-width: $desktop) {
@@ -276,12 +372,13 @@ body {
       background-size: cover;
       background-position: center top;
       opacity: 0;
-      height: 100%;
+      height: 100vh;
       align-items: center;
       display: flex;
+      z-index: -1;
 
       @media screen and (min-width: $tablet) {
-        background-attachment: fixed;
+        //background-attachment: fixed;
       }
 
       section {
@@ -382,6 +479,7 @@ body {
 }
 
 .home-page-text {
+  background-color:#FFF;
   padding: 5rem 0;
 
   h1 {
@@ -415,6 +513,7 @@ body {
 
 //Physician Carousel
 .doctor-carousel {
+  background-color:#FFF;
   padding: 0 0 4rem;
 
   .slick-slider {
@@ -493,17 +592,22 @@ body {
 
 .specialties-area {
   padding: 0 0 10rem;
-  background-color: #e3c676;
-  background-position: center;
-  background-attachment: fixed;
-  -webkit-background-size: cover;
-  background-size: cover;
 
-  @media screen and (min-width: $tablet) {
+  .background-image {
+    position: absolute;
+    z-index: -1;
     background-image:url('/wp-content/themes/kma-slim/img/golfer.jpg');
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    width:100%;
   }
 
   .patient-center-actions {
+    position: relative;
+    z-index: 1;
+    background-color:#FFF;
     background-color: rgba(251,250,248,.7);
     text-align: center;
 
@@ -588,7 +692,7 @@ body {
     }
     @media screen and (min-width: $fullhd) {
       font-size:50px;
-      margin: 4rem 9rem 4rem 0;
+      margin: 6rem 9rem 4rem 0;
     }
   }
 

@@ -62,3 +62,4 @@ use Includes\Modules\Social\SocialSettingsPage;
     </div>
 
 </footer>
+</div>

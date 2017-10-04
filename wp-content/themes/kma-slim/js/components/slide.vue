@@ -1,5 +1,5 @@
 <template>
-    <div :id=" 'slide-' + id " :class="['slide',{ 'active' :isActive }]" :style="{ 'background-image': 'url(' + image + ')', 'z-index': zindex }">
+    <div v-parallax=".9" :id=" 'slide-' + id " :class="['slide',{ 'active' :isActive }]" :style="{ 'background-image': 'url(' + image + ')', 'z-index': zindex }">
         <slot></slot>
     </div>
 </template>

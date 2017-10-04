@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 31);
+/******/ 	return __webpack_require__(__webpack_require__.s = 32);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -20581,7 +20581,7 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(30)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(31)))
 
 /***/ }),
 /* 3 */
@@ -20605,6 +20605,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_GoogleMap_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_GoogleMap_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_slick__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vue_slick__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_parallax_js__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_parallax_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vue_parallax_js__);
 window.Vue = __webpack_require__(2);
 
 
@@ -20615,6 +20617,9 @@ window.Vue = __webpack_require__(2);
 
 
 
+
+
+window.Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_parallax_js___default.a);
 
 var app = new Vue({
 
@@ -20659,7 +20664,7 @@ var app = new Vue({
     },
 
     mounted: function mounted() {
-        this.footerStuck = window.innerHeight > this.$root.$el.clientHeight ? true : false;
+        this.footerStuck = window.innerHeight > this.$root.$el.clientHeight;
         this.clientHeight = this.$root.$el.clientHeight;
         this.windowHeight = window.innerHeight;
         this.windowWidth = window.innerWidth;
@@ -24292,7 +24297,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\GoogleMap.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\GoogleMap.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] GoogleMap.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24326,7 +24331,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\message.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\message.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] message.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24360,7 +24365,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\modal.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\modal.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] modal.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24394,7 +24399,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\slide.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\slide.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] slide.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24428,7 +24433,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\slider.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\slider.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] slider.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24462,7 +24467,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\tab.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\tab.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] tab.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24496,7 +24501,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\tabs.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\tabs.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] tabs.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24530,7 +24535,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\node_modules\\vue-slick\\slickCarousel.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\node_modules\\vue-slick\\slickCarousel.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] slickCarousel.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24556,6 +24561,12 @@ module.exports = Component.exports
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    directives: [{
+      name: "parallax",
+      rawName: "v-parallax",
+      value: (.9),
+      expression: ".9"
+    }],
     class: ['slide', {
       'active': _vm.isActive
     }],
@@ -24776,6 +24787,112 @@ if (false) {
 /* 30 */
 /***/ (function(module, exports) {
 
+var parallaxjs = function parallaxjs(options) {
+  this.options = options;
+};
+
+parallaxjs.prototype = {
+  items: [],
+  active: true,
+
+  setStyle: function setStyle(item, value) {
+    if (item.modifiers.centerX) value += ' translateX(-50%)';
+
+    var el = item.el;
+    var prop = 'Transform';
+    el.style["webkit" + prop] = value;
+    el.style["moz" + prop] = value;
+    el.style["ms" + prop] = value;
+  },
+  add: function add(el, binding) {
+    var value = binding.value;
+    var arg = binding.arg;
+    var style = el.currentStyle || window.getComputedStyle(el);
+
+    var height = binding.modifiers.absY ? window.innerHeight : el.clientHeight || el.offsetHeight || el.scrollHeight;
+    this.items.push({
+      el: el,
+      initialOffsetTop: el.offsetTop + el.offsetParent.offsetTop - parseInt(style.marginTop),
+      style: style,
+      value: value,
+      arg: arg,
+      modifiers: binding.modifiers,
+      clientHeight: height,
+      count: 0
+    });
+  },
+  move: function move() {
+    var _this = this;
+
+    if (!this.active) return;
+    if (window.innerWidth < this.options.minWidth || 0) {
+      this.items.map(function (item) {
+        _this.setStyle(item, 'translateY(' + 0 + 'px) translateZ(0px)');
+      });
+
+      return;
+    }
+
+    var scrollTop = window.scrollY || window.pageYOffset;
+    var windowHeight = window.innerHeight;
+    var windowWidth = window.innerWidth;
+
+    this.items.map(function (item) {
+      var pos = scrollTop + windowHeight;
+      var elH = item.clientHeight;
+
+      pos = pos - elH / 2;
+      pos = pos - windowHeight / 2;
+      pos = pos * item.value;
+
+      var offset = item.initialOffsetTop;
+      offset = offset * -1;
+      offset = offset * item.value;
+      pos = pos + offset;
+
+      pos = pos.toFixed(2);
+
+      _this.setStyle(item, 'translateY(' + pos + 'px)');
+    });
+  }
+};
+
+var VueParallaxJs = {
+  install: function install(Vue) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var p = new parallaxjs(options);
+
+    window.addEventListener('scroll', function () {
+      requestAnimationFrame(function () {
+        p.move(p);
+      });
+    }, { passive: true });
+    window.addEventListener('resize', function () {
+      requestAnimationFrame(function () {
+        p.move(p);
+      });
+    }, { passive: true });
+
+    Vue.prototype.$parallaxjs = p;
+    window.$parallaxjs = p;
+    Vue.directive('parallax', {
+      bind: function bind(el, binding) {},
+      inserted: function inserted(el, binding) {
+        p.add(el, binding);
+        p.move(p);
+      }
+    });
+  }
+};
+
+module.exports = VueParallaxJs;
+
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports) {
+
 var g;
 
 // This works in non-strict mode
@@ -24800,7 +24917,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(3);

@@ -9,11 +9,26 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
  * @version 1.2
  */
 ?>
+<div id="MobileNavMenu" :class="[{ 'is-active': isOpen }, 'navbar']">
+    <?php wp_nav_menu(array(
+        'theme_location' => 'main-menu',
+        'container'      => false,
+        'menu_class'     => 'navbar-start',
+        'fallback_cb'    => '',
+        'menu_id'        => 'main-menu',
+        'link_before'    => '',
+        'link_after'     => '',
+        'items_wrap'     => '<div id="%1$s" class="%2$s">%3$s</div>',
+        'walker'         => new BulmaNavwalker()
+    )); ?>
+    <span class="top-slash"></span>
+</div>
+<div :class="['site-wrapper', { 'menu-open': isOpen }, {'full-height': footerStuck}]">
 <header id="top" class="header">
     <div class="container">
         <nav class="navbar">
 
-            <div id="TopNavMenu" :class="[{ 'is-active': isOpen }, 'navbar-menu']">
+            <div id="TopNavMenu" class="navbar-menu">
                 <?php wp_nav_menu(array(
                     'theme_location' => 'main-menu',
                     'container'      => false,
@@ -43,7 +58,7 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
             </div>
 
             <div class="navbar-brand">
-                <div class="navbar-burger burger" id="TopNavBurger" data-target="TopNavMenu" @click="toggleMenu">
+                <div class="navbar-burger burger" id="MobileNavBurger" data-target="MobileNavMenu" @click="toggleMenu">
                     <span></span>
                     <span></span>
                     <span></span>
