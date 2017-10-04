@@ -93,7 +93,7 @@ add_action('after_setup_theme', 'kmaslim_setup');
 
 function kmaslim_scripts()
 {
-    wp_register_script('scripts', get_template_directory_uri() . '/app.js', [], '0.0.1', true);
+    wp_register_script('scripts', get_template_directory_uri() . '/app.js', [], null, true);
     wp_enqueue_script('scripts');
 }
 
