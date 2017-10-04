@@ -8,6 +8,6 @@
 ?>
 </div>
 <?php wp_footer(); ?>
-<script src="<?php echo wp_normalize_path(get_template_directory() . '/app.js'); ?>" defer></script>
+<script src="/wp-content/themes/kma-slim/app.js" defer></script>
 </body>
 </html>
