@@ -14,10 +14,13 @@
     "cross-env": "^5.0.5",
     "font-awesome": "^4.7.0",
     "laravel-mix": "0.*",
-    "vue": "^2.4.2"
+    "vue": "^2.4.4"
   },
   "dependencies": {
+    "de-indent": "^1.0.2",
+    "vue-parallax-js": "0.0.5",
+    "vue-slick": "^1.1.11",
     "vue-smooth-scroll": "^1.0.13",
-    "vue-template-compiler": "^2.4.2"
+    "vue-template-compiler": "^2.4.4"
   }
 }
