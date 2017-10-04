@@ -19,7 +19,6 @@ include(locate_template('template-parts/partials/top.php'));
                         <h1 class="title is-1"><?php echo $headline; ?></h1>
                         <?php echo($subhead != '' ? '<p class="subtitle">' . $subhead . '</p>' : null); ?>
                         <?php the_content(); ?>
-                        <h1>Please work</h1>
                     </div>
                 </div>
             </section>
