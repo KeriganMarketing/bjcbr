@@ -20,7 +20,7 @@ include(locate_template('template-parts/partials/top.php'));
                     </div>
                 </div>
             </section>
-            <section id="content" class="content section">
+            <section id="content" class="content section news">
                 <div class="container">
                     <div class="columns is-multiline">
                         <?php

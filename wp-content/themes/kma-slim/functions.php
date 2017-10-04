@@ -10,6 +10,7 @@ use Includes\Modules\Social\SocialSettingsPage;
 use Includes\Modules\Layouts\Layouts;
 use Includes\Modules\Slider\BulmaSlider;
 use Includes\Modules\Team\Physicians;
+use Includes\Modules\Locations\Locations;
 use Includes\Modules\Helpers\CleanWP;
 
 require('vendor/autoload.php');
@@ -32,6 +33,10 @@ $slider->createAdminColumns();
 $physicians = new Physicians();
 $physicians->createPostType();
 $physicians->createAdminColumns();
+
+$locations = new Locations();
+$locations->createPostType();
+$locations->createAdminColumns();
 
 if (is_admin()) {
 

@@ -1,4 +1,7 @@
 <?php
+
+use Includes\Modules\Locations\Locations;
+
 /**
  * @package KMA
  * @subpackage kmaslim
@@ -11,15 +14,15 @@
         <div class="column is-12 is-9-desktop">
 
             <div class="columns is-multiline">
-                <?php //TODO: loop ?>
-                <div class="location column is-4-tablet">
-                    <h3>Baton Rouge Clinic</h3>
-                    <p class="address">7301 Hennessy Blvd., Suite 200<br>
-                        Baton Rouge, LA 70808</p>
-                    <p class="phone"><em>tel:</em> <a href="tel:225-766-0050">(225) 766-0050</a></p>
-                    <p class="phone"><em>fax:</em> <a href="tel:225-766-1499">(225) 766-1499</a></p>
-                </div>
-
+                <?php $locations = new Locations();
+                foreach($locations->getLocations() as $location){ ?>
+                    <div class="location column">
+                        <h3><?php echo $location['name']; ?></h3>
+                        <p class="address"><?php echo nl2br($location['address']); ?></p>
+                        <p class="phone"><em>tel:</em> <a href="tel:<?php echo str_replace('(','',str_replace(') ', '-', $location['phone'])); ?>"><?php echo $location['phone']; ?></a></p>
+                        <p class="phone"><em>fax:</em> <a href="tel:<?php echo str_replace('(','',str_replace(') ', '-', $location['fax'])); ?>"><?php echo $location['fax']; ?></a></p>
+                    </div>
+                <?php } ?>
             </div>
 
         </div>

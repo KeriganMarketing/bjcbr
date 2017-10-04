@@ -10,7 +10,9 @@ import GoogleMap from './components/GoogleMap.vue';
 import Slick from 'vue-slick';
 import VueParallaxJs from 'vue-parallax-js';
 
-window.Vue.use(VueParallaxJs);
+window.Vue.use(VueParallaxJs, {
+    minWidth: 768,
+});
 
 var app = new Vue({
 
