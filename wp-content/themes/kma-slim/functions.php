@@ -6,11 +6,12 @@
  * @version 1.2
  */
 
+use Includes\Modules\Helpers\CleanWP;
 use Includes\Modules\Layouts\Layouts;
 use Includes\Modules\Team\Physicians;
 use Includes\Modules\Slider\BulmaSlider;
+use Includes\Modules\Locations\Locations;
 use Includes\Modules\Social\SocialSettingsPage;
-use Includes\Modules\Helpers\CleanWP;
 
 require('vendor/autoload.php');
 
@@ -32,6 +33,10 @@ $slider->createAdminColumns();
 $physicians = new Physicians();
 $physicians->createPostType();
 $physicians->createAdminColumns();
+
+$locations = new Locations();
+$locations->createPostType();
+$locations->createAdminColumns();
 
 if (is_admin()) {
     $post_id = (isset($_GET['post']) ? $_GET['post'] : (isset($_POST['post_ID']) ? $_POST['post_ID'] : null));
@@ -92,11 +97,4 @@ function kmaslim_scripts()
     wp_enqueue_script('scripts');
 }
 
-//remove unneeded WordPress scripts
-remove_action('wp_head', 'rsd_link');
-remove_action('wp_head', 'wlwmanifest_link');
-remove_action('wp_head', 'wp_generator');
-remove_action('wp_head', 'start_post_rel_link');
-remove_action('wp_head', 'index_rel_link');
-remove_action('wp_head', 'adjacent_posts_rel_link');
 add_action('wp_enqueue_scripts', 'kmaslim_scripts');

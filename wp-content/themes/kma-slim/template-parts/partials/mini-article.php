@@ -8,34 +8,30 @@
 
 $headline = ($post->page_information_headline != '' ? $post->page_information_headline : $post->post_title);
 $subhead = ($post->page_information_subhead != '' ? $post->page_information_subhead : '');
+$content = $post->post_content;
+
+if(strlen($content) > 200) {
+    $content = $content.' ';
+    $content = substr($content, 0, 200);
+    $content = substr($content, 0, strrpos($content ,' '));
+    $content = $content.'...';
+}
 
 ?>
 <div class="column is-4">
-	<div class="card">
-		<div class="card-image">
-			<figure class="image is-16by3">
-			<img src="http://bulma.io/images/placeholders/640x360.png">
+	<div class="article">
+		<div class="article-image">
+            <a class="article-footer-item" href="<?php echo get_the_permalink(); ?>">
+			<figure class="image is-4by3">
+			<img src="<?php echo the_post_thumbnail_url( 'medium' ); ?>">
 			</figure>
+            </a>
 		</div>
-		<div class="card-content">
-			<h2 class="title"><?php echo $headline; ?></h2>
-			<?php echo ($subhead!='' ? '<p class="subtitle">'.$subhead.'</p>' : null); ?>
-			<?php
-			the_content( sprintf(
-			/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'kmaevent' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
-			?>
+		<div class="article-content">
+			<?php echo $content; ?>
 		</div>
-		<div class="card-footer">
-		    <a class="card-footer-item" href="<?php echo get_the_permalink(); ?>">Read More</a>
-	      <span class="card-footer-item" >
-		      Share:&nbsp;
-		      <a class="icon" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-		      <a class="icon" href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-		      <a class="icon" href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a>
-	      </span>
+		<div class="article-footer">
+		    <a class="article-footer-item" href="<?php echo get_the_permalink(); ?>">Read More</a>
 		</div>
 	</div>
 </div>

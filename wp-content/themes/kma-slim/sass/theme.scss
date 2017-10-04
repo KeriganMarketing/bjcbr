@@ -84,16 +84,25 @@ body {
   }
 
   .site-wrapper.menu-open {
-     transform: translate(-270px, 0);
-     position: fixed;
-    -webkit-box-shadow: 0px 0px 20px rgba(0,0,0,.5);
-    -moz-box-shadow: 0px 0px 20px rgba(0,0,0,.5);
-    box-shadow: 0px 0px 20px rgba(0,0,0,.5);
-   }
+    width: 100%;
+    transform: translate(-270px, 0);
+    position: fixed;
+    -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, .5);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, .5);
+    top: 0;
+  }
 
   .site-wrapper.full-height {
-    height:100vh;
+    height: 100vh;
   }
+
+  //@media screen and (min-width: 1600px){
+  //  .container {
+  //    max-width:1580px;
+  //    width: 1580px;
+  //  }
+  //}
 }
 
 //Sticky Header
@@ -167,7 +176,6 @@ body {
       align-items: flex-end;
     }
 
-
     .navbar-item {
       text-align: right;
       padding: .5rem 1.5rem;
@@ -201,7 +209,7 @@ body {
         }
       }
       a.navbar-link::after {
-        right: -10px;
+        right: -14px;
         content: "\025BE";
         border: none;
         -webkit-transform: none;
@@ -245,7 +253,7 @@ body {
         width: 49%;
         padding-right: 1.75rem;
         padding-left: 0;
-        @media screen and (min-width: $desktop){
+        @media screen and (min-width: $desktop) {
           padding-right: 1.5rem;
           padding-left: 1.5rem;
         }
@@ -293,7 +301,7 @@ body {
       transform: skewX(25deg);
     }
   }
-  @media screen and (min-width:$widescreen){
+  @media screen and (min-width: $widescreen) {
     .top-slash::before {
       content: "";
       position: absolute;
@@ -316,12 +324,12 @@ body {
   text-align: right;
 
   @media screen and (min-width: $desktop) {
-    padding-top:120px;
+    padding-top: 120px;
   }
 
   img {
     width: 220px;
-    max-width:90%;
+    max-width: 90%;
   }
 }
 
@@ -338,14 +346,14 @@ body {
 @media screen and (min-width: $desktop) {
   .top-pad {
     height: 0px;
-    width:100%;
-    padding-top:100px;
+    width: 100%;
+    padding-top: 100px;
   }
 }
 
 //Slider
 .slider {
-  height: 220px;
+  height: 260px;
 
   @media screen and (min-width: $tablet) {
     height: 420px;
@@ -357,6 +365,10 @@ body {
 
   @media screen and (min-width: $fullhd) {
     height: 820px;
+  }
+  @media screen and (min-width: 3000px) {
+    height: 0;
+    padding-bottom: 35%;
   }
 
   .slider-left,
@@ -372,35 +384,41 @@ body {
       background-size: cover;
       background-position: center top;
       opacity: 0;
-      height: 100vh;
+      height: 260px;
       align-items: center;
       display: flex;
       z-index: -1;
 
       @media screen and (min-width: $tablet) {
-        //background-attachment: fixed;
+        height: 100vh;
       }
 
       section {
         position: relative;
         text-align: left;
         .subtitle, .title {
-          color:#FFF;
+          color: #FFF;
         }
       }
 
       .slide-content {
         padding: 1rem 0;
-        width: 675px;
-        max-width:100%;
+        width: 68%;
+        max-width: 100%;
+
+        @media screen and (min-width: $tablet) {
+          width: 675px;
+        }
 
         .slider-title {
-          font-size: 1em;
           line-height: 1.2em;
           font-weight: 200;
-          color:#333333;
+          color: #333333;
+          padding: 2rem 0 0 1rem;
+          font-size: 1.8em;
 
           @media screen and (min-width: $tablet) {
+            padding: 0;
             font-size: 3em;
           }
           @media screen and (min-width: $desktop) {
@@ -410,7 +428,7 @@ body {
 
         .slider-subtitle {
           font-size: 1em;
-          text-shadow: 0 0 10px rgba(0,0,0,.3);
+          text-shadow: 0 0 10px rgba(0, 0, 0, .3);
 
           @media screen and (min-width: $tablet) {
             font-size: 1.5em;
@@ -418,12 +436,24 @@ body {
         }
 
         .slider-description {
-          padding: 2.5rem .5rem;
+          padding: 1rem;
+
+          @media screen and (min-width: $tablet) {
+            padding: 2.5rem 0;
+          }
 
           * {
 
             @media screen and (min-width: $tablet) {
               font-size: 1em;
+            }
+          }
+
+          a.button {
+            margin: .25rem 0;
+
+            @media screen and (min-width: $tablet) {
+              margin: 0 .5rem;
             }
           }
         }
@@ -442,6 +472,7 @@ body {
   text-transform: uppercase;
   padding: 1.5rem 1rem;
 }
+
 .is-transparent {
   background-color: transparent;
 }
@@ -475,52 +506,109 @@ body {
 
 //MID
 #mid {
+  background-color: #FFF;
+
+  h2 {
+    font-weight: 200;
+    margin: 4rem 2rem;
+    font-size: 20px;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 30px;
+    }
+    @media screen and (min-width: $desktop) {
+      font-size: 40px;
+      margin: 4rem 0;
+    }
+    @media screen and (min-width: $fullhd) {
+      font-size: 50px;
+      margin: 6rem 9rem 4rem 0;
+    }
+  }
+
+  h2.line-right {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 50px;
+    }
+
+    strong {
+      padding: 0 2rem 0 1rem;
+
+      @media screen and (min-width: $tablet) {
+        padding: 0 4rem 0 1rem;
+      }
+    }
+
+    span.line {
+      width: 100%;
+      border-bottom: 1px solid rgba(100, 100, 100, .5);
+    }
+  }
 
 }
 
 .home-page-text {
-  background-color:#FFF;
+  background-color: #FFF;
   padding: 5rem 0;
 
-  h1 {
+  @media screen and (max-width: $tablet) {
+    padding: 3rem 2rem;
+  }
+
+  h1.title {
     color: #7fa53f;
-    margin-bottom:2rem;
+    font-weight: 200;
+    margin-bottom: 2rem;
+    text-align: left;
+    font-size: 1.7em;
 
     @media screen and (min-width: $tablet) {
-      font-size:40px;
+      text-align: center;
+      font-size: 40px;
     }
     @media screen and (min-width: $desktop) {
-      font-size:55px;
+      font-size: 55px;
     }
     @media screen and (min-width: $fullhd) {
-      font-size:66px;
+      font-size: 66px;
     }
   }
 
   p {
 
+    text-align: justify;
+
     @media screen and (min-width: $tablet) {
-      font-size:18px;
+      font-size: 18px;
+      text-align: center;
     }
     @media screen and (min-width: $desktop) {
-      font-size:20px;
+      font-size: 20px;
     }
     @media screen and (min-width: $fullhd) {
-      font-size:26px;
+      font-size: 26px;
     }
   }
 }
 
 //Physician Carousel
 .doctor-carousel {
-  background-color:#FFF;
+  background-color: #FFF;
   padding: 0 0 4rem;
 
   .slick-slider {
     display: flex;
-    padding: 2rem;
+    padding: 2rem .5rem;
     justify-content: center;
     align-items: center;
+
+    @media screen and (min-width: $desktop) {
+      padding: 2rem;
+    }
 
     .bubble-icon {
       border: 1px solid #7fa53f;
@@ -596,24 +684,28 @@ body {
   .background-image {
     position: absolute;
     z-index: -1;
-    background-image:url('/wp-content/themes/kma-slim/img/golfer.jpg');
+    background-image: url('/wp-content/themes/kma-slim/img/golfer.jpg');
     background-position: center;
     -webkit-background-size: cover;
     background-size: cover;
-    height: 100vh;
-    width:100%;
+    height: 100%;
+    width: 100%;
+
+    @media screen and (min-width: $tablet) {
+      height: 100vh;
+    }
   }
 
   .patient-center-actions {
     position: relative;
     z-index: 1;
-    background-color:#FFF;
-    background-color: rgba(251,250,248,.7);
+    background-color: #FFF;
+    background-color: rgba(251, 250, 248, .7);
     text-align: center;
 
     .column {
       min-height: 150px;
-      padding:0;
+      padding: 0;
       text-align: center;
 
       a.portal-button {
@@ -623,12 +715,12 @@ body {
         -o-transition: all linear 1s;
         transition: all linear 1s;
         display: block;
-        height:100%;
+        height: 100%;
         padding: 1rem;
 
         .icon {
           display: flex;
-          width:100%;
+          width: 100%;
           text-align: center;
           align-items: center;
           justify-content: center;
@@ -636,24 +728,24 @@ body {
 
           svg {
             height: 50px;
-            fill: rgba(153,150,166,.6);
+            fill: rgba(153, 150, 166, .6);
           }
         }
 
         .button-label {
           color: #7fa53f;
           font-size: 14px;
-          padding:1rem 0;
+          padding: 1rem 0;
         }
 
       }
       a.portal-button:hover {
-        background-color: rgba(251,250,248,.5);
+        background-color: rgba(251, 250, 248, .5);
 
         .icon {
 
           svg {
-            fill: rgba(153,150,166,.8);
+            fill: rgba(153, 150, 166, .8);
           }
         }
       }
@@ -670,44 +762,12 @@ body {
       /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e1e1cc+100 */
       background: #ffffff; /* Old browsers */
       background: -moz-linear-gradient(top, #ffffff 0%, #e1e1cc 100%); /* FF3.6-15 */
-      background: -webkit-linear-gradient(top, #ffffff 0%,#e1e1cc 100%); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(to bottom, #ffffff 0%,#e1e1cc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e1e1cc',GradientType=0 ); /* IE6-9 */
+      background: -webkit-linear-gradient(top, #ffffff 0%, #e1e1cc 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, #ffffff 0%, #e1e1cc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e1e1cc', GradientType=0); /* IE6-9 */
     }
     .column:last-child::after {
       right: -.75em;
-    }
-  }
-
-  h2 {
-    margin: 4rem 2rem;
-    font-size:20px;
-
-    @media screen and (min-width: $tablet) {
-      font-size:30px;
-    }
-    @media screen and (min-width: $desktop) {
-      font-size:40px;
-      margin: 4rem 0;
-    }
-    @media screen and (min-width: $fullhd) {
-      font-size:50px;
-      margin: 6rem 9rem 4rem 0;
-    }
-  }
-
-  h2.line-right {
-    display: flex;
-    align-items: center;
-    font-size: 50px;
-
-    strong {
-      padding: 0 4rem 0 1rem;
-    }
-
-    span.line {
-      width: 100%;
-      border-bottom: 1px solid rgba(100,100,100,.5);
     }
   }
 
@@ -723,7 +783,7 @@ body {
     }
 
     .specialty-button {
-      padding:.5rem;
+      padding: .5rem;
       a {
         display: block;
         text-align: center;
@@ -731,22 +791,89 @@ body {
         font-size: 1.4em !important;
         line-height: 1em !important;
         height: 3em;
-        border:none;
-        background-color: rgba(255,255,255,.7);
+        border: none;
+        background-color: rgba(255, 255, 255, .7);
       }
       a:hover {
-        background-color: rgba(255,255,255,1);
+        background-color: rgba(255, 255, 255, 1);
       }
     }
   }
 
+}
 
+.clinic-news {
+  background-color: #f9f8e9;
+  padding: 0 0 4rem;
+  border-top: 15px solid #89724e;
+
+  .article-container {
+    padding: 0 2rem 2rem;
+
+    @media screen and (min-width: $widescreen) {
+      padding: 0 4rem 2rem;
+    }
+    @media screen and (min-width: $fullhd) {
+      padding: 0 6rem 2rem;
+    }
+
+  }
+}
+
+.article-content {
+  margin: 2rem 0 1rem;
+  font-size: 14px;
+}
+
+.article-footer {
+  margin-bottom:2rem;
+
+  .article-footer-item {
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: underline;
+  }
+}
+
+
+.enews-signup {
+
+  .enewsletter-signup {
+    background-color: #e6e2b7;
+    padding: 3rem 0;
+
+    .form {
+      justify-content: center;
+      padding: 0 2rem;
+
+      .column {
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+      }
+
+      input, button {
+        height:50px;
+      }
+    }
+
+    .form-instructions {
+
+      line-height:24px;
+
+      @media screen and (min-width: $tablet) {
+        font-size: 20px;
+      }
+      @media screen and (min-width: $widescreen) {
+        margin: .75rem 0;
+      }
+    }
+  }
 }
 
 footer.stuck {
   position: absolute;
-  width:100%;
-  bottom:0;
+  width: 100%;
+  bottom: 0;
 }
 
 //Footer (move for render blocking?)
@@ -757,9 +884,18 @@ footer.stuck {
   padding: 45px 0 0;
 
   .locations {
-    padding-bottom:15px;
+    padding-bottom: 15px;
 
     .location {
+
+      @media screen and (max-width: $tablet) {
+        text-align: center;
+      }
+
+      @media screen and (min-width: $tablet) and (max-width: $desktop) {
+        padding: .5rem .5rem .5rem 3rem;
+      }
+
       h3, p {
         color: #FFF;
         margin: 0;
@@ -786,11 +922,18 @@ footer.stuck {
     align-items: flex-end;
     justify-content: flex-end;
 
+    @media screen and (max-width: $desktop){
+      text-align: center;
+      justify-content: center;
+      margin-top:1rem;
+    }
+
     .footer-watermark {
       margin-bottom: -60px;
     }
   }
 }
+
 #bot-bot {
   position: relative;
   z-index: 1;
@@ -839,12 +982,12 @@ footer.stuck {
         padding: .25rem 0 .25rem .75rem;
 
         p {
-          color:#FFF;
+          color: #FFF;
           font-size: 14px;
 
           a {
             text-decoration: underline;
-            color:#FFF;
+            color: #FFF;
           }
         }
       }
@@ -852,9 +995,5 @@ footer.stuck {
     }
 
   }
-
-
-
-
 
 }
