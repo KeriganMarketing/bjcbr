@@ -84,7 +84,7 @@ if (! function_exists('kmaslim_setup')) :
         <?php
         }
 
-        add_action('wp_head', 'kmaslim_inline');
+        //add_action('wp_head', 'kmaslim_inline');
 
         add_image_size('large-thumbnail', 300, 300, true);
     }
@@ -95,6 +95,7 @@ function kmaslim_scripts()
 {
     wp_register_script('scripts', get_template_directory_uri() . '/app.js', [], null, true);
     wp_enqueue_script('scripts');
+    wp_enqueue_style( 'style', get_stylesheet_uri() );
 }
 
 add_action('wp_enqueue_scripts', 'kmaslim_scripts');
