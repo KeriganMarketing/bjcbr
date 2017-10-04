@@ -20,6 +20,7 @@ include(locate_template('template-parts/partials/top.php'));
                         <?php echo($subhead != '' ? '<p class="subtitle">' . $subhead . '</p>' : null); ?>
                         <?php the_content(); ?>
                         <p>made a change...</p>
+                        <p>Made another change...</p>
 
                     </div>
                 </div>
