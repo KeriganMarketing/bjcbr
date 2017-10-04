@@ -95,7 +95,6 @@ function kmaslim_scripts()
 {
     wp_register_script('scripts', get_template_directory_uri() . '/app.js', [], null, false);
     wp_enqueue_script('scripts');
-//    wp_enqueue_style( 'style', get_stylesheet_uri() );
 }
 
-add_action('wp_enqueue_scripts', 'kmaslim_scripts');
+//add_action('wp_enqueue_scripts', 'kmaslim_scripts');

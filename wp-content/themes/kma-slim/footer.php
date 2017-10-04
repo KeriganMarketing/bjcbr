@@ -8,5 +8,6 @@
 ?>
 </div>
 <?php wp_footer(); ?>
+<script src="<?php echo wp_normalize_path(get_template_directory() . '/app.js'); ?>" defer></script>
 </body>
 </html>
