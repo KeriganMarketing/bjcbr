@@ -7,11 +7,12 @@ import tab from './components/tab.vue';
 import slider from './components/slider.vue';
 import slide from './components/slide.vue';
 import GoogleMap from './components/GoogleMap.vue';
+import GoogleMapPin from './components/GoogleMapPin.vue';
 import Slick from 'vue-slick';
 import VueParallaxJs from 'vue-parallax-js';
 
 window.Vue.use(VueParallaxJs, {
-    minWidth: 768,
+    minWidth: 1000,
 });
 
 var app = new Vue({
@@ -26,6 +27,7 @@ var app = new Vue({
         'bulma-slider': slider,
         'bulma-slide': slide,
         'google-map': GoogleMap,
+        'pin': GoogleMapPin,
         'slick': Slick
     },
 

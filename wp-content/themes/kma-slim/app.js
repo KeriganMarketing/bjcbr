@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 32);
+/******/ 	return __webpack_require__(__webpack_require__.s = 35);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -20581,7 +20581,7 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(31)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
 
 /***/ }),
 /* 3 */
@@ -20589,24 +20589,26 @@ module.exports = Vue$3;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_message_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_message_vue__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_message_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_message_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_modal_vue__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_modal_vue__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_modal_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_tabs_vue__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_tabs_vue__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_tabs_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_tabs_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_tab_vue__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_tab_vue__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_tab_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_tab_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_slider_vue__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_slider_vue__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_slider_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_slider_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_slide_vue__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_slide_vue__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_slide_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_slide_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_GoogleMap_vue__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_GoogleMap_vue__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_GoogleMap_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_GoogleMap_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_slick__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vue_slick__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_parallax_js__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_parallax_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vue_parallax_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_GoogleMapPin_vue__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_GoogleMapPin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_GoogleMapPin_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_slick__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vue_slick__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_parallax_js__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_parallax_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_vue_parallax_js__);
 window.Vue = __webpack_require__(2);
 
 
@@ -20619,8 +20621,9 @@ window.Vue = __webpack_require__(2);
 
 
 
-window.Vue.use(__WEBPACK_IMPORTED_MODULE_8_vue_parallax_js___default.a, {
-    minWidth: 768
+
+window.Vue.use(__WEBPACK_IMPORTED_MODULE_9_vue_parallax_js___default.a, {
+    minWidth: 1000
 });
 
 var app = new Vue({
@@ -20635,7 +20638,8 @@ var app = new Vue({
         'bulma-slider': __WEBPACK_IMPORTED_MODULE_4__components_slider_vue___default.a,
         'bulma-slide': __WEBPACK_IMPORTED_MODULE_5__components_slide_vue___default.a,
         'google-map': __WEBPACK_IMPORTED_MODULE_6__components_GoogleMap_vue___default.a,
-        'slick': __WEBPACK_IMPORTED_MODULE_7_vue_slick___default.a
+        'pin': __WEBPACK_IMPORTED_MODULE_7__components_GoogleMapPin_vue___default.a,
+        'slick': __WEBPACK_IMPORTED_MODULE_8_vue_slick___default.a
     },
 
     data: {
@@ -20703,6 +20707,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['latitude', 'longitude', 'zoom'],
@@ -20710,10 +20716,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             mapName: this.name + "-map",
-            markerCoordinates: [{
-                latitude: this.latitude,
-                longitude: this.longitude
-            }]
+            markers: []
         };
     },
 
@@ -20726,82 +20729,110 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             zoomControl: true,
             scaleControl: true,
             styles: [{
-                "featureType": "all",
-                "elementType": "geometry.fill",
-                "stylers": [{
-                    "weight": "2.00"
-                }]
-            }, {
-                "featureType": "all",
-                "elementType": "geometry.stroke",
-                "stylers": [{
-                    "color": "#9c9c9c"
-                }]
-            }, {
-                "featureType": "all",
-                "elementType": "labels.text",
-                "stylers": [{
-                    "visibility": "on"
-                }]
-            }, {
-                "featureType": "landscape",
-                "elementType": "all",
-                "stylers": [{
-                    "color": "#f2f2f2"
-                }]
-            }, {
-                "featureType": "landscape",
-                "elementType": "geometry.fill",
-                "stylers": [{
-                    "color": "#e9eef2"
-                }]
-            }, {
-                "featureType": "landscape.man_made",
-                "elementType": "geometry.fill",
-                "stylers": [{
-                    "color": "#dddddd"
-                }]
-            }, {
-                "featureType": "poi",
+                "featureType": "administrative",
                 "elementType": "all",
                 "stylers": [{
                     "visibility": "off"
                 }]
             }, {
-                "featureType": "road",
+                "featureType": "landscape.man_made",
                 "elementType": "all",
                 "stylers": [{
-                    "saturation": -100
+                    "visibility": "simplified"
                 }, {
-                    "lightness": 45
+                    "color": "#efe9cf"
+                }]
+            }, {
+                "featureType": "landscape.natural",
+                "elementType": "all",
+                "stylers": [{
+                    "color": "#e6e2b7"
+                }]
+            }, {
+                "featureType": "landscape.natural",
+                "elementType": "labels",
+                "stylers": [{
+                    "visibility": "simplified"
+                }, {
+                    "color": "#e2d199"
+                }]
+            }, {
+                "featureType": "poi",
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#c4d7cd"
+                }]
+            }, {
+                "featureType": "poi",
+                "elementType": "labels",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "poi.park",
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#e6e2b7"
+                }, {
+                    "visibility": "simplified"
                 }]
             }, {
                 "featureType": "road",
-                "elementType": "geometry.fill",
-                "stylers": [{
-                    "color": "#999999"
-                }]
-            }, {
-                "featureType": "road",
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                    "color": "#7b7b7b"
-                }]
-            }, {
-                "featureType": "road",
-                "elementType": "labels.text.stroke",
-                "stylers": [{
-                    "color": "#ffffff"
-                }]
-            }, {
-                "featureType": "road.highway",
                 "elementType": "all",
                 "stylers": [{
                     "visibility": "simplified"
                 }]
             }, {
-                "featureType": "road.arterial",
+                "featureType": "road",
+                "elementType": "geometry",
+                "stylers": [{
+                    "visibility": "simplified"
+                }]
+            }, {
+                "featureType": "road",
+                "elementType": "geometry.fill",
+                "stylers": [{
+                    "visibility": "simplified"
+                }]
+            }, {
+                "featureType": "road",
+                "elementType": "labels",
+                "stylers": [{
+                    "visibility": "simplified"
+                }, {
+                    "color": "#333333"
+                }]
+            }, {
+                "featureType": "road",
+                "elementType": "labels.text",
+                "stylers": [{
+                    "visibility": "simplified"
+                }]
+            }, {
+                "featureType": "road",
                 "elementType": "labels.icon",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "road.highway",
+                "elementType": "all",
+                "stylers": [{
+                    "saturation": "0"
+                }, {
+                    "lightness": "0"
+                }]
+            }, {
+                "featureType": "road.highway",
+                "elementType": "geometry.fill",
+                "stylers": [{
+                    "visibility": "simplified"
+                }, {
+                    "color": "#f1f1f1"
+                }]
+            }, {
+                "featureType": "road.highway",
+                "elementType": "labels",
                 "stylers": [{
                     "visibility": "off"
                 }]
@@ -20815,32 +20846,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 "featureType": "water",
                 "elementType": "all",
                 "stylers": [{
-                    "color": "#46bcec"
-                }, {
-                    "visibility": "on"
-                }]
-            }, {
-                "featureType": "water",
-                "elementType": "geometry.fill",
-                "stylers": [{
-                    "color": "#04313b"
-                }]
-            }, {
-                "featureType": "water",
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                    "color": "#ffffff"
-                }]
-            }, {
-                "featureType": "water",
-                "elementType": "labels.text.stroke",
-                "stylers": [{
-                    "color": "#ffffff"
+                    "color": "#9fc0e9"
                 }]
             }]
         };
         var map = new google.maps.Map(element, options);
-        this.markerCoordinates.forEach(function (coord) {
+        this.markers = this.$children;
+        this.markers.forEach(function (coord) {
             var position = new google.maps.LatLng(coord.latitude, coord.longitude);
             var marker = new google.maps.Marker({
                 position: position,
@@ -20853,6 +20865,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['latitude', 'longitude', 'title'],
+
+    data: function data() {
+        return {
+            pinName: this.title.toLowerCase().replace(/ /g, '-'),
+            markerCoordinates: {
+                latitude: this.latitude,
+                longitude: this.longitude
+            }
+        };
+    }
+
+});
+
+/***/ }),
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20885,7 +20925,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20926,7 +20966,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20968,7 +21008,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21046,7 +21086,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21084,7 +21124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21125,7 +21165,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21145,7 +21185,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 // Check if request comes from browser and is not server rendered
 if (typeof window !== 'undefined') {
-  var slick = __webpack_require__(13);
+  var slick = __webpack_require__(14);
 }
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -21285,7 +21325,7 @@ if (typeof window !== 'undefined') {
 });
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -24286,14 +24326,14 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(5),
   /* template */
-  __webpack_require__(25),
+  __webpack_require__(28),
   /* scopeId */
   null,
   /* cssModules */
@@ -24320,7 +24360,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
@@ -24328,6 +24368,40 @@ var Component = __webpack_require__(0)(
   __webpack_require__(6),
   /* template */
   __webpack_require__(27),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\GoogleMapPin.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] GoogleMapPin.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2c6afe6a", Component.options)
+  } else {
+    hotAPI.reload("data-v-2c6afe6a", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(7),
+  /* template */
+  __webpack_require__(30),
   /* scopeId */
   null,
   /* cssModules */
@@ -24354,14 +24428,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(7),
+  __webpack_require__(8),
   /* template */
-  __webpack_require__(29),
+  __webpack_require__(32),
   /* scopeId */
   null,
   /* cssModules */
@@ -24388,14 +24462,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(8),
+  __webpack_require__(9),
   /* template */
-  __webpack_require__(22),
+  __webpack_require__(24),
   /* scopeId */
   null,
   /* cssModules */
@@ -24422,14 +24496,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(9),
+  __webpack_require__(10),
   /* template */
-  __webpack_require__(24),
+  __webpack_require__(26),
   /* scopeId */
   null,
   /* cssModules */
@@ -24456,14 +24530,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(10),
+  __webpack_require__(11),
   /* template */
-  __webpack_require__(23),
+  __webpack_require__(25),
   /* scopeId */
   null,
   /* cssModules */
@@ -24490,14 +24564,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(11),
+  __webpack_require__(12),
   /* template */
-  __webpack_require__(28),
+  __webpack_require__(31),
   /* scopeId */
   null,
   /* cssModules */
@@ -24524,14 +24598,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(12),
+  __webpack_require__(13),
   /* template */
-  __webpack_require__(26),
+  __webpack_require__(29),
   /* scopeId */
   null,
   /* cssModules */
@@ -24558,7 +24632,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24590,7 +24664,7 @@ if (false) {
 }
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24613,7 +24687,7 @@ if (false) {
 }
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24656,7 +24730,27 @@ if (false) {
 }
 
 /***/ }),
-/* 25 */
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "pop-up",
+    attrs: {
+      "id": _vm.pinName
+    }
+  }, [_vm._t("default")], 2)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-2c6afe6a", module.exports)
+  }
+}
+
+/***/ }),
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24665,7 +24759,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": _vm.mapName
     }
-  })
+  }, [_vm._t("default")], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -24676,7 +24770,7 @@ if (false) {
 }
 
 /***/ }),
-/* 26 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24691,7 +24785,7 @@ if (false) {
 }
 
 /***/ }),
-/* 27 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24723,7 +24817,7 @@ if (false) {
 }
 
 /***/ }),
-/* 28 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24757,7 +24851,7 @@ if (false) {
 }
 
 /***/ }),
-/* 29 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24786,7 +24880,7 @@ if (false) {
 }
 
 /***/ }),
-/* 30 */
+/* 33 */
 /***/ (function(module, exports) {
 
 var parallaxjs = function parallaxjs(options) {
@@ -24892,7 +24986,7 @@ module.exports = VueParallaxJs;
 
 
 /***/ }),
-/* 31 */
+/* 34 */
 /***/ (function(module, exports) {
 
 var g;
@@ -24919,7 +25013,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 32 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(3);

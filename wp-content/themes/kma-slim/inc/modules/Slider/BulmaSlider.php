@@ -135,7 +135,7 @@ class BulmaSlider {
             $slider .= '<bulma-slide :id="'.$i.'" image="'.$slide['photo'].'" '.( $i==0 ? ':active="true"' : '' ).'>
                 <div class="container">
                     <section v-parallax="-.4" class="slide-content">'
-                            . ($slide['headline'] != '' ? '<h2 class="slider-title">'.$slide['headline'].'</h2>' : '')
+                            . ($slide['headline'] != '' ? '<p class="slider-title">'.$slide['headline'].'</p>' : '')
                             . ($slide['caption'] != '' ? '<p class="slider-subtitle">'.$slide['caption'].'</p>' : '')
                             . ($slide['description'] != '' ? '<div class="slider-description">'.$slide['description'].'</div>' : '') .
                         '</section></div>

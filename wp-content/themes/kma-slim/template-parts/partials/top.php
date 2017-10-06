@@ -24,6 +24,7 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
     <span class="top-slash"></span>
 </div>
 <div :class="['site-wrapper', { 'menu-open': isOpen }, {'full-height': footerStuck}]">
+<div class="site-mobile-overlay"></div>
 <header id="top" class="header">
     <div class="container">
         <nav class="navbar">
@@ -52,12 +53,13 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
                 </div>
                 <div class="navbar-item go-arrow">
                     <a href="tel:225-766-0050" class="navbar-link">
-                        <span>Contact Us</span>
+                        <span class="mobile-hide tablet-hide">Contact Us</span>
                         225-766-0050</a>
                 </div>
             </div>
 
             <div class="navbar-brand">
+                <img src="<?php echo get_template_directory_uri() . '/img/bjc-logo-white.png'; ?>" alt="<?php echo get_bloginfo(); ?>" >
                 <div class="navbar-burger burger" id="MobileNavBurger" data-target="MobileNavMenu" @click="toggleMenu">
                     <span></span>
                     <span></span>
