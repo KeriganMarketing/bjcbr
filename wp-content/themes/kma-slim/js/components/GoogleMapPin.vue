@@ -1,5 +1,5 @@
 <template>
-    <div class="pop-up" :id="pinName">
+    <div ref="infowindow" class="pop-up" :id="pinName">
         <slot></slot>
     </div>
 </template>

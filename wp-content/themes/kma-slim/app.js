@@ -20711,16 +20711,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['latitude', 'longitude', 'zoom'],
+    props: ['name', 'latitude', 'longitude', 'zoom'],
 
     data: function data() {
         return {
             mapName: this.name + "-map",
-            markers: []
+            markers: [],
+            pins: []
         };
     },
 
     mounted: function mounted() {
+        var _this = this;
+
         var element = document.getElementById(this.mapName);
         var options = {
             zoom: this.zoom,
@@ -20851,14 +20854,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }]
         };
         var map = new google.maps.Map(element, options);
+        var bounds = new google.maps.LatLngBounds();
         this.markers = this.$children;
-        this.markers.forEach(function (coord) {
-            var position = new google.maps.LatLng(coord.latitude, coord.longitude);
+
+        var _loop = function _loop() {
+            pin = _this.markers[i];
+
+            _this.pins.push({
+                latitude: pin._data.markerCoordinates.latitude,
+                longitude: pin._data.markerCoordinates.longitude
+            });
+
+            var position = new google.maps.LatLng(pin.latitude, pin.longitude);
             var marker = new google.maps.Marker({
                 position: position,
                 map: map
             });
-        });
+
+            var infowindow = new google.maps.InfoWindow({
+                maxWidth: 279,
+                content: pin.$refs.infowindow,
+                title: pin._data.name
+            });
+
+            marker.addListener('click', function () {
+                infowindow.open(map, marker);
+            });
+
+            bounds.extend(position);
+            map.fitBounds(bounds);
+        };
+
+        for (var i = 0; i < this.markers.length; i++) {
+            var pin;
+
+            _loop();
+        }
     }
 
 });
@@ -24339,7 +24370,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\GoogleMap.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\GoogleMap.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] GoogleMap.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24373,7 +24404,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\GoogleMapPin.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\GoogleMapPin.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] GoogleMapPin.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24407,7 +24438,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\message.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\message.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] message.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24441,7 +24472,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\modal.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\modal.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] modal.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24475,7 +24506,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\slide.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\slide.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] slide.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24509,7 +24540,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\slider.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\slider.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] slider.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24543,7 +24574,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\tab.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\tab.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] tab.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24577,7 +24608,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\tabs.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\tabs.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] tabs.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24611,7 +24642,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\node_modules\\vue-slick\\slickCarousel.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\node_modules\\vue-slick\\slickCarousel.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] slickCarousel.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24735,6 +24766,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    ref: "infowindow",
     staticClass: "pop-up",
     attrs: {
       "id": _vm.pinName

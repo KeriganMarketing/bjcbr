@@ -12,7 +12,7 @@ use Includes\Modules\Locations\Locations;
 <div class="location-map">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRXeRhZCIYcKhtc-rfHCejAJsEW9rYtt4" ></script>
     <div class="full-width-map">
-        <google-map :latitude="30.442075" :longitude="-91.368458" :zoom="14" >
+        <google-map :latitude="30.442075" :longitude="-91.368458" :zoom="10" name="locations" >
             <?php $locations = new Locations();
             foreach($locations->getLocations() as $location){ ?>
                 <pin :latitude="<?php echo $location['latitude']; ?>" :longitude="<?php echo $location['longitude']; ?>" title="<?php echo str_replace(' Clinic', '',$location['name']); ?>">
