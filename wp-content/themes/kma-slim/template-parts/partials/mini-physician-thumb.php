@@ -12,7 +12,9 @@ $specialties = $physician['specialties'] != '' ? explode('<br />', nl2br($physic
 <div class="mini-physician-thumb is-centered">
 
     <figure class="image">
+        <a href="<?php echo $physician['link']; ?>" >
         <img src="<?php echo $photo; ?>">
+        </a>
     </figure>
 
     <p class="physician-name"><?php echo $physician['name']; ?></p>

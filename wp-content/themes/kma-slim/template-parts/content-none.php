@@ -11,9 +11,9 @@ include(locate_template('template-parts/partials/top.php'));
 ?>
 <div id="mid" >
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <section id="content" class="content section">
-            <div class="container">
-                <div class="entry-content one-column is-centered">
+        <section class="header section">
+            <div class="header-container">
+                <div class="container">
                     <h1 class="title is-1">404</h1>
                     <p class="subtitle">Page not found</p>
                 </div><!-- .entry-content -->

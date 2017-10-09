@@ -17,7 +17,9 @@ if (have_posts()) :
 
             if (is_front_page()) {
                 get_template_part('template-parts/home');
-            } else {
+            } elseif(is_single()) {
+                get_template_part('template-parts/content', get_post_type());
+            }else{
                 get_template_part('template-parts/content', $post->post_name);
             }
         endwhile;
