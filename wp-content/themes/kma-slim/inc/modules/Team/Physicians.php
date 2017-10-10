@@ -46,6 +46,8 @@ class Physicians
             ]
         );
 
+        $team->addTaxonomy('Type');
+
         $team->addMetaBox(
             'Contact Info',
             [
@@ -97,7 +99,7 @@ class Physicians
 
     }
 
-    public function getPhysicians($args = [])
+    public function getPhysicians($args = [], $taxonomy = '')
     {
 
         $request = [
@@ -109,13 +111,26 @@ class Physicians
             'post_status'    => 'publish',
         ];
 
+        if ( $taxonomy != '' ) {
+            $categoryarray = [
+                'relation' => 'AND',
+                [
+                    'taxonomy'         => 'type',
+                    'field'            => 'slug',
+                    'terms'            => $taxonomy,
+                    'include_children' => false,
+                ],
+            ];
+            $request['tax_query'] = $categoryarray;
+        }
+
         $request = get_posts(array_merge($request, $args));
 
         $output = [];
         foreach ($request as $item) {
 
             array_push($output, [
-                'id'           => (isset($itemID) ? $item->ID : null),
+                'id'           => (isset($item->ID) ? $item->ID : null),
                 'name'         => $item->post_title,
                 'slug'         => (isset($item->post_name) ? $item->post_name : null),
                 'specialties'  => (isset($item->contact_info_specialties) ? $item->contact_info_specialties : null),
