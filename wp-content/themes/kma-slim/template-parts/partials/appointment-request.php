@@ -9,6 +9,8 @@
 use Includes\Modules\Team\Physicians;
 use Includes\Modules\Locations\Locations;
 
+$requestedPhysician = isset($_GET['requested_physician']) ? $_GET['requested_physician'] : null;
+$requestedLocation = isset($_GET['office']) ?  $_GET['office'] : null;
 ?>
 <div class="container">
     <div class="intro-text">
@@ -97,7 +99,7 @@ use Includes\Modules\Locations\Locations;
                         <?php $locations = new Locations();
                         foreach($locations->getLocations() as $location){ ?>
                             <label class="radio">
-                                <input type="radio" name="requested_location" value="<?php echo str_replace(' Clinic', '', $location['name']); ?>">
+                                <input type="radio" name="requested_location" value="<?php echo str_replace(' Clinic', '', $location['name']); ?>" <?php echo $requestedLocation == $location['slug'] ? 'checked' : '' ?> >
                                 <?php echo str_replace(' Clinic', '', $location['name']); ?>
                             </label>
                         <?php } ?>
@@ -125,7 +127,7 @@ use Includes\Modules\Locations\Locations;
             <div class="field">
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="requested_physician" value="<?php echo $physician['name']; ?>">
+                        <input type="radio" name="requested_physician" value="<?php echo $physician['name']; ?>" <?php echo $requestedPhysician == $physician['slug'] ? 'checked' : '' ?> >
                         <?php echo $physician['name']; ?><br>
                         <p class="help"><?php echo $specialties; ?></p>
                     </label>

@@ -40,7 +40,7 @@ include(locate_template('template-parts/partials/top.php'));
                             <div class="column is-4-tablet is-3-widescreen">
                                 <div class="physician-gallery-thumb">
                                 <?php include(locate_template('template-parts/partials/mini-physician-thumb.php')); ?>
-                                <a class="button is-primary is-outlined" href="/patient-center/appointments/?doctor=<?php echo $physician['name']; ?>" >Request an appointment</a>
+                                <a class="button is-primary is-outlined" href="/patient-center/appointments/?requested_physician=<?php echo $physician['name']; ?>" >Request an appointment</a>
                                 </div>
                             </div>
                         <?php } ?>
