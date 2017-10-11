@@ -1,11 +1,12 @@
 <?php
 namespace Includes\Modules\Leads;
 
+use Includes\Modules\CPT\CustomPostType;
+
 /**
  * Class kmaLeads
  * Author: Bryan Baird
- * Date: 2/3/2017
- * Time: 1:21 PM
+ * Date: 2/3/2017 Time: 1:21 PM
  */
 
 class KmaLeads
@@ -28,47 +29,37 @@ class KmaLeads
      */
     public function addToDashboard($contactInfo)
     {
+
+        echo '<pre>',print_r($contactInfo),'</pre>';
+
         $street  = $contactInfo['addr1'];
         $street2 = $contactInfo['addr2'];
         $city    = $contactInfo['city'];
         $state   = $contactInfo['state'];
         $zip     = $contactInfo['zip'];
+        $name    = $contactInfo['first_name'] . ' ' . $contactInfo['last_name'];
 
         $fullAddress = $this->fullAddress($street, $street2, $city, $state, $zip);
-
-        // determine taxonomy
-        switch ($contactInfo['requestType']) {
-            case 'Homeowners':
-                $categoryId = 12;
-                break;
-            case 'Commercial and Personal Auto':
-                $categoryId = 13;
-                break;
-            default:
-                $categoryId = 14;
-                break;
-        }
 
         $createdLead = wp_insert_post(
             [ //POST INFO
                 'post_content'   => '',
                 'post_status'    => 'publish',
                 'post_type'      => 'Lead',
-                'post_title'     => $contactInfo['name'],
+                'post_title'     => $name,
                 'comment_status' => 'closed',
                 'ping_status'    => 'closed',
                 'meta_input'     => [ //POST META
-                    'lead_info_lead_type'     => $contactInfo['requestType'],
-                    'lead_info_name'          => $contactInfo['name'],
-                    'lead_info_date'          => date('M j, Y').' @ '.date('g:i a e'),
-                    'lead_info_phone_number'  => $contactInfo['phone'],
-                    'lead_info_email_address' => $contactInfo['email'],
-                    'lead_info_address'       => $fullAddress,
+                    'lead_info_name'               => $name,
+                    'lead_info_date'               => date('M j, Y').' @ '.date('g:i a e'),
+                    'lead_info_phone_number'       => $contactInfo['phone'],
+                    'lead_info_email_address'      => $contactInfo['email'],
+                    'lead_info_requested_physican' => $contactInfo['requested_physician'],
+                    'lead_info_address'            => $fullAddress,
                 ]
             ],
             true
         );
-        wp_set_object_terms($createdLead, $categoryId, 'type');
     }
 
     /**
@@ -88,16 +79,15 @@ class KmaLeads
 
     public function sendNotifications($input)
     {
-        $email     = $input['email'];
-        $name      = $input['name'];
-        $phone     = $input['phone'];
-        $quoteType = $input['requestType'];
-        $street    = $input['addr1'];
-        $street2   = $input['addr2'];
-        $city      = $input['city'];
-        $state     = $input['state'];
-        $zip       = $input['zip'];
-
+        $email       = $input['email'];
+        $name        = $input['first_name'] . ' ' . $contactInfo['last_name'];
+        $phone       = $input['phone'];
+        $quoteType   = $input['requestType'];
+        $street      = $input['addr1'];
+        $street2     = $input['addr2'];
+        $city        = $input['city'];
+        $state       = $input['state'];
+        $zip         = $input['zip'];
         $fullAddress = $this->fullAddress($street, $street2, $city, $state, $zip);
 
         $sendadmin = [
@@ -173,9 +163,8 @@ class KmaLeads
      */
     public function createPostType()
     {
-
         //CREATE LEAD MGMT SYS
-        $leads = new Custom_Post_Type(
+        $leads = new CustomPostType(
             'Lead',
             [
                 'supports'           => [ 'title' ],
@@ -187,44 +176,56 @@ class KmaLeads
             ]
         );
 
-        $leads->add_meta_box(
+        $leads->addMetaBox(
             'Lead Info',
             [
-                'Name'          => 'locked',
-                'Date'          => 'locked',
-                'Phone Number'  => 'locked',
-                'Email Address' => 'locked',
-                'Address'       => 'locked',
-                'Lead Type'     => 'locked',
+                'Name'                => 'locked',
+                'Date'                => 'locked',
+                'Phone Number'        => 'locked',
+                'Email Address'       => 'locked',
+                'Address'             => 'locked',
+                'Physician'           => 'locked',
+                'Location'            => 'locked',
+                'Date'                => 'locked',
+                'Time'                => 'locked'
             ]
         );
-        $leads->add_taxonomy('Type');
+        // $leads->add_taxonomy('Type');
     }
 
     public function createAdminColumns()
     {
-        add_filter('manage_lead_posts_columns', 'columns_head_lead', 0);
-        add_action('manage_lead_posts_custom_column', 'columns_content_lead', 0, 2);
-
-        function columns_head_lead($defaults)
-        {
-            $defaults['lead_type']     = 'Lead Type';
-            $defaults['email_address'] = 'Email';
+        add_filter('manage_lead_posts_columns', function() {
+            $defaults = [
+                'title'   => 'Name',
+                'address' => 'Address',
+                'email_address' => 'Email',
+                'phone'   => 'Phone Number',
+                'physican' => 'Physician',
+                'date' => 'Date'
+            ];
             return $defaults;
-        }
-        function columns_content_lead($column_name, $post_ID)
-        {
+        }, 0);
+        add_action('manage_lead_posts_custom_column', function($column_name, $post_ID) {
             switch ($column_name) {
-                case 'lead_type':
-                    $term = wp_get_object_terms($post_ID, 'type');
-                    echo(isset($term[0]->name) ? $term[0]->name : null);
+                case 'address':
+                    $address = get_post_meta($post_ID, 'lead_info_address', true);
+                    echo(isset($address) ? $address : null);
                     break;
                 case 'email_address':
                     $email_address = get_post_meta($post_ID, 'lead_info_email_address', true);
                     echo(isset($email_address) ? '<a href="mailto:'.$email_address.'" >'.$email_address.'</a>' : null);
                     break;
+                case 'phone_number':
+                    $phone_number = get_post_meta($post_ID, 'lead_info_phone_number', true);
+                    echo(isset($phone_number) ? '<a href="tel:'.$phone_number.'" >'.$phone_number.'</a>' : null);
+                    break;
+                case 'physician':
+                    $physician = get_post_meta($post_ID, 'lead_info_physician', true);
+                    echo(isset($physician) ? $physician : null);
+                    break;
             }
-        }
+        }, 0, 2);
     }
 
     public function sendEmail(

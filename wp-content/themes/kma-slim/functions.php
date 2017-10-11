@@ -6,6 +6,7 @@
  * @version 1.2
  */
 
+use Includes\Modules\Leads\KmaLeads;
 use Includes\Modules\Helpers\CleanWP;
 use Includes\Modules\Layouts\Layouts;
 use Includes\Modules\Team\Physicians;
@@ -37,6 +38,10 @@ $physicians->createAdminColumns();
 $locations = new Locations();
 $locations->createPostType();
 $locations->createAdminColumns();
+
+$kmaLeads = new KmaLeads();
+$kmaLeads->createPostType();
+$kmaLeads->createAdminColumns();
 
 if (is_admin()) {
     $post_id = (isset($_GET['post']) ? $_GET['post'] : (isset($_POST['post_ID']) ? $_POST['post_ID'] : null));

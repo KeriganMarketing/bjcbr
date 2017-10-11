@@ -8,13 +8,17 @@
 
 use Includes\Modules\Team\Physicians;
 use Includes\Modules\Locations\Locations;
+use Includes\Modules\Leads\KmaLeads;
 
 $requestedPhysician = isset($_GET['requested_physician']) ? $_GET['requested_physician'] : null;
 $requestedLocation = isset($_GET['office']) ?  $_GET['office'] : null;
+if ($_POST) {
+    $lead = new KmaLeads();
+    $lead->addToDashboard($_POST);
+}
 ?>
 <div class="container">
     <div class="intro-text">
-        <pre><?php var_dump($_POST); ?></pre>
         <p class="help" style="text-align: right; margin-bottom:1rem;">*You must complete all fields.</p>
     </div>
 
