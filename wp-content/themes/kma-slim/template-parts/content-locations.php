@@ -23,6 +23,7 @@ include(locate_template('template-parts/partials/top.php'));
                     </div>
                 </div>
             </section>
+            <?php include(locate_template('template-parts/partials/breadcrumbs.php')); ?>
             <section id="content" class="content section">
                 <div class="container">
                     <div class="entry-content">

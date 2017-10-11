@@ -67,12 +67,6 @@ include(locate_template('template-parts/partials/top.php'));
 
         </div>
 
-        <div class="section-wrapper enews-signup">
-
-            <?php include(locate_template('template-parts/partials/enews-signup.php')); ?>
-
-        </div>
-
     </article><!-- #post-## -->
 </div>
 <?php include(locate_template('template-parts/partials/bot.php')); ?>

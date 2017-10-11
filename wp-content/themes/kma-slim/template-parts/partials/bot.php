@@ -13,6 +13,12 @@ use Includes\Modules\Social\SocialSettingsPage;
 
 <footer :class="{stuck: footerStuck}">
 
+    <div class="section-wrapper enews-signup">
+
+        <?php include(locate_template('template-parts/partials/enews-signup.php')); ?>
+
+    </div>
+
     <div id="bot">
         <div class="section-wrapper locations" >
 
