@@ -602,6 +602,49 @@ body {
   }
 }
 
+.home {
+  h2 {
+    font-weight: 200;
+    margin: 4rem 2rem;
+    font-size: 20px;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 30px;
+    }
+    @media screen and (min-width: $desktop) {
+      font-size: 40px;
+      margin: 4rem 0;
+    }
+    @media screen and (min-width: $fullhd) {
+      font-size: 50px;
+      margin: 6rem 9rem 4rem 0;
+    }
+  }
+
+  h2.line-right {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 50px;
+    }
+
+    strong {
+      padding: 0 2rem 0 1rem;
+
+      @media screen and (min-width: $tablet) {
+        padding: 0 4rem 0 1rem;
+      }
+    }
+
+    span.line {
+      width: 100%;
+      border-bottom: 1px solid rgba(100, 100, 100, .5);
+    }
+  }
+}
+
 //MID
 #mid {
   background-color: #FFF;
@@ -640,49 +683,6 @@ body {
   section.header.section.has-background {
     .title {
       color: #FFF !important;
-    }
-  }
-
-  .home {
-    h2 {
-      font-weight: 200;
-      margin: 4rem 2rem;
-      font-size: 20px;
-
-      @media screen and (min-width: $tablet) {
-        font-size: 30px;
-      }
-      @media screen and (min-width: $desktop) {
-        font-size: 40px;
-        margin: 4rem 0;
-      }
-      @media screen and (min-width: $fullhd) {
-        font-size: 50px;
-        margin: 6rem 9rem 4rem 0;
-      }
-    }
-
-    h2.line-right {
-      display: flex;
-      align-items: center;
-      font-size: 30px;
-
-      @media screen and (min-width: $tablet) {
-        font-size: 50px;
-      }
-
-      strong {
-        padding: 0 2rem 0 1rem;
-
-        @media screen and (min-width: $tablet) {
-          padding: 0 4rem 0 1rem;
-        }
-      }
-
-      span.line {
-        width: 100%;
-        border-bottom: 1px solid rgba(100, 100, 100, .5);
-      }
     }
   }
 
