@@ -12,14 +12,15 @@ include(locate_template('template-parts/partials/top.php'));
 ?>
     <div id="mid">
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <section class="hero">
-                <div class="hero-body">
+            <section class="header section">
+                <div class="header-container">
                     <div class="container">
-                        <h1 class="title is-1"><?php echo $headline; ?></h1>
+                        <h1 class="title is-1"><?php echo ($headline == 'Archives' ? 'News' : $headline); ?></h1>
                         <?php echo($subhead != '' ? '<p class="subtitle">' . $subhead . '</p>' : null); ?>
                     </div>
                 </div>
             </section>
+            <?php include(locate_template('template-parts/partials/breadcrumbs.php')); ?>
             <section id="content" class="content section news">
                 <div class="container">
                     <div class="columns is-multiline">
