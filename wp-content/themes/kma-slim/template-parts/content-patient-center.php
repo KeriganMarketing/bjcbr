@@ -7,13 +7,12 @@
  */
 $headline = ($post->page_information_headline != '' ? $post->page_information_headline : $post->post_title);
 $subhead  = ($post->page_information_subhead != '' ? $post->page_information_subhead : '');
-$featuredPhoto = get_the_post_thumbnail( $post, 'post-thumbnail');
-print_r($featuredPhoto);
+$featuredPhoto = get_the_post_thumbnail_url( $post, 'post-thumbnail');
 include(locate_template('template-parts/partials/top.php'));
 ?>
     <div id="mid">
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <section class="header section">
+            <section class="header section<?php echo ($featuredPhoto!='' ? ' has-background" style="background-image: url('.$featuredPhoto.');"' : '"'); ?>>
                 <div class="header-container">
                     <div class="container">
                         <h1 class="title is-1"><?php echo $headline; ?></h1>
@@ -28,6 +27,11 @@ include(locate_template('template-parts/partials/top.php'));
                         <?php the_content(); ?>
                     </div>
                 </div>
+            </section>
+            <section class="section patient-center-buttons" >
+
+                <?php include(locate_template('template-parts/partials/patient-center-functions.php')); ?>
+
             </section>
         </article>
     </div>
