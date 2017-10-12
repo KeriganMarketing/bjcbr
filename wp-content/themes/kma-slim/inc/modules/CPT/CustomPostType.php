@@ -70,7 +70,6 @@ class CustomPostType
         $plural = $this->pluralizeName($postName);
 
         $mergedLabels = array_merge(
-
             [
                 'name'               => _x($plural, 'post type general name'),
                 'singular_name'      => _x($name, 'post type singular name'),
@@ -95,7 +94,6 @@ class CustomPostType
     private function definePostArgs($postName)
     {
         $mergedArgs = array_merge(
-
             [
                 'label'             => $this->pluralizeName($postName),
                 'labels'            => $this->definePostLabels($postName),
@@ -145,7 +143,6 @@ class CustomPostType
     private function defineTaxArgs($taxName, $taxonomyArgs, $taxonomyLabels)
     {
         $mergedArgs = array_merge(
-
             [
                 'hierarchical'      => true,
                 'label'             => $this->pluralizeName($taxName),
@@ -176,7 +173,6 @@ class CustomPostType
                     }
                 );
             } else { //Attach existing taxonomy to new post type
-
                 add_action(
                     'init',
                     function () use ($taxonomyName, $postTypeName) {
