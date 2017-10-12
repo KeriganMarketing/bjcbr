@@ -32,14 +32,7 @@ class KmaLeads
 
         echo '<pre>',print_r($contactInfo),'</pre>';
 
-        $street  = $contactInfo['addr1'];
-        $street2 = $contactInfo['addr2'];
-        $city    = $contactInfo['city'];
-        $state   = $contactInfo['state'];
-        $zip     = $contactInfo['zip'];
         $name    = $contactInfo['first_name'] . ' ' . $contactInfo['last_name'];
-
-        $fullAddress = $this->fullAddress($street, $street2, $city, $state, $zip);
 
         wp_insert_post(
             [ //POST INFO
@@ -50,13 +43,14 @@ class KmaLeads
                 'comment_status' => 'closed',
                 'ping_status'    => 'closed',
                 'meta_input'     => [ //POST META
-                    'lead_info_name'          => $name,
-                    'lead_info_phone_number'  => $contactInfo['phone_number'],
-                    'lead_info_email_address' => $contactInfo['email_address'],
-                    'lead_info_date'          => $contactInfo['requested_date'],
-                    'lead_info_time'          => $contactInfo['requested_time'],
-                    'lead_info_location'      => $contactInfo['requested_location'],
-                    'lead_info_physician'     => $contactInfo['requested_physician'],
+                    'lead_info_name'                    => $name,
+                    'lead_info_phone_number'            => $contactInfo['phone_number'],
+                    'lead_info_email_address'           => $contactInfo['email_address'],
+                    'lead_info_date'                    => $contactInfo['requested_date'],
+                    'lead_info_time'                    => $contactInfo['requested_time'],
+                    'lead_info_location'                => $contactInfo['requested_location'],
+                    'lead_info_physician'               => $contactInfo['requested_physician'],
+                    'lead_info_additional_instructions' => $contactInfo['additional_instructions'],
                 ]
             ],
             true
@@ -83,13 +77,6 @@ class KmaLeads
         $email       = $input['email'];
         $name        = $input['first_name'] . ' ' . $contactInfo['last_name'];
         $phone       = $input['phone'];
-        $quoteType   = $input['requestType'];
-        $street      = $input['addr1'];
-        $street2     = $input['addr2'];
-        $city        = $input['city'];
-        $state       = $input['state'];
-        $zip         = $input['zip'];
-        $fullAddress = $this->fullAddress($street, $street2, $city, $state, $zip);
 
         $sendadmin = [
             'to'      => $this->adminEmail,
@@ -180,33 +167,32 @@ class KmaLeads
         $leads->addMetaBox(
             'Lead Info',
             [
-                'Name'                => 'locked',
-                'Phone Number'        => 'locked',
-                'Email Address'       => 'locked',
-//                'Address'             => 'locked',
-                'Physician'           => 'locked',
-                'Location'            => 'locked',
-                'Date'                => 'locked',
-                'Time'                => 'locked'
+                'Name'                      => 'locked',
+                'Phone Number'              => 'locked',
+                'Email Address'             => 'locked',
+                'Physician'                 => 'locked',
+                'Location'                  => 'locked',
+                'Date'                      => 'locked',
+                'Time'                      => 'locked',
+                'Additional Instructions'   => 'locked'
             ]
         );
-        // $leads->add_taxonomy('Type');
     }
 
     public function createAdminColumns()
     {
-        add_filter('manage_lead_posts_columns', function() {
+        add_filter('manage_lead_posts_columns', function () {
             $defaults = [
                 'title'         => 'Name',
                 'date_time'     => 'Requested Date/Time',
                 'email_address' => 'Email',
-                'phone_number'         => 'Phone Number',
+                'phone_number'  => 'Phone Number',
                 'physician'     => 'Physician',
                 'date'          => 'Date'
             ];
             return $defaults;
         }, 0);
-        add_action('manage_lead_posts_custom_column', function($column_name, $post_ID) {
+        add_action('manage_lead_posts_custom_column', function ($column_name, $post_ID) {
             switch ($column_name) {
                 case 'date_time':
                     $date = get_post_meta($post_ID, 'lead_info_date', true);

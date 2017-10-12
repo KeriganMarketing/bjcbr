@@ -21,7 +21,7 @@
     </tr>
     </tbody>
 </table>
-<p style="text-align:center; color:#999; font-family:sans-serif; font-size:12px;">This email was sent by <a href="http://hannoninsurance.com">hannoninsurance.com</a>.</p>
-<p style="text-align:center; color:#999; font-family:sans-serif; font-size:12px;">&copy; 2017 Hannon Insurance.</p>
+<p style="text-align:center; color:#999; font-family:sans-serif; font-size:12px;">This email was sent by <a href="http://bjcbr.com">bjcbr.com</a>.</p>
+<p style="text-align:center; color:#999; font-family:sans-serif; font-size:12px;">&copy; 2017 Bone and Joint Clinic of Baton Rouge.</p>
 </body>
-</html>'
+</html>

@@ -36,7 +36,6 @@ class CustomPostType
 
     /**
      * Formats names nicely
-     *
      * @param  string $postName
      *
      * @return string $niceName
@@ -106,9 +105,7 @@ class CustomPostType
                 'show_in_nav_menus' => true,
                 '_builtin'          => false,
             ],
-
             $this->postTypeArgs
-
         );
 
         return $mergedArgs;
@@ -139,9 +136,7 @@ class CustomPostType
                 'new_item_name'     => __('New ' . $name . ' Name'),
                 'menu_name'         => __($name),
             ],
-
             $taxonomyLabels
-
         );
 
         return $mergedLabels;
@@ -160,9 +155,7 @@ class CustomPostType
                 'show_in_nav_menus' => true,
                 '_builtin'          => false,
             ],
-
             $taxonomyArgs
-
         );
 
         return $mergedArgs;
@@ -318,7 +311,7 @@ class CustomPostType
             if (! empty($args['taxonomy']) && $args['taxonomy'] === $tax) {
                 if (empty($args['walker']) || is_a(
                     $args['walker'],
-                        'Walker'
+                    'Walker'
                 )) { // Don't override 3rd party walkers.
                     $args['walker'] = new CheckToRadio;
                 }
