@@ -41,7 +41,7 @@ class KmaLeads
 
         $fullAddress = $this->fullAddress($street, $street2, $city, $state, $zip);
 
-        $createdLead = wp_insert_post(
+        wp_insert_post(
             [ //POST INFO
                 'post_content'   => '',
                 'post_status'    => 'publish',
@@ -50,12 +50,13 @@ class KmaLeads
                 'comment_status' => 'closed',
                 'ping_status'    => 'closed',
                 'meta_input'     => [ //POST META
-                    'lead_info_name'               => $name,
-                    'lead_info_date'               => date('M j, Y').' @ '.date('g:i a e'),
-                    'lead_info_phone_number'       => $contactInfo['phone'],
-                    'lead_info_email_address'      => $contactInfo['email'],
-                    'lead_info_requested_physican' => $contactInfo['requested_physician'],
-                    'lead_info_address'            => $fullAddress,
+                    'lead_info_name'          => $name,
+                    'lead_info_phone_number'  => $contactInfo['phone_number'],
+                    'lead_info_email_address' => $contactInfo['email_address'],
+                    'lead_info_date'          => $contactInfo['requested_date'],
+                    'lead_info_time'          => $contactInfo['requested_time'],
+                    'lead_info_location'      => $contactInfo['requested_location'],
+                    'lead_info_physician'     => $contactInfo['requested_physician'],
                 ]
             ],
             true
@@ -180,10 +181,9 @@ class KmaLeads
             'Lead Info',
             [
                 'Name'                => 'locked',
-                'Date'                => 'locked',
                 'Phone Number'        => 'locked',
                 'Email Address'       => 'locked',
-                'Address'             => 'locked',
+//                'Address'             => 'locked',
                 'Physician'           => 'locked',
                 'Location'            => 'locked',
                 'Date'                => 'locked',
@@ -197,20 +197,21 @@ class KmaLeads
     {
         add_filter('manage_lead_posts_columns', function() {
             $defaults = [
-                'title'   => 'Name',
-                'address' => 'Address',
+                'title'         => 'Name',
+                'date_time'     => 'Requested Date/Time',
                 'email_address' => 'Email',
-                'phone'   => 'Phone Number',
-                'physican' => 'Physician',
-                'date' => 'Date'
+                'phone_number'         => 'Phone Number',
+                'physician'     => 'Physician',
+                'date'          => 'Date'
             ];
             return $defaults;
         }, 0);
         add_action('manage_lead_posts_custom_column', function($column_name, $post_ID) {
             switch ($column_name) {
-                case 'address':
-                    $address = get_post_meta($post_ID, 'lead_info_address', true);
-                    echo(isset($address) ? $address : null);
+                case 'date_time':
+                    $date = get_post_meta($post_ID, 'lead_info_date', true);
+                    $time = get_post_meta($post_ID, 'lead_info_time', true);
+                    echo(isset($date) && isset($time) ? $date . ' at ' . $time : null);
                     break;
                 case 'email_address':
                     $email_address = get_post_meta($post_ID, 'lead_info_email_address', true);
