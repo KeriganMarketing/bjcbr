@@ -1,5 +1,7 @@
 window.Vue = require('vue');
 
+const flatpickr = require("flatpickr");
+
 import message from './components/message.vue';
 import modal from './components/modal.vue';
 import tabs from './components/tabs.vue';
@@ -10,6 +12,7 @@ import GoogleMap from './components/GoogleMap.vue';
 import GoogleMapPin from './components/GoogleMapPin.vue';
 import Slick from 'vue-slick';
 import VueParallaxJs from 'vue-parallax-js';
+import FlatPickr from './components/FlatPickr.vue';
 
 window.Vue.use(VueParallaxJs, {
     minWidth: 1000,
@@ -28,7 +31,8 @@ var app = new Vue({
         'bulma-slide': slide,
         'google-map': GoogleMap,
         'pin': GoogleMapPin,
-        'slick': Slick
+        'slick': Slick,
+        'date-picker': FlatPickr
     },
 
     data: {

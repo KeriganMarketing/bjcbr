@@ -58,12 +58,85 @@ if ($_POST) {
                     </div>
                 </div>
             </div>
-            <div class="column is-12">
+
+        </div>
+        <div class="columns is-multiline">
+
+            <div class="column is-6 is-3-desktop">
+                <label class="label">Requested Date</label>
+                <div class="field flatpickr" id="requested_date">
+                    <date-picker name="requested_date" icon="fa-calendar" placeholder="Select a date" :config="{ dateFormat: 'F j, Y', appendTo: requested_date }"></date-picker>
+                </div>
+                <p class="help">Office hours are 8:00 am - 5:00 pm, Mon - Fri</p>
+            </div>
+            <div class="column is-6 is-3-desktop">
+                <label class="label">Requested Time</label>
+                <div class="field flatpickr" id="requested_time">
+                    <date-picker name="requested_time" icon="fa-clock-o" placeholder="Select a time" :config="{ enableTime: true, noCalendar: true, minuteIncrement: 15, appendTo: requested_time }"></date-picker>
+                </div>
+            </div>
+            <div class="column is-12 is-6-desktop">
                 <div class="field">
+                    <label class="label">Requested Location</label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select name="requested_location" >
+                            <?php $locations = new Locations();
+                            foreach($locations->getLocations() as $location){ ?>
+                                <option value="<?php echo str_replace(' Clinic', '', $location['name']); ?>" <?php echo $requestedLocation == $location['slug'] ? 'selected' : '' ?> >
+                                    <?php echo str_replace(' Clinic', '', $location['name']); ?>
+                                </option>
+                            <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="columns is-multiline">
+
+            <div class="column is-12 is-6-desktop">
+                <label class="label">Requested Physician</label>
+                <div class="field">
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="requested_physician" value="First Available">
+                            First Available
+                            <p class="help">If you do not have a preference</p>
+                        </label>
+                    </div>
+                </div>
+                <?php
+                $physicians = new Physicians();
+                foreach ($physicians->getPhysicians() as $num => $physician) {
+                    $specialties = $physician['specialties'] != '' ? str_replace('<br />', ',', nl2br($physician['specialties'])) : '';
+                    ?>
+                    <div class="field">
+                        <div class="control">
+                            <label class="radio">
+                                <input type="radio" name="requested_physician" value="<?php echo $physician['name']; ?>" <?php echo $requestedPhysician == $physician['slug'] ? 'checked' : '' ?> >
+                                <?php echo $physician['name']; ?><br>
+                                <p class="help"><?php echo $specialties; ?></p>
+                            </label>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+            <div class="column is-12 is-6-desktop">
+                <div class="field">
+                    <label class="label">Is there anything else you'd like us to know?</label>
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Type your message here." name="additional_instructions"></textarea>
+                    </div>
+                </div>
+
+                <div class="field" style="margin-top:2rem;">
                     <div class="control">
                         <strong>Subscribe to our eNewsletter?</strong>
                         <label class="radio">
-                            <input type="radio" name="newsletter_signup">
+                            <input type="radio" name="newsletter_signup" checked>
                             Yes
                         </label>
                         <label class="radio">
@@ -75,69 +148,6 @@ if ($_POST) {
             </div>
 
         </div>
-        <div class="columns is-multiline">
-
-            <div class="column is-6 is-3-desktop">
-                <label class="label">Requested Date</label>
-                <div class="control has-icons-left">
-                    <input class="input datepicker" type="text" placeholder="Select a date" name="requested_date">
-                    <span class="icon is-small is-left">
-                      <i class="fa fa-calendar"></i>
-                    </span>
-                </div>
-                <p class="help">Office hours are 8:00 am - 5:00 pm, Mon - Fri</p>
-            </div>
-            <div class="column is-6 is-3-desktop">
-                <label class="label">Requested Time</label>
-                <div class="control has-icons-left">
-                    <input class="input timepicker" type="text" placeholder="Select a time" name="requested_time">
-                    <span class="icon is-small is-left">
-                      <i class="fa fa-clock-o"></i>
-                    </span>
-                </div>
-            </div>
-            <div class="column is-12 is-6-desktop">
-                <div class="field">
-                    <label class="label">Requested Location</label>
-                    <div class="control">
-                        <?php $locations = new Locations();
-                        foreach($locations->getLocations() as $location){ ?>
-                            <label class="radio">
-                                <input type="radio" name="requested_location" value="<?php echo str_replace(' Clinic', '', $location['name']); ?>" <?php echo $requestedLocation == $location['slug'] ? 'checked' : '' ?> >
-                                <?php echo str_replace(' Clinic', '', $location['name']); ?>
-                            </label>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="field">
-            <div class="control">
-                <label class="radio">
-                    <input type="radio" name="requested_physician" value="First Available">
-                    First Available
-                    <p class="help">If you do not have a preference</p>
-                </label>
-            </div>
-        </div>
-
-        <?php
-        $physicians = new Physicians();
-        foreach ($physicians->getPhysicians() as $num => $physician) {
-            $specialties = $physician['specialties'] != '' ? str_replace('<br />', ',', nl2br($physician['specialties'])) : '';
-            ?>
-            <div class="field">
-                <div class="control">
-                    <label class="radio">
-                        <input type="radio" name="requested_physician" value="<?php echo $physician['name']; ?>" <?php echo $requestedPhysician == $physician['slug'] ? 'checked' : '' ?> >
-                        <?php echo $physician['name']; ?><br>
-                        <p class="help"><?php echo $specialties; ?></p>
-                    </label>
-                </div>
-            </div>
-        <?php } ?>
 
         <button type="submit" class="button is-primary is-large">Submit Appointment Request</button>
     </form>
