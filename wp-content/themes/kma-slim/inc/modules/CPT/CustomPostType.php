@@ -56,6 +56,8 @@ class CustomPostType
             $cut = substr($niceName, 0, - 1);
             //convert y to ies
             $pluralName = $cut . 'ies';
+        } elseif ($nicename == 'feedback') {
+            return $nicename;
         } else {
             // just attach an s
             $pluralName = $niceName . 's';

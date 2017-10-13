@@ -6,7 +6,6 @@
  * @version 1.2
  */
 get_header();
-
 if (have_posts()) :
     if (is_home()) { //multipart template, archive or whatever
 

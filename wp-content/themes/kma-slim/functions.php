@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package KMA
  * @subpackage kmaslim
@@ -11,6 +12,7 @@ use Includes\Modules\Helpers\CleanWP;
 use Includes\Modules\Layouts\Layouts;
 use Includes\Modules\Team\Physicians;
 use Includes\Modules\Slider\BulmaSlider;
+use Includes\Modules\Comments\CommentBox;
 use Includes\Modules\Locations\Locations;
 use Includes\Modules\Social\SocialSettingsPage;
 
@@ -43,11 +45,15 @@ $kmaLeads = new KmaLeads();
 $kmaLeads->createPostType();
 $kmaLeads->createAdminColumns();
 
+$commentBox = new CommentBox();
+$commentBox->createPostType();
+$commentBox->createAdminColumns();
+
 if (is_admin()) {
     $post_id = (isset($_GET['post']) ? $_GET['post'] : (isset($_POST['post_ID']) ? $_POST['post_ID'] : null));
 
     if (($post_id == get_option('page_on_front') ? true : false)) {
-        //        $frontpage = new CustomPostType('Page');
+               // $frontpage = new CustomPostType('Page');
 //        $frontpage->addMetaBox('Contact Info', array(
 //            'phone'   => 'text',
 //            'email'   => 'text',
@@ -94,6 +100,7 @@ if (! function_exists('kmaslim_setup')) :
         add_image_size('large-thumbnail', 300, 300, true);
     }
 endif;
+
 add_action('after_setup_theme', 'kmaslim_setup');
 
 function kmaslim_scripts()
@@ -101,5 +108,21 @@ function kmaslim_scripts()
     wp_register_script('scripts', get_template_directory_uri() . '/app.js', [], null, false);
     wp_enqueue_script('scripts');
 }
+////////////////////////////////////////////////////////////////
+// fix this garbage
+add_action('init', function () {
+    if (isset($_POST['commentBox'])) {
+        $commentBox = new CommentBox();
+        $commentBox->addToDashboard($_POST);
+    }
+});
 
+function comment_box_shortcode()
+{
+    $cb = new CommentBox();
+
+    return $cb->display();
+}
+add_shortcode('comment_box', 'comment_box_shortcode');
+/////////////////////////////////////////////////////////////////////
 //add_action('wp_enqueue_scripts', 'kmaslim_scripts');

@@ -11,18 +11,20 @@ namespace Includes\Modules\Team;
 use Includes\Modules\CPT\CustomPostType;
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
     exit;
 }
 
-class Team {
-
-    public function __construct() {
+class Team
+{
+    public function __construct()
+    {
     }
 
-    public function createPostType() {
-
-        $team = new CustomPostType( 'Team Member',
+    public function createPostType()
+    {
+        $team = new CustomPostType(
+            'Team Member',
             [
                 'supports'           => [ 'title', 'editor', 'author' ],
                 'menu_icon'          => 'dashicons-businessman',
@@ -52,7 +54,6 @@ class Team {
                 'Phone'        => 'text',
             ]
         );
-
     }
 
     /**
@@ -60,8 +61,8 @@ class Team {
      */
     public function createAdminColumns()
     {
-
-        add_filter('manage_team_member_posts_columns',
+        add_filter(
+            'manage_team_member_posts_columns',
             function ($defaults) {
                 $defaults = [
                     'title'       => 'Name',
@@ -71,7 +72,9 @@ class Team {
                 ];
 
                 return $defaults;
-            }, 0);
+            },
+            0
+        );
 
         add_action('manage_team_member_posts_custom_column', function ($column_name, $post_ID) {
             switch ($column_name) {
@@ -89,14 +92,12 @@ class Team {
                     $object = get_post_meta($post_ID, 'contact_info_title', true);
                     echo(isset($object) ? date('M j, Y', strtotime($object)) : null);
                     break;
-
             }
         }, 0, 2);
-
     }
 
-    public function getTeam( $args = [] ) {
-
+    public function getTeam($args = [])
+    {
         $request = [
             'post_type'      => 'team_member',
             'posts_per_page' => -1,
@@ -106,47 +107,44 @@ class Team {
             'post_status'    => 'publish',
         ];
 
-        $request = get_posts( array_merge( $request, $args ) );
+        $request = get_posts(array_merge($request, $args));
 
         $output = [];
-        foreach ( $request as $item ) {
-
-            array_push( $output, [
-                'id'         => ( isset( $itemID ) ? $item->ID : null ),
+        foreach ($request as $item) {
+            array_push($output, [
+                'id'         => (isset($itemID) ? $item->ID : null),
                 'name'       => $item->post_title,
-                'title'      => ( isset( $item->contact_info_title ) ? $item->contact_info_title : null ),
-                'email'      => ( isset( $item->contact_info_email ) ? $item->contact_info_email : null ),
-                'phone'      => ( isset( $item->contact_info_phone ) ? $item->contact_info_phone : null ),
-                'slug'       => ( isset( $item->post_name ) ? $item->post_name : null ),
-                'thumbnail'  => ( isset( $item->contact_info_photo ) ? $item->contact_info_photo : null ),
-                'link'       => get_permalink( $item->ID ),
-            ] );
-
+                'title'      => (isset($item->contact_info_title) ? $item->contact_info_title : null),
+                'email'      => (isset($item->contact_info_email) ? $item->contact_info_email : null),
+                'phone'      => (isset($item->contact_info_phone) ? $item->contact_info_phone : null),
+                'slug'       => (isset($item->post_name) ? $item->post_name : null),
+                'thumbnail'  => (isset($item->contact_info_photo) ? $item->contact_info_photo : null),
+                'link'       => get_permalink($item->ID),
+            ]);
         }
 
         return $output;
     }
 
-    public function getSingle( $name ) {
-
-        $output = $this->getTeam( [
+    public function getSingle($name)
+    {
+        $output = $this->getTeam([
             'title'          => $name,
             'posts_per_page' => 1,
-        ] );
+        ]);
 
         return $output[0];
     }
 
-    public function getTeamNames() {
-
+    public function getTeamNames()
+    {
         $request = $this->getTeam([]);
 
         $output = [];
-        foreach ( $request as $item ) {
-            array_push( $output, ( isset( $item->post_title ) ? $item->post_title : null ) );
+        foreach ($request as $item) {
+            array_push($output, (isset($item->post_title) ? $item->post_title : null));
         }
 
         return $output;
     }
-
 }
