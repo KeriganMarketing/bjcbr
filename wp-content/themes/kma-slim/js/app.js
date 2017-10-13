@@ -4,6 +4,7 @@ const flatpickr = require("flatpickr");
 
 import message from './components/message.vue';
 import modal from './components/modal.vue';
+import VideoModal from './components/VideoModal.vue';
 import tabs from './components/tabs.vue';
 import tab from './components/tab.vue';
 import slider from './components/slider.vue';
@@ -25,6 +26,7 @@ var app = new Vue({
     components: {
         'message': message,
         'modal': modal,
+        'video-modal' : VideoModal,
         'tabs': tabs,
         'tab': tab,
         'bulma-slider': slider,
@@ -37,7 +39,8 @@ var app = new Vue({
 
     data: {
         isOpen: false,
-        modalOpen: '',
+        modalOpen: false,
+        youTubeCode: '',
         scrollPosition: 0,
         footerStuck: false,
         clientHeight: 0,

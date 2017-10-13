@@ -1167,8 +1167,9 @@ body {
   .physician-video::before {
     content: "";
     display: block;
-    padding-top: 56.25%;
+    padding-top: 63.25%;
   }
+
   .physician-video {
     position: relative;
     display: block;
@@ -1202,6 +1203,44 @@ body {
     }
   }
 
+}
+
+.modal {
+
+  .modal-content.large {
+    width: 90vh;
+
+    @media screen and (min-width: $widescreen){
+      width: 1200px;
+    }
+    @media screen and (min-width: $fullhd){
+      width: 1400px;
+    }
+  }
+
+  .video-wrapper::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%;
+  }
+
+  .video-wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
 }
 
 .sidebar-module {
