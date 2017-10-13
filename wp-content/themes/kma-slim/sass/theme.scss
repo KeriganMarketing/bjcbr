@@ -525,16 +525,6 @@ body {
         text-align: left;
         .subtitle, .title {
           color: #FFF;
-
-          span.subtitle {
-            display: block;
-            line-height: 1rem;
-            margin-top: -.5rem;
-          }
-
-          span.subtitle::before {
-            content: "\A";
-          }
         }
       }
 
@@ -686,6 +676,16 @@ body {
       }
       @media screen and (min-width: $desktop) {
         font-size: 50px;
+      }
+
+      span.subtitle {
+        display: block;
+        line-height: 1rem;
+        margin-top: -.5rem;
+      }
+
+      span.subtitle::before {
+        content: "\A";
       }
     }
   }
