@@ -26,15 +26,14 @@ include(locate_template('template-parts/partials/top.php'));
                 <div class="container">
                     <div class="entry-content">
                         <?php the_content(); ?>
+
+                        <a @click="$emit('toggleModal', 'videoViewer', 'Uw2WNJFbeLk')"
+                                class="">use this $emit to open the video
+                        </a>
+
                     </div>
-                    <section class="appointment-form">
-
-                        <?php include(locate_template('template-parts/partials/appointment-request.php')); ?>
-
-                    </section>
                 </div>
             </section>
-
         </article>
     </div>
 <?php include(locate_template('template-parts/partials/bot.php')); ?>

@@ -1167,8 +1167,9 @@ body {
   .physician-video::before {
     content: "";
     display: block;
-    padding-top: 56.25%;
+    padding-top: 63.25%;
   }
+
   .physician-video {
     position: relative;
     display: block;
@@ -1202,6 +1203,44 @@ body {
     }
   }
 
+}
+
+.modal {
+
+  .modal-content.large {
+    width: 90vh;
+
+    @media screen and (min-width: $widescreen){
+      width: 1200px;
+    }
+    @media screen and (min-width: $fullhd){
+      width: 1400px;
+    }
+  }
+
+  .video-wrapper::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%;
+  }
+
+  .video-wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
 }
 
 .sidebar-module {
@@ -1330,6 +1369,15 @@ body {
 
 
     
+  }
+}
+
+.appointment-form {
+  margin-top:2rem;
+
+  button.is-primary.is-large {
+    padding: 1rem;
+    height: auto;
   }
 }
 
@@ -1477,11 +1525,23 @@ footer.stuck {
   background-color: #191a1b;
   padding: 30px 0;
 
+  .is-vertically-aligned {
+    align-items: center;
+  }
+
   .the-end {
     display: flex;
     justify-content: flex-start;
+    flex-direction: column;
+
+    @media screen and (min-width: $desktop){
+      flex-direction: row;
+      text-align: center;
+    }
 
     .social {
+      text-align: center;
+
       svg {
         width: 40px;
         margin: .1rem .9rem;
@@ -1489,9 +1549,18 @@ footer.stuck {
     }
 
     .copyright-section {
+      text-align: center;
+      padding: 1rem;
+
+      @media screen and (min-width: $desktop){
+        text-align: left;
+        padding: 0;
+      }
 
       .footer-nav {
         display: flex;
+        flex-wrap: wrap;
+        width: 100%;
 
         .navbar-item {
           padding: 0 0 0 .25rem;
@@ -1515,8 +1584,33 @@ footer.stuck {
 
       }
 
+      @media screen and (max-width: $desktop) {
+        .footer-menu {
+          display: flex;
+          flex-wrap: wrap;
+          background-color:transparent !important;
+
+          .navbar-item {
+            width: 100%;
+
+            a.navbar-item, .navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
+              padding: 0.5rem;
+              font-size:16px;
+            }
+          }
+          .navbar-item::before {
+            content: ""
+          }
+
+        }
+      }
+
       .signoff {
-        padding: .25rem 0 .25rem .75rem;
+        padding: .25rem .75rem .25rem .75rem;
+
+        @media screen and (min-width: $tablet){
+          padding: .25rem 0 .25rem .75rem;
+        }
 
         p {
           color: #FFF;
@@ -1529,8 +1623,39 @@ footer.stuck {
         }
       }
 
+      span#siteby {
+        display: block;
+        margin: 1rem;
+        text-align: center;
+
+        @media screen and (min-width: $tablet) {
+          margin: 1rem 0 0;
+        }
+        @media screen and (min-width: $desktop) {
+          display: inline-block;
+          margin: 0 1rem;
+          text-align: left;
+        }
+
+      }
+
     }
 
+  }
+
+  .non-discriminatory-notice {
+    color: #777;
+    padding:0 1rem;
+    text-align: center;
+
+    @media screen and (min-width: $desktop){
+      text-align: left;
+    }
+
+    a {
+      color: #777;
+      text-decoration: underline;
+    }
   }
 
 }
