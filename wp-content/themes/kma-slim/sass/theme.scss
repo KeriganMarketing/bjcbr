@@ -1333,6 +1333,15 @@ body {
   }
 }
 
+.appointment-form {
+  margin-top:2rem;
+
+  button.is-primary.is-large {
+    padding: 1rem;
+    height: auto;
+  }
+}
+
 .section-wrapper.map {
   .location.column {
     padding: 1rem 1.5rem 3rem;
@@ -1477,6 +1486,10 @@ footer.stuck {
   background-color: #191a1b;
   padding: 30px 0;
 
+  .is-vertically-aligned {
+    align-items: center;
+  }
+
   .the-end {
     display: flex;
     justify-content: flex-start;
@@ -1531,6 +1544,15 @@ footer.stuck {
 
     }
 
+  }
+
+  .non-discriminatory-notice {
+    color: #777;
+
+    a {
+      color: #777;
+      text-decoration: underline;
+    }
   }
 
 }
