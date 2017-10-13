@@ -31,7 +31,7 @@ use Includes\Modules\Social\SocialSettingsPage;
         <div class="container">
             <div class="section-wrapper">
                 <div class="columns is-multiline is-vertically-aligned">
-                    <div class="column is-12 is-7-desktop">
+                    <div class="column is-12 is-8-widescreen is-7-fullhd">
                         <div class="the-end">
                             <div class="social">
                                 <?php
@@ -59,8 +59,8 @@ use Includes\Modules\Social\SocialSettingsPage;
                                     )); ?>
                                 </div>
                                 <div class="signoff">
-                                    <p id="copyright">&copy; <?php echo date('Y'); ?> <?php echo get_bloginfo(); ?>. All rights reserved. <a href="/about/privacy-policy/" >Privacy Policy</a>
-                                        <span id="siteby" style="padding: 0 1rem;"><svg version="1.1" id="kma" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="14" width="20" viewBox="0 0 12.5 8.7" style="enable-background:new 0 0 12.5 8.7;" xml:space="preserve">
+                                    <p id="copyright">&copy; <?php echo date('Y'); ?> <?php echo get_bloginfo(); ?>. All&nbsp;rights&nbsp;reserved. <a href="/about/privacy-policy/" >Privacy&nbsp;Policy</a>
+                                        <span id="siteby" ><svg version="1.1" id="kma" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="14" width="20" viewBox="0 0 12.5 8.7" style="enable-background:new 0 0 12.5 8.7;" xml:space="preserve">
                                         <path class="kma" fill="#b4be35" d="M6.4,0.1c0,0,0.1,0.3,0.2,0.9c1,3,3,5.6,5.7,7.2l-0.1,0.5c0,0-0.4-0.2-1-0.4C7.7,7,3.7,7,0.2,8.5L0.1,8.1
                                     c2.8-1.5,4.8-4.2,5.7-7.2C6,0.4,6.1,0.1,6.1,0.1H6.4L6.4,0.1z"/></svg> <a href="https://keriganmarketing.com" target="_blank">Site by KMA</a>.</span>
                                     </p>
@@ -68,8 +68,8 @@ use Includes\Modules\Social\SocialSettingsPage;
                             </div>
                         </div>
                     </div>
-                    <div class="column is-12 is-5-desktop">
-                        <p class="help non-discriminatory-notice">Bone & Joint Clinic of Baton Rouge, Inc. complies with applicable Federal civil rights laws and does not discriminate on the basis of race, color, national origin, age, disability or sex.<br><a href="http://bjcbr.com/downloads/nondiscrimination-notice_2016.pdf">Click to view our notice</a>.</p>
+                    <div class="column is-12 is-4-widescreen is-5-fullhd">
+                        <p class="help non-discriminatory-notice">Bone & Joint Clinic of Baton Rouge, Inc. complies with applicable Federal civil rights laws and does not discriminate on the basis of race, color, national origin, age, disability or sex. <a href="http://bjcbr.com/downloads/nondiscrimination-notice_2016.pdf">Click&nbsp;to&nbsp;view&nbsp;our&nbsp;notice</a>.</p>
                     </div>
                 </div>
 
