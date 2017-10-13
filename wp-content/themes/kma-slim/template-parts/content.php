@@ -16,8 +16,10 @@ include(locate_template('template-parts/partials/top.php'));
             <section class="header section">
                 <div class="header-container">
                     <div class="container">
-                        <h1 class="title is-1"><?php echo $headline; ?>
-                        <?php echo($subhead != '' ? '<span class="subtitle">' . $subhead . '</span>' : null); ?></h1>
+                        <h1>
+                            <span class="title"><?php echo $headline; ?></span>
+                            <?php echo($subhead != '' ? '<span class="subtitle">' . $subhead . '</span>' : null); ?>
+                        </h1>
                     </div>
                 </div>
             </section>
