@@ -40,7 +40,7 @@ var app = new Vue({
     data: {
         isOpen: false,
         modalOpen: false,
-        youTubeCode: '',
+        modalContent: '',
         scrollPosition: 0,
         footerStuck: false,
         clientHeight: 0,

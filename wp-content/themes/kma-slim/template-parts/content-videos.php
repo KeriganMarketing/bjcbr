@@ -1,4 +1,7 @@
 <?php
+
+use Includes\Modules\Videos\Videos;
+
 /**
  * @package KMA
  * @subpackage kmaslim
@@ -27,9 +30,31 @@ include(locate_template('template-parts/partials/top.php'));
                     <div class="entry-content">
                         <?php the_content(); ?>
 
-                        <a @click="$emit('toggleModal', 'videoViewer', 'Uw2WNJFbeLk')"
-                                class="">use this $emit to open the video
-                        </a>
+                        <?php
+
+                            $videos = new Videos();
+                            //$footVideos = $videos->getViewMedicaVideos();
+                            $physicianVideos = $videos->getPhysicianVideos();
+
+                            ?>
+
+                        <div class="columns is-multiline">
+                            <?php foreach($physicianVideos as $video){ ?>
+                              <div class="column is-6-tablet is-4-desktop is-3-widescreen">
+                                  <a @click="$emit('toggleModal', 'youtube', 'Uw2WNJFbeLk')" >
+                                  <img src="https://i.ytimg.com/vi/<?php echo $video['video_code']; ?>/0.jpg" alt="<?php echo $video['name']; ?>/">
+                                  </a>
+                              </div>
+                            <?php }  ?>
+                        </div>
+
+                        <p><a class="button is-primary" @click="$emit('toggleModal', 'youtube', 'Uw2WNJFbeLk')"
+                            >open a youtube video
+                        </a></p>
+
+                        <p><a class="button is-primary" @click="$emit('toggleModal', 'viewmedica', 'A_2eb99938')"
+                            >open a viewmedica video
+                        </a></p>
 
                     </div>
                 </div>

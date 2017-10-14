@@ -22786,7 +22786,7 @@ var app = new Vue({
     data: {
         isOpen: false,
         modalOpen: false,
-        youTubeCode: '',
+        modalContent: '',
         scrollPosition: 0,
         footerStuck: false,
         clientHeight: 0,
@@ -23029,8 +23029,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -23039,6 +23037,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+    computed: {
+        content: function content() {
+            return this.$parent.modalContent;
+        }
+    },
     methods: {
         toggleModal: function toggleModal() {
             this.showModal = !this.showModal;
@@ -23049,12 +23052,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     mounted: function mounted() {
-        //console.log('Component mounted.');
 
         this.$parent.$on('toggleModal', function (modal, code) {
             this.modalOpen = modal;
-            this.youTubeCode = code;
+            if (this.modalOpen === 'youtube') {
+                this.modalContent = '<iframe src="https://www.youtube-nocookie.com/embed/' + code + '?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen="allowfullscreen" ></iframe>';
+            }
+            if (this.modalOpen === 'viewmedica') {
+                this.modalContent = '<iframe frameborder="0" webkitallowfullscreen="always" mozallowfullscreen="always" title="ViewMedica 8 Video Player" allowfullscreen="always" id="viewmedica_' + code + '" src="https://swarminteractive.com/vm/viewmedica/embed/?client=4725&amp;lang=en&amp;openthis=' + code + '&amp;embedded=https%3A%2F%2Fboneandjointclinicbr.com%2Fvideos%2F&amp;fsmode=on&amp;sec=1&amp;ref=FwOvI%2Bmy2CTDu8rahHcxcW9hJcsGTfMiXJ8D7mfJrLn1BhCblzYTrgzZnsMW%2FHk5baz7io5tZ2lt17MbYFdk2AUn4CGlMw7i8Q8Hhn9JSZH2Xap6oHvmMf7Wu7GVg2oySCI8Qakvw0ZYNSCQi53gLr3JmSN3PpUOvJV6sfSCY%2FY%3D&amp;sec=1" ></iframe>';
+            }
         });
+    },
+    created: function created() {
+        var viewmedica = document.createElement('script');
+        viewmedica.setAttribute('src', "//www.swarminteractive.com/js/vm.js");
+        document.head.appendChild(viewmedica);
     }
 });
 
@@ -26853,7 +26865,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\FlatPickr.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\FlatPickr.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] FlatPickr.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -26887,7 +26899,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\GoogleMap.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\GoogleMap.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] GoogleMap.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -26921,7 +26933,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\GoogleMapPin.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\GoogleMapPin.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] GoogleMapPin.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -26955,7 +26967,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\VideoModal.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\VideoModal.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] VideoModal.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -26989,7 +27001,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\message.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\message.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] message.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -27023,7 +27035,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\modal.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\modal.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] modal.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -27057,7 +27069,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\slide.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\slide.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] slide.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -27091,7 +27103,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\slider.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\slider.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] slider.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -27125,7 +27137,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\tab.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\tab.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] tab.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -27159,7 +27171,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\tabs.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\js\\components\\tabs.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] tabs.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -27193,7 +27205,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\dev\\bjcbr\\wp-content\\themes\\kma-slim\\node_modules\\vue-slick\\slickCarousel.vue"
+Component.options.__file = "C:\\Users\\bbair\\.valet\\Sites\\bjcbr\\wp-content\\themes\\kma-slim\\node_modules\\vue-slick\\slickCarousel.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] slickCarousel.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -27381,15 +27393,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('div', {
     staticClass: "modal-content large"
   }, [_c('div', {
-    staticClass: "video-wrapper"
-  }, [_c('iframe', {
-    staticClass: "embed-responsive-item",
-    attrs: {
-      "src": 'https://www.youtube-nocookie.com/embed/' + this.$parent.youTubeCode + '?rel=0&showinfo=0',
-      "frameborder": "0",
-      "allowfullscreen": "allowfullscreen"
+    staticClass: "video-wrapper",
+    domProps: {
+      "innerHTML": _vm._s(_vm.content)
     }
-  })])]), _vm._v(" "), _c('button', {
+  })]), _vm._v(" "), _c('button', {
     staticClass: "modal-close is-large",
     on: {
       "click": _vm.toggleModal
