@@ -7,6 +7,7 @@
  * @version 1.2
  */
 
+use Includes\Modules\Videos\Videos;
 use Includes\Modules\Leads\KmaLeads;
 use Includes\Modules\Helpers\CleanWP;
 use Includes\Modules\Layouts\Layouts;
@@ -15,6 +16,7 @@ use Includes\Modules\Slider\BulmaSlider;
 use Includes\Modules\Comments\CommentBox;
 use Includes\Modules\Locations\Locations;
 use Includes\Modules\Social\SocialSettingsPage;
+
 
 require('vendor/autoload.php');
 
@@ -48,6 +50,9 @@ $kmaLeads->createAdminColumns();
 $commentBox = new CommentBox();
 $commentBox->createPostType();
 $commentBox->createAdminColumns();
+
+$videos = new Videos();
+$videos->createPostType();
 
 if (is_admin()) {
     $post_id = (isset($_GET['post']) ? $_GET['post'] : (isset($_POST['post_ID']) ? $_POST['post_ID'] : null));
