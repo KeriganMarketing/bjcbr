@@ -111,7 +111,6 @@ include(locate_template('template-parts/partials/top.php'));
                             <?php }  ?>
                         </div>
 
-
                         <!--example
                         <p><a class="button is-primary" @click="$emit('toggleModal', 'viewmedica', 'A_2eb99938')"
                             >open a viewmedica video
