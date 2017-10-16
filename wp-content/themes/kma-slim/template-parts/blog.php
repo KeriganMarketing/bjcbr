@@ -25,11 +25,11 @@ include(locate_template('template-parts/partials/top.php'));
                 <div class="container">
                     <div class="columns is-multiline">
                         <?php
-                        while (have_posts()) : the_post();
+//                        while (have_posts()) : the_post();
 
                             get_template_part('template-parts/partials/mini-article', get_post_format());
 
-                        endwhile;
+//                        endwhile;
                         ?>
                     </div>
                 </div>
