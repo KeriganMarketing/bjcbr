@@ -157,7 +157,7 @@ if ($_POST) {
 
         </div>
 
-        <button type="submit" class="button is-primary is-large">Submit Appointment Request</button>
+        <button type="submit" class="button is-primary is-large" style="margin: -100px 0;">Submit Appointment Request</button>
     </form>
 </div>
 

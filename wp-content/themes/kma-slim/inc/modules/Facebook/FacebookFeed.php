@@ -2,6 +2,7 @@
 namespace Includes\Modules\Facebook;
 
 use GuzzleHttp\Client;
+
 class FacebookFeed
 {
     /**
@@ -43,7 +44,9 @@ class FacebookFeed
             $response  = $client->request('GET', '/' . $fbpost->id . '/?fields=object_id&access_token=' . $access_token);
             $returned  = json_decode($response->getBody());
             if ($fbpost->type == 'video') {
-                $photo_url = $fbpost->picture;
+                $photo_url = $fbpost->link;
+            } elseif ($fbpost->type == 'status') {
+                $photo_url = 'http://bjcbr.dev/wp-content/uploads/2017/10/baton-rouge-bjcbr.jpg';
             }
             else {
                 $object_id = $returned->object_id;

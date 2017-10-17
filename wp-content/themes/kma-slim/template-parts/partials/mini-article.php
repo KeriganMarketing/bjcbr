@@ -12,8 +12,9 @@ if(strlen($content) > 200) {
     $content = substr($content, 0, strrpos($content ,' '));
     $content = $content.'...';
 }
+$numberOfPosts = is_page('home') ? 3 : 9;
 $feed    = new FacebookFeed();
-$results = $feed->fetch(9);
+$results = $feed->fetch($numberOfPosts);
 //echo '<pre>', print_r($results) , '</pre>';
 $now     = time();
 foreach ($results->data as $result) {
@@ -29,18 +30,26 @@ foreach ($results->data as $result) {
     <div class="column is-4">
         <div class="clinic-news">
             <div class="article-image">
-                <figure class="image is-4by3">
                     <?php if($result->type != 'video') { ?>
+                <figure class="image is-4by3">
                         <a href="<?php echo $result->link; ?>" target="_blank">
                             <img src="<?php echo $photo_url; ?>" alt="<?php echo $result->caption; ?>" style="object-fit:cover;">
-                            <?php echo '<pre>', printf($photo_url), '</pre>' ?>
                         </a>
+                </figure>
                     <?php } else { ?>
+                    <figure style="margin-bottom: -190px;">
                         <a href="<?php echo $result->link; ?>" target="_blank">
                             <iframe
                                     src="<?php echo 'https://www.facebook.com/plugins/video.php?href='.$result->link ?>"
                                     style="border:none;overflow:hidden"
-                                    scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true" class="article-image">
+                                    scrolling="no"
+                                    frameborder="0"
+                                    allowTransparency="true"
+                                    allowFullScreen="true"
+                                    class="article-image"
+                                    width="100%"
+                                    height="460">
+
                             </iframe>
                         </a>
                     <?php } ?>

@@ -1062,8 +1062,8 @@ body {
 
 .clinic-news {
   background-color: #f9f8e9;
-  padding: 0 0 4rem;
   border: 1px solid #89724e;
+  min-height: 520px;
 
   .article-container {
     padding: 0 2rem 2rem;
@@ -1081,10 +1081,14 @@ body {
 .article-content {
   margin: 2rem 0 1rem;
   font-size: 14px;
+  padding: 0 2em;
 }
 
 .article-footer {
   margin-bottom:2rem;
+  display:flex;
+  align-items: center;
+  justify-content:center;
 
   .article-footer-item {
     font-size: 12px;
@@ -1378,7 +1382,7 @@ body {
 
 
 
-    
+
   }
 }
 

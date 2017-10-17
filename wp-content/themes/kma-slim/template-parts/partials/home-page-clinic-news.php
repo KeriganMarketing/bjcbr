@@ -13,11 +13,9 @@
     <div class="article-container">
         <div class="columns is-multiline">
             <?php
-            foreach (get_posts(['posts_per_page' => 3]) as $post) {
                 get_template_part('template-parts/partials/mini-article', get_post_format());
-            }
             ?>
         </div>
     </div>
-    <p class="is-centered"><a href="/news/" class="button is-primary is-outlined">Read all news</a></p>
+    <p class="is-centered"><a href="/news/" class="button is-primary is-outlined" style="margin-bottom: 35px;">Read all news</a></p>
 </div>
