@@ -23033,7 +23033,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            showModal: false
+            showModal: false,
+            embedContent: ''
         };
     },
 
@@ -23053,20 +23054,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted: function mounted() {
 
+        this.$parent.$on('vmloaded', function (vm) {
+            client = vm.client;
+            openthis = vm.openthis;
+            width = vm.width;
+            captions = vm.captions;
+            disclaimer = vm.disclaimer;
+            social = vm.social;
+            target_div = vm.target_div;
+            secure = vm.secure;
+            lang = vm.lang;
+            vm_open();
+            console.log('event captured');
+        });
+
         this.$parent.$on('toggleModal', function (modal, code) {
             this.modalOpen = modal;
             if (this.modalOpen === 'youtube') {
                 this.modalContent = '<iframe src="https://www.youtube-nocookie.com/embed/' + code + '?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen="allowfullscreen" ></iframe>';
             }
             if (this.modalOpen === 'viewmedica') {
-                this.modalContent = '<iframe frameborder="0" webkitallowfullscreen="always" mozallowfullscreen="always" title="ViewMedica 8 Video Player" allowfullscreen="always" id="viewmedica_' + code + '" src="https://swarminteractive.com/vm/viewmedica/embed/?client=4725&amp;lang=en&amp;openthis=' + code + '&amp;embedded=https%3A%2F%2Fboneandjointclinicbr.com%2Fvideos%2F&amp;fsmode=on&amp;sec=1&amp;ref=FwOvI%2Bmy2CTDu8rahHcxcW9hJcsGTfMiXJ8D7mfJrLn1BhCblzYTrgzZnsMW%2FHk5baz7io5tZ2lt17MbYFdk2AUn4CGlMw7i8Q8Hhn9JSZH2Xap6oHvmMf7Wu7GVg2oySCI8Qakvw0ZYNSCQi53gLr3JmSN3PpUOvJV6sfSCY%2FY%3D" ></iframe>';
+
+                this.modalContent = '<div id="' + code + '" ></div>';
+
+                var vmconfig = {
+                    client: "6053",
+                    openthis: code,
+                    width: 720,
+                    captions: true,
+                    disclaimer: true,
+                    social: true,
+                    target_div: code,
+                    secure: true,
+                    autoplay: true,
+                    menuaccess: false,
+                    lang: "en",
+                    fullscreen: true,
+                    audio: true,
+                    brochure: true,
+                    subtitles: true,
+                    markup: false,
+                    search: false,
+                    sections: false
+                };
+
+                console.log('loaded');
+
+                this.$emit('vmloaded', vmconfig);
             }
         });
     },
     created: function created() {
-        var viewmedica = document.createElement('script');
-        viewmedica.setAttribute('src', "//www.swarminteractive.com/js/vm.js");
-        document.head.appendChild(viewmedica);
+        var vm = document.createElement('script');
+        vm.type = 'text/javascript';
+        vm.src = 'https://www.swarminteractive.com/js/vm.js';
+        document.body.appendChild(vm);
     }
 });
 
