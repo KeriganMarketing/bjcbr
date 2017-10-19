@@ -140,10 +140,11 @@ class Videos
 
             $output = '<div class="columns is-multiline">';
             foreach($outputObjects as $item){
+                $thumbnailSrc = ($shortcodeAttributes['type'] == 'youtube' ? 'https://i.ytimg.com/vi/' . $item['video_code'] . '/0.jpg' : $item['photo']);
                 $output .= '<div class="column is-6-tablet is-4-desktop is-3-widescreen">
                                 <a @click="$emit(\'toggleModal\', \'' . $shortcodeAttributes['type'] . '\', \'' . $item['video_code'] . '\')" >
                                     <figure class="image is-16by9">
-                                        <img src="' . $item['photo'] . '" alt="' . $item['name'] . '">
+                                        <img src="' . $thumbnailSrc . '" alt="' . $item['name'] . '">
                                     </figure>
                                     <p style="margin-top:.25rem; text-align:center;">' . $item['name'] . '</p>
                                 </a>
