@@ -60,7 +60,7 @@
             this.$parent.$on('toggleModal', function (modal, code) {
                 this.modalOpen = modal;
                 if (this.modalOpen === 'youtube') {
-                    this.modalContent = '<iframe src="https://www.youtube-nocookie.com/embed/' + code + '?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen="allowfullscreen" ></iframe>';
+                    this.modalContent = '<iframe src="https://www.youtube-nocookie.com/embed/' + code + '?rel=0&amp;showinfo=0&amp;autoplay=1" frameborder="0" allowfullscreen="allowfullscreen" ></iframe>';
                 }
                 if (this.modalOpen === 'viewmedica') {
 
