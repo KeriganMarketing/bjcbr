@@ -45,8 +45,8 @@ class Videos
         $video->addMetaBox(
             'Video Info',
             [
-                'Photo'       => 'image',
-                'Video Code'  => 'text',
+                'Photo'      => 'image',
+                'Video Code' => 'text',
             ]
         );
 
@@ -71,8 +71,8 @@ class Videos
             'post_status'    => 'publish',
         ];
 
-        if ( $taxonomy != '' ) {
-            $categoryarray = [
+        if ($taxonomy != '') {
+            $categoryarray        = [
                 'relation' => 'AND',
                 [
                     'taxonomy'         => 'video_category',
@@ -90,13 +90,13 @@ class Videos
         foreach ($request as $item) {
 
             array_push($output, [
-                'id'           => (isset($item->ID) ? $item->ID : null),
-                'name'         => $item->post_title,
-                'slug'         => (isset($item->post_name) ? $item->post_name : null),
-                'video_code'   => (isset($item->video_info_video_code) ? $item->video_info_video_code : null),
-                'photo'        => (isset($item->video_info_photo) ? $item->video_info_photo : null),
-                'description'  => (isset($item->video_description_html) ? $item->video_description_html : null),
-                'link'         => get_permalink($item->ID),
+                'id'          => (isset($item->ID) ? $item->ID : null),
+                'name'        => $item->post_title,
+                'slug'        => (isset($item->post_name) ? $item->post_name : null),
+                'video_code'  => (isset($item->video_info_video_code) ? $item->video_info_video_code : null),
+                'photo'       => (isset($item->video_info_photo) ? $item->video_info_photo : null),
+                'description' => (isset($item->video_description_html) ? $item->video_description_html : null),
+                'link'        => get_permalink($item->ID),
             ]);
 
         }
@@ -107,7 +107,7 @@ class Videos
     public function getPhysicianVideos()
     {
 
-        $physicians = new Physicians();
+        $physicians      = new Physicians();
         $physicianVideos = $physicians->getPhysicians();
 
         $output = [];
@@ -120,6 +120,41 @@ class Videos
         }
 
         return $output;
+    }
+
+    public function createShortcode()
+    {
+
+        add_shortcode( 'getvideos', function( $attributes, $content = null ){
+
+            $shortcodeAttributes = shortcode_atts( array(
+                'taxonomy'     => '',
+                'count'        => '-1',
+                'sortby'       => 'menu_order',
+                'sort'         => 'ASC',
+                'class'        => '',
+                'type'         => 'youtube'
+            ), $attributes );
+
+            $outputObjects = $this->getVideos([],$shortcodeAttributes['taxonomy']);
+
+            $output = '<div class="columns is-multiline">';
+            foreach($outputObjects as $item){
+                $output .= '<div class="column is-6-tablet is-4-desktop is-3-widescreen">
+                                <a @click="$emit(\'toggleModal\', \'' . $shortcodeAttributes['type'] . '\', \'' . $item['video_code'] . '\')" >
+                                    <figure class="image is-16by9">
+                                        <img src="' . $item['photo'] . '" alt="' . $item['name'] . '">
+                                    </figure>
+                                    <p style="margin-top:.25rem; text-align:center;">' . $item['name'] . '</p>
+                                </a>
+                            </div>';
+            }
+            $output .= '</div>';
+
+            return $output;
+
+        } );
+
     }
 
 }

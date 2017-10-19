@@ -52,6 +52,7 @@ $commentBox->createAdminColumns();
 
 $videos = new Videos();
 $videos->createPostType();
+$videos->createShortcode();
 
 if (is_admin()) {
     $post_id = (isset($_GET['post']) ? $_GET['post'] : (isset($_POST['post_ID']) ? $_POST['post_ID'] : null));
