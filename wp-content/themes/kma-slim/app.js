@@ -23064,8 +23064,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             target_div = vm.target_div;
             secure = vm.secure;
             lang = vm.lang;
+            fullscreen = vm.fullscreen;
+            autoplay = vm.autoplay;
+            menuaccess = vm.menuaccess;
+            audio = vm.audio;
+            brochure = true;
+            subtitles = true;
+            markup = false;
+            search = false;
+            sections = false;
+
             vm_open();
-            console.log('event captured');
         });
 
         this.$parent.$on('toggleModal', function (modal, code) {
@@ -23097,8 +23106,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     search: false,
                     sections: false
                 };
-
-                console.log('loaded');
 
                 this.$emit('vmloaded', vmconfig);
             }
