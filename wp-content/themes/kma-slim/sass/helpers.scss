@@ -8,6 +8,18 @@
   background-color: transparent;
 }
 
+.is-first {
+  order: 1;
+}
+
+.is-second {
+  order: 2;
+}
+
+.is-third {
+  order: 3;
+}
+
 .is-first-widescreen  {
   @media screen and (min-width: $widescreen) {
     order: 1;

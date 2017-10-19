@@ -47,20 +47,22 @@ include(locate_template('template-parts/partials/top.php'));
                     <div class="entry-content">
 
                         <div class="columns is-multiline">
+                            <?php if($physician['youtube_code'] !=''){ ?>
                             <div class="column is-12 is-9-widescreen">
                                 <div class="physician-video">
                                     <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/<?php echo $physician['youtube_code']; ?>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                                 </div>
                             </div>
+                            <?php } ?>
 
-                            <div class="column is-12 is-8-desktop is-9-widescreen is-third-widescreen">
+                            <div class="column is-12 is-8-desktop is-9-widescreen <?php ($physician['youtube_code'] !='' ? 'is-third-widescreen' : 'is-second' ); ?>">
                                 <div class="physician-bio">
                                     <?php //echo '<pre>',print_r($physician),'</pre>'; ?>
                                     <?php the_content(); ?>
                                 </div>
                             </div>
 
-                            <div class="column is-12 is-4-desktop is-3-widescreen is-second-widescreen">
+                            <div class="column is-12 is-4-desktop is-3-widescreen <?php ($physician['youtube_code'] !='' ? 'is-second-widescreen' : 'is-first' ); ?>">
                                 <div class="sidebar-module physician-list">
                                     <p class="sidebar-title">Select another doctor</p>
                                     <h4>Orthopedic Surgeons</h4>
