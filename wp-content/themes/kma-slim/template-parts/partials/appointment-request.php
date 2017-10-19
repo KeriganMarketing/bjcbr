@@ -63,21 +63,21 @@ if ($_POST) {
                     </div>
 
                     <div class="column is-6">
-                        <label class="label">Requested Date</label>
+                        <label class="label">Desired Date</label>
                         <div class="field flatpickr" id="requested_date">
                             <date-picker name="requested_date" icon="fa-calendar" placeholder="Select a date" :config="{ dateFormat: 'F j, Y', appendTo: requested_date }"></date-picker>
                         </div>
                         <p class="help">Office hours are 8:00 am - 5:00 pm, Mon - Fri</p>
                     </div>
                     <div class="column is-6">
-                        <label class="label">Requested Time</label>
+                        <label class="label">Desired Time</label>
                         <div class="field flatpickr" id="requested_time">
                             <date-picker name="requested_time" icon="fa-clock-o" placeholder="Select a time" :config="{ enableTime: true, noCalendar: true, minuteIncrement: 15, appendTo: requested_time }"></date-picker>
                         </div>
                     </div>
                     <div class="column is-12">
                         <div class="field">
-                            <label class="label">Requested Location</label>
+                            <label class="label">Desired Location</label>
                             <div class="control">
                                 <div class="select is-fullwidth">
                                     <select name="requested_location" required>
@@ -118,7 +118,7 @@ if ($_POST) {
 
             </div>
             <div class="column is-12 is-6-desktop">
-                <label class="label">Requested Physician</label>
+                <label class="label">Desired Physician</label>
                 <div class="field">
                     <div class="control">
                         <label class="radio">
