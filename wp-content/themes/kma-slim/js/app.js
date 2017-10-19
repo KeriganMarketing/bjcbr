@@ -2,6 +2,8 @@ window.Vue = require('vue');
 
 const flatpickr = require("flatpickr");
 
+
+
 import message from './components/message.vue';
 import modal from './components/modal.vue';
 import VideoModal from './components/VideoModal.vue';

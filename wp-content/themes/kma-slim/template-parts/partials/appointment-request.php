@@ -6,9 +6,9 @@
  * @version 1.2
  */
 
+use Includes\Modules\Leads\KmaLeads;
 use Includes\Modules\Team\Physicians;
 use Includes\Modules\Locations\Locations;
-use Includes\Modules\Leads\KmaLeads;
 
 $requestedPhysician = isset($_GET['requested_physician']) ? $_GET['requested_physician'] : null;
 $requestedLocation = isset($_GET['office']) ?  $_GET['office'] : null;
@@ -57,7 +57,7 @@ if ($_POST) {
                         <div class="field">
                             <label class="label">Phone Number</label>
                             <div class="control">
-                                <input class="input" type="phone" placeholder="(###) ###-####" name="phone_number" required>
+                                <input class="input phone-number-mask" type="phone" placeholder="(###) ###-####" name="phone_number" required>
                             </div>
                         </div>
                     </div>
@@ -160,4 +160,16 @@ if ($_POST) {
         <button type="submit" class="button is-primary is-large" style="margin: -100px 0;">Submit Appointment Request</button>
     </form>
 </div>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.phone-number-mask').mask('(000)000-0000');
+    });
+</script>
 
