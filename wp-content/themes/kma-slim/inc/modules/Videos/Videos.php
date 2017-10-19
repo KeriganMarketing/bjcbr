@@ -112,11 +112,13 @@ class Videos
 
         $output = [];
         foreach ($physicianVideos as $video) {
-            array_push($output, [
-                'name'       => $video['name'],
-                'video_type' => 'youtube',
-                'video_code' => $video['youtube_code'],
-            ]);
+            if($video['youtube_code'] !='') {
+                array_push($output, [
+                    'name'       => $video['name'],
+                    'video_type' => 'youtube',
+                    'video_code' => $video['youtube_code'],
+                ]);
+            }
         }
 
         return $output;

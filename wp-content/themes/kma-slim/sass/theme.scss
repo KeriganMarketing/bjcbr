@@ -1292,6 +1292,15 @@ body {
 
 }
 
+figure.image.is-16by9 {
+  overflow: hidden;
+
+  img {
+    height: auto;
+    margin: auto;
+  }
+}
+
 .patient-center-buttons {
   padding: 0 1.5rem 3rem;
 
