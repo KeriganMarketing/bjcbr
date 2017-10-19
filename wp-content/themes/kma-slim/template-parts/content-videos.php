@@ -34,12 +34,6 @@ include(locate_template('template-parts/partials/top.php'));
 
                             $videos = new Videos();
                             $physicianVideos = $videos->getPhysicianVideos();
-                            $footConditionVideos = $videos->getVideos([],'foot-ankle-conditions');
-                            $footProcedureVideos = $videos->getVideos([],'foot-ankle-procedures');
-                            $spineVideos = $videos->getVideos([],'spine-procedures');
-                            $sportsVideos = $videos->getVideos([],'sports-medicine');
-
-//                            print_r($videos->getVideos());
 
                             ?>
 
@@ -59,63 +53,13 @@ include(locate_template('template-parts/partials/top.php'));
 
                         <h2>Foot & Ankle Videos</h2>
                         <h3>Conditions</h3>
-                        <div class="columns is-multiline">
-                            <?php foreach($footConditionVideos as $video){ ?>
-                                <div class="column is-6-tablet is-4-desktop is-3-widescreen">
-                                    <a @click="$emit('toggleModal', 'viewmedica', '<?php echo $video['video_code']; ?>')" >
-                                        <figure class="image is-16by9">
-                                            <img src="<?php echo $video['photo']; ?>" alt="<?php echo $video['name']; ?>">
-                                        </figure>
-                                        <p style="margin-top:.25rem; text-align:center;"><?php echo $video['name']; ?></p>
-                                    </a>
-                                </div>
-                            <?php }  ?>
-                        </div>
+                        <?php echo do_shortcode('[getvideos taxonomy="foot-ankle-conditions"]'); ?>
                         <h3>Procedures</h3>
-                        <div class="columns is-multiline">
-                            <?php foreach($footProcedureVideos as $video){ ?>
-                                <div class="column is-6-tablet is-4-desktop is-3-widescreen">
-                                    <a @click="$emit('toggleModal', 'viewmedica', '<?php echo $video['video_code']; ?>')" >
-                                        <figure class="image is-16by9">
-                                            <img src="<?php echo $video['photo']; ?>" alt="<?php echo $video['name']; ?>">
-                                        </figure>
-                                        <p style="margin-top:.25rem; text-align:center;"><?php echo $video['name']; ?></p>
-                                    </a>
-                                </div>
-                            <?php }  ?>
-                        </div>
+                        <?php echo do_shortcode('[getvideos taxonomy="foot-ankle-procedures"]'); ?>
                         <h2>Spine Procedures</h2>
-                        <div class="columns is-multiline">
-                            <?php foreach($spineVideos as $video){ ?>
-                                <div class="column is-6-tablet is-4-desktop is-3-widescreen">
-                                    <a @click="$emit('toggleModal', 'youtube', '<?php echo $video['video_code']; ?>')" >
-                                        <figure class="image is-16by9">
-                                            <img src="https://i.ytimg.com/vi/<?php echo $video['video_code']; ?>/0.jpg" alt="<?php echo $video['name']; ?>">
-                                        </figure>
-                                        <p style="margin-top:.25rem; text-align:center;"><?php echo $video['name']; ?></p>
-                                    </a>
-                                </div>
-                            <?php }  ?>
-                        </div>
+                        <?php echo do_shortcode('[getvideos taxonomy="spine-procedures"]'); ?>
                         <h2>Sports Medicine</h2>
-                        <div class="columns is-multiline">
-                            <?php foreach($sportsVideos as $video){ ?>
-                                <div class="column is-6-tablet is-4-desktop is-3-widescreen">
-                                    <a @click="$emit('toggleModal', 'youtube', '<?php echo $video['video_code']; ?>')" >
-                                        <figure class="image is-16by9">
-                                            <img src="https://i.ytimg.com/vi/<?php echo $video['video_code']; ?>/0.jpg" alt="<?php echo $video['name']; ?>">
-                                        </figure>
-                                        <p style="margin-top:.25rem; text-align:center;"><?php echo $video['name']; ?></p>
-                                    </a>
-                                </div>
-                            <?php }  ?>
-                        </div>
-
-                        <!--example
-                        <p><a class="button is-primary" @click="$emit('toggleModal', 'viewmedica', 'A_2eb99938')"
-                            >open a viewmedica video
-                        </a></p>
-                        -->
+                        <?php echo do_shortcode('[getvideos taxonomy="sports-medicine"]'); ?>
 
                     </div>
                 </div>

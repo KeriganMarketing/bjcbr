@@ -89,6 +89,8 @@ class Videos
         $output = [];
         foreach ($request as $item) {
 
+            $videoType = wp_get_object_terms( $item->ID, 'source' );
+
             array_push($output, [
                 'id'          => (isset($item->ID) ? $item->ID : null),
                 'name'        => $item->post_title,
@@ -97,6 +99,7 @@ class Videos
                 'photo'       => (isset($item->video_info_photo) ? $item->video_info_photo : null),
                 'description' => (isset($item->video_description_html) ? $item->video_description_html : null),
                 'link'        => get_permalink($item->ID),
+                'video_type'  => (isset($videoType[0]) ? $videoType[0]->slug : null)
             ]);
 
         }
@@ -116,7 +119,7 @@ class Videos
                 array_push($output, [
                     'name'       => $video['name'],
                     'video_type' => 'youtube',
-                    'video_code' => $video['youtube_code'],
+                    'video_code' => $video['youtube_code']
                 ]);
             }
         }
@@ -142,9 +145,9 @@ class Videos
 
             $output = '<div class="columns is-multiline">';
             foreach($outputObjects as $item){
-                $thumbnailSrc = ($shortcodeAttributes['type'] == 'youtube' ? 'https://i.ytimg.com/vi/' . $item['video_code'] . '/0.jpg' : $item['photo']);
-                $output .= '<div class="column is-6-tablet is-4-desktop is-3-widescreen">
-                                <a @click="$emit(\'toggleModal\', \'' . $shortcodeAttributes['type'] . '\', \'' . $item['video_code'] . '\')" >
+                $thumbnailSrc = ($item['video_type'] == 'youtube' ? 'https://i.ytimg.com/vi/' . $item['video_code'] . '/0.jpg' : $item['photo']);
+                $output .= '<div class="column is-6-tablet is-4-desktop is-3-widescreen ' . $item['video_type'] . '">
+                                <a @click="$emit(\'toggleModal\', \'' . $item['video_type'] . '\', \'' . $item['video_code'] . '\')" >
                                     <figure class="image is-16by9">
                                         <img src="' . $thumbnailSrc . '" alt="' . $item['name'] . '">
                                     </figure>
