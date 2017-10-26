@@ -26,9 +26,9 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
 <div :class="['site-wrapper', { 'menu-open': isOpen }, {'full-height': footerStuck}]">
 <div class="site-mobile-overlay"></div>
 <header id="top" class="header">
-    <div class="container">
+    <div class="container-fluid">
         <nav class="navbar">
-
+            <a href="/" ><img id="main-logo" src="<?php echo get_template_directory_uri() . '/img/bjc-logo-white.png'; ?>" alt="<?php echo get_bloginfo(); ?>" ></a>
             <div id="TopNavMenu" class="navbar-menu">
                 <?php wp_nav_menu(array(
                     'theme_location' => 'main-menu',

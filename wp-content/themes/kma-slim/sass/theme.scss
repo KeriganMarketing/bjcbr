@@ -48,6 +48,10 @@ body {
     z-index: 1;
   }
 
+  .container-fluid {
+    width:100%;
+  }
+
   #MobileNavMenu {
     display: block;
     width: 250px;
@@ -220,6 +224,15 @@ body {
       flex-direction: column-reverse;
     }
 
+    img#main-logo {
+      max-height: 57px;
+      padding: 0 1rem;
+    }
+
+    .home img#main-logo {
+      display: none;
+    }
+
     .navbar-brand {
       overflow: hidden;
       img {
@@ -271,11 +284,11 @@ body {
         color: #000;
       }
       @media screen and (min-width: $widescreen) {
-        padding: 2.6rem 1rem .7rem;
+        padding: 1.9rem 1.5rem 1.5rem;
         color: #000;
       }
       @media screen and (min-width: $fullhd) {
-        padding: 2.6rem 1.5rem .7rem;
+        padding: 1.9rem 1.5rem 1.5rem;
       }
 
       a {
@@ -354,10 +367,10 @@ body {
           padding-left: 1.5rem;
         }
         @media screen and (min-width: $widescreen){
-          padding: 2.6rem 1rem .7rem;
+          padding: 1.9rem 1.5rem 1.5rem;
         }
         @media screen and (min-width: $fullhd){
-          padding: 2.6rem 2rem .7rem;
+          padding: 1.9rem 1.5rem 1.5rem;
         }
 
         a {
@@ -428,15 +441,7 @@ body {
   text-align: right;
 
   @media screen and (min-width: $desktop) {
-    display: block;
     padding-top: 120px;
-  }
-
-  img {
-    width: 220px;
-    margin: 2.25rem 1.25rem;
-    max-width: 90%;
-
   }
 }
 
