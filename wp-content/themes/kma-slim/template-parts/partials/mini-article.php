@@ -30,37 +30,33 @@ foreach ($results->data as $result) {
     <div class="column is-4">
         <div class="clinic-news">
             <div class="article-image">
-                    <?php if($result->type != 'video') { ?>
+                <?php if($result->type != 'video') { ?>
                 <figure class="image is-4by3">
                         <a href="<?php echo $result->link; ?>" target="_blank">
-                            <img src="<?php echo $photo_url; ?>" alt="<?php echo $result->caption; ?>" style="object-fit:cover;">
+                            <img src="<?php echo $photo_url; ?>" alt="<?php echo $result->caption; ?>" >
                         </a>
                 </figure>
-                    <?php } else { ?>
-                    <figure style="margin-bottom: -190px;">
-                        <a href="<?php echo $result->link; ?>" target="_blank">
-                            <iframe
-                                    src="<?php echo 'https://www.facebook.com/plugins/video.php?href='.$result->link ?>"
-                                    style="border:none;overflow:hidden"
-                                    scrolling="no"
-                                    frameborder="0"
-                                    allowTransparency="true"
-                                    allowFullScreen="true"
-                                    class="article-image"
-                                    width="100%"
-                                    height="460">
+                <?php } else { ?>
+                <figure class="image video is-4by3">
+                    <iframe
+                            src="<?php echo 'https://www.facebook.com/plugins/video.php?href='.$result->link ?>"
+                            style="border:none;overflow:hidden"
+                            scrolling="no"
+                            frameborder="0"
+                            allowTransparency="true"
+                            allowFullScreen="true"
+                            class="article-image"
+                            width="100%"
+                            height="460">
 
-                            </iframe>
-                        </a>
-                    <?php } ?>
+                    </iframe>
                 </figure>
+                <?php } ?>
             </div>
-            <p class="is-centered" style="font-weight:lighter;">
-                posted <?php echo human_time_diff($now, strtotime($result->created_time)); ?> ago
-            </p>
-            <p class="article-content">
-                <?php echo $trimmed; ?>
-            </p>
+            <div class="article-content is-centered">
+                <p>posted <?php echo human_time_diff($now, strtotime($result->created_time)); ?> ago</p>
+                <p><?php echo $trimmed; ?></p>
+            </div>
             <div class="article-footer">
                 <a class="article-footer-item" href="<?php echo $result->link; ?>" target="_blank" >Read more on Facebook</a>
             </div>

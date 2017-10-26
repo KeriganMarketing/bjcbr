@@ -61,7 +61,7 @@ include(locate_template('template-parts/partials/top.php'));
 
         </div>
 
-        <div class="section-wrapper clinic-news">
+        <div class="section-wrapper home-clinic-news">
 
             <?php include(locate_template('template-parts/partials/home-page-clinic-news.php')); ?>
 

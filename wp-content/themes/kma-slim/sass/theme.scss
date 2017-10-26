@@ -631,11 +631,7 @@ body {
     }
 
     strong {
-      padding: 0 2rem 0 1rem;
-
-      @media screen and (min-width: $tablet) {
-        padding: 0 4rem 0 1rem;
-      }
+      padding: 0 .5rem 0 1rem;
     }
 
     span.line {
@@ -1060,9 +1056,9 @@ body {
 
 }
 
-.clinic-news {
+.home-clinic-news {
+  border-top: 20px solid #89724e;
   background-color: #f9f8e9;
-  border: 1px solid #89724e;
   min-height: 520px;
 
   .article-container {
@@ -1074,29 +1070,68 @@ body {
     @media screen and (min-width: $fullhd) {
       padding: 0 6rem 2rem;
     }
-
   }
 }
 
-.article-content {
-  margin: 2rem 0 1rem;
-  font-size: 14px;
-  padding: 0 2em;
-}
+.home-clinic-news,
+.section.news {
+  .clinic-news {
+    border: 1px solid #89724e;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
 
-.article-footer {
-  margin-bottom:2rem;
-  display:flex;
-  align-items: center;
-  justify-content:center;
+    .article-image {
+      figure.image {
+        overflow: hidden;
+        margin-bottom: 1rem;
+        background-color: #333333;
 
-  .article-footer-item {
-    font-size: 12px;
-    text-transform: uppercase;
-    text-decoration: underline;
+        img {
+          height: auto !important;
+          width: auto !important;
+          margin: auto;
+          max-height: 100%;
+          max-width: 100%;
+        }
+      }
+      figure.image.video.is-4by3 {
+        iframe {
+          border: none;
+          overflow: hidden;
+          position: absolute;
+          top: 2.5rem;
+          left: 0;
+          margin: auto;
+        }
+      }
+    }
+
+    .article-content {
+      padding: 0 2em;
+      min-height: 132px;
+
+      p {
+        margin: 1rem 0;
+        font-size: 14px;
+      }
+    }
+
+    .article-footer {
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .article-footer-item {
+        font-size: 12px;
+        text-transform: uppercase;
+        text-decoration: underline;
+      }
+    }
   }
 }
-
 
 .enews-signup {
 
