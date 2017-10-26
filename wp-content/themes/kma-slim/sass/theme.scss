@@ -181,6 +181,17 @@ body {
 }
 
 //Sticky Header
+img#main-logo {
+  max-height: 54px;
+  padding: 0 .6rem;
+}
+
+.home {
+  img#main-logo {
+    visibility: hidden;
+  }
+}
+
 #top {
   width: 100%;
   position: relative;
@@ -222,15 +233,6 @@ body {
     }
     @media screen and (min-width: $desktop) and (max-width: $widescreen) {
       flex-direction: column-reverse;
-    }
-
-    img#main-logo {
-      max-height: 57px;
-      padding: 0 1rem;
-    }
-
-    .home img#main-logo {
-      display: none;
     }
 
     .navbar-brand {
@@ -448,6 +450,10 @@ body {
 .home {
   .sticky-logo {
     text-align: left;
+
+    @media screen and (min-width: $desktop) {
+      display: block;
+    }
 
     img {
       width: 440px;
