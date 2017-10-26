@@ -55,14 +55,14 @@ include(locate_template('template-parts/partials/top.php'));
                             </div>
                             <?php } ?>
 
-                            <div class="column is-12 is-8-desktop is-9-widescreen <?php ($physician['youtube_code'] !='' ? 'is-third-widescreen' : 'is-second' ); ?>">
+                            <div class="column is-12 is-8-desktop is-9-widescreen <?php echo ($physician['youtube_code'] !='' ? 'is-third-widescreen' : 'is-second' ); ?>">
                                 <div class="physician-bio">
                                     <?php //echo '<pre>',print_r($physician),'</pre>'; ?>
                                     <?php the_content(); ?>
                                 </div>
                             </div>
 
-                            <div class="column is-12 is-4-desktop is-3-widescreen <?php ($physician['youtube_code'] !='' ? 'is-second-widescreen' : 'is-first' ); ?>">
+                            <div class="column is-12 is-4-desktop is-3-widescreen <?php echo ($physician['youtube_code'] !='' ? 'is-second-widescreen' : 'is-first' ); ?>">
                                 <div class="sidebar-module physician-list">
                                     <p class="sidebar-title">Select another doctor</p>
                                     <h4>Orthopedic Surgeons</h4>

@@ -6,7 +6,7 @@
  * @version 1.2
  */
 ?>
-<div v-parallax=".9" class="background-image"></div>
+<div v-parallax=".2" class="background-image"></div>
 
 <div class="patient-center-actions">
     <div class="container">
