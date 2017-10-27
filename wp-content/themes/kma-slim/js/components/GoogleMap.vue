@@ -32,37 +32,109 @@
                 styles: [
                     {
                         "featureType": "landscape",
-                        "elementType": "geometry.fill",
+                        "elementType": "all",
                         "stylers": [
                             {
-                                "color": "#f7ebcf"
+                                "hue": "#FFBB00"
+                            },
+                            {
+                                "saturation": 43.400000000000006
+                            },
+                            {
+                                "lightness": 37.599999999999994
+                            },
+                            {
+                                "gamma": 1
                             }
                         ]
                     },
                     {
-                        "featureType": "landscape.man_made",
-                        "elementType": "geometry.fill",
+                        "featureType": "poi",
+                        "elementType": "all",
                         "stylers": [
                             {
-                                "color": "#f7ebcf"
+                                "hue": "#a0ff00"
+                            },
+                            {
+                                "saturation": "-21"
+                            },
+                            {
+                                "lightness": "35"
+                            },
+                            {
+                                "gamma": 1
                             }
                         ]
                     },
                     {
-                        "featureType": "landscape.natural.landcover",
-                        "elementType": "labels.text.fill",
+                        "featureType": "road.highway",
+                        "elementType": "all",
                         "stylers": [
                             {
-                                "color": "#f1e7c7"
+                                "hue": "#ffc200"
+                            },
+                            {
+                                "saturation": -61.8
+                            },
+                            {
+                                "lightness": "7"
+                            },
+                            {
+                                "gamma": 1
                             }
                         ]
                     },
                     {
-                        "featureType": "landscape.natural.terrain",
-                        "elementType": "labels.text.fill",
+                        "featureType": "road.arterial",
+                        "elementType": "all",
                         "stylers": [
                             {
-                                "color": "#f1e7c7"
+                                "hue": "#ff0300"
+                            },
+                            {
+                                "saturation": "-100"
+                            },
+                            {
+                                "lightness": "20"
+                            },
+                            {
+                                "gamma": 1
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "hue": "#ff0300"
+                            },
+                            {
+                                "saturation": -100
+                            },
+                            {
+                                "lightness": "-14"
+                            },
+                            {
+                                "gamma": 1
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "hue": "#0078ff"
+                            },
+                            {
+                                "saturation": "-65"
+                            },
+                            {
+                                "lightness": "-7"
+                            },
+                            {
+                                "gamma": 1
                             }
                         ]
                     }
@@ -82,7 +154,8 @@
                 const position = new google.maps.LatLng(pin.latitude, pin.longitude);
                 const marker = new google.maps.Marker({
                     position,
-                    map
+                    map,
+                    icon: '/wp-content/themes/kma-slim/img/map-pin.png'
                 });
 
                 const infowindow = new google.maps.InfoWindow({

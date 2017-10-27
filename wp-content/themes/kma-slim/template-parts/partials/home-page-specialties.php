@@ -62,31 +62,32 @@
     <div class="specialties-grid columns is-multiline">
 
         <div class="column is-6-tablet is-4-desktop specialty-button">
-            <a class="button" href="#">Hand &#9658;</a>
+            <a class="button" href="/specialties/hand/">Hand <i class="fa fa-play" aria-hidden="true"></i></a>
         </div>
         <div class="column is-6-tablet is-4-desktop specialty-button">
-            <a class="button" href="#">Foot & Ankle &#9658;</a>
+            <a class="button" href="/specialties/foot-ankle/">Foot & Ankle <i class="fa fa-play" aria-hidden="true"></i></a>
         </div>
         <div class="column is-6-tablet is-4-desktop specialty-button">
-            <a class="button" href="#">Arthritis & Osteoporosis &#9658;</a>
+            <a class="button" href="/specialties/arthritis/">Arthritis & Osteoporosis <i class="fa fa-play" aria-hidden="true"></i></a>
         </div>
         <div class="column is-6-tablet is-4-desktop specialty-button">
-            <a class="button" href="#">Shoulder &#9658;</a>
+            <a class="button" href="/specialties/shoulder/">Shoulder <i class="fa fa-play" aria-hidden="true"></i></a>
         </div>
         <div class="column is-6-tablet is-4-desktop specialty-button">
-            <a class="button" href="#">Sports Injuries &#9658;</a>
+            <a class="button" href="/specialties/sports-medicine/">Sports Injuries <i class="fa fa-play" aria-hidden="true"></i></a>
         </div>
         <div class="column is-6-tablet is-4-desktop specialty-button">
-            <a class="button" href="#">Joint Replacement &#9658;</a>
+            <a class="button" href="/specialties/joint-replacement/">Joint Replacement <i class="fa fa-play" aria-hidden="true"></i></a>
         </div>
         <div class="column is-6-tablet is-4-desktop specialty-button">
-            <a class="button" href="#">Spine &#9658;</a>
+            <a class="button" href="/specialties/spine/">Spine <i class="fa fa-play" aria-hidden="true"></i></a>
         </div>
         <div class="column is-6-tablet is-4-desktop specialty-button">
-            <a class="button" href="#">Pediatrics &#9658;</a>
+            <a class="button" href="/specialties/pediatrics/">Pediatrics <i class="fa fa-play" aria-hidden="true"></i></a>
         </div>
         <div class="column is-6-tablet is-4-desktop specialty-button">
-            <a class="button" href="#">Cartilage Regeneration &#9658;</a>
+            <a class="button" href="/specialties/knee-cartilage-regeneration/">Cartilage Regeneration <i class="fa fa-play" aria-hidden="true"></i></a>
         </div>
+
     </div>
 </div>

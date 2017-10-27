@@ -40,11 +40,13 @@ include(locate_template('template-parts/partials/top.php'));
                                 <figure class="image is-4by3">
                                     <img src="<?php echo $location['photo']; ?>" alt="<?php echo $location['name']; ?>" >
                                 </figure>
+                                <div class="is-centered">
                                 <h3><?php echo str_replace(' Clinic', '',$location['name']); ?></h3>
-                                <p class="address"><?php echo nl2br($location['address']); ?></p>
-                                <p class="phone"><em>tel:</em> <a href="tel:<?php echo str_replace('(','',str_replace(') ', '-', $location['phone'])); ?>"><?php echo $location['phone']; ?></a></p>
-                                <p class="phone"><em>fax:</em> <a href="tel:<?php echo str_replace('(','',str_replace(') ', '-', $location['fax'])); ?>"><?php echo $location['fax']; ?></a></p>
-                                <p class="appt-button"><a class="button is-info" href="/patient-center/appointments/?office=<?php echo strtolower(str_replace(' ', '-', $location['name'])); ?>">Request an appointment at this office</a></p>
+                                    <p class="address"><?php echo nl2br($location['address']); ?></p>
+                                    <p class="phone"><em>tel:</em> <a href="tel:<?php echo str_replace('(','',str_replace(') ', '-', $location['phone'])); ?>"><?php echo $location['phone']; ?></a></p>
+                                    <p class="phone"><em>fax:</em> <a href="tel:<?php echo str_replace('(','',str_replace(') ', '-', $location['fax'])); ?>"><?php echo $location['fax']; ?></a></p>
+                                    <p class="appt-button"><a class="button is-primary is-outlined" href="/patient-center/appointments/?office=<?php echo strtolower(str_replace(' ', '-', $location['name'])); ?>">Request an appointment at this office</a></p>
+                                </div>
                             </div>
                         <?php } ?>
                     </div>

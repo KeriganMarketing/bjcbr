@@ -937,9 +937,9 @@ a#main-logo {
     justify-content: space-between;
 
     a.button.is-primary.is-outlined {
-      margin: 0 1rem 2rem;
+      margin: 0 1rem 3rem;
       @media screen and (min-width: $fullhd){
-        margin: 0 2rem 2rem;
+        margin: 0 2rem 4rem;
       }
     }
   }
@@ -977,7 +977,11 @@ a#main-logo {
 }
 
 .specialties-area {
-  padding: 0 0 10rem;
+  padding: 0 0 5rem;
+
+  @media screen and (min-width: $tablet) {
+    padding: 0 0 10rem;
+  }
 
   .background-image {
     position: absolute;
@@ -1000,6 +1004,10 @@ a#main-logo {
     background-color: #FFF;
     background-color: rgba(251, 250, 248, .7);
     text-align: center;
+
+    @media screen and (max-width: $tablet){
+      padding-top:2rem;
+    }
 
     .column {
       min-height: 150px;
