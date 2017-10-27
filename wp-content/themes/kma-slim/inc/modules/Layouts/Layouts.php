@@ -73,6 +73,22 @@ class Layouts
                     'slug'        => 'default'
                 )
             );
+            wp_insert_term(
+                'Specialties Sidebar',
+                'layout',
+                array(
+                    'description' => '',
+                    'slug'        => 'specialties-sidebar'
+                )
+            );
+            wp_insert_term(
+                'Services Sidebar',
+                'layout',
+                array(
+                    'description' => '',
+                    'slug'        => 'services-sidebar'
+                )
+            );
         });
 
     }
