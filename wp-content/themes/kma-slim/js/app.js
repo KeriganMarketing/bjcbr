@@ -51,8 +51,8 @@ var app = new Vue({
             arrows: true,
             autoplay: true,
             autoplaySpeed: 3000,
-            prevArrow: '<span class="bubble-icon left" ><i class="fa" aria-hidden="true">&#9664;</i></span>',
-            nextArrow: '<span class="bubble-icon right" ><i class="fa" aria-hidden="true">&#9658;</i></span>',
+            prevArrow: '<span class="bubble-icon left" ><i class="fa fa-play fa-rotate-180" aria-hidden="true"></i></span>',
+            nextArrow: '<span class="bubble-icon right" ><i class="fa fa-play" aria-hidden="true"></i></span>',
             slidesToScroll: 1
         }
     },
