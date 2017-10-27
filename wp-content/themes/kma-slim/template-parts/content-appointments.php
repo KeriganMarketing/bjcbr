@@ -24,7 +24,7 @@ include(locate_template('template-parts/partials/top.php'));
             <section id="content" class="content section">
                 <div class="container">
                     <div class="entry-content">
-                        <h1><?php echo($subhead != '' ? '<span class="subtitle">' . $subhead . '</span>' : null); ?></h1>
+                        <h1><?php echo($subhead != '' ? $subhead: null); ?></h1>
                         <?php the_content(); ?>
                     </div>
                     <section class="appointment-form">
