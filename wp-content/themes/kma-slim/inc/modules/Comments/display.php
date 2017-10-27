@@ -2,7 +2,7 @@
     <div class="field">
         <label class="label" for="email-address">Your email address: </label>
         <div class="control">
-            <input type="text" name="email_address" id="email-address">
+            <input type="text" class="input" name="email_address" id="email-address">
         </div>
     </div>
     <div class="field">
