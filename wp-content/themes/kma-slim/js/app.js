@@ -39,6 +39,7 @@ var app = new Vue({
 
     data: {
         isOpen: false,
+        isScrolling: false,
         modalOpen: false,
         modalContent: '',
         scrollPosition: 0,

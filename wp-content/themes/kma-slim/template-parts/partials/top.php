@@ -29,7 +29,7 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
     <div class="container-fluid">
         <nav class="navbar">
             <div id="TopNavMenu" class="navbar-menu">
-                <a id="main-logo" href="/" ><img src="<?php echo get_template_directory_uri() . '/img/bjc-logo-white.png'; ?>" alt="<?php echo get_bloginfo(); ?>" ></a>
+                <a id="main-logo" href="/" ><img :class="[{'sneakyLogo': scrollPosition > 90 }]" src="<?php echo get_template_directory_uri() . '/img/bjc-logo-white.png'; ?>" alt="<?php echo get_bloginfo(); ?>" ></a>
                 <?php wp_nav_menu(array(
                     'theme_location' => 'main-menu',
                     'container'      => false,
