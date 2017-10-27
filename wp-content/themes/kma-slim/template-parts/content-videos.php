@@ -19,8 +19,7 @@ include(locate_template('template-parts/partials/top.php'));
             <section class="header section">
                 <div class="header-container">
                     <div class="container">
-                        <h1 class="title is-1"><?php echo $headline; ?>
-                            <?php echo($subhead != '' ? '<span class="subtitle">' . $subhead . '</span>' : null); ?></h1>
+                        <p class="title is-1"><?php echo $headline; ?></p>
                     </div>
                 </div>
             </section>
@@ -28,6 +27,7 @@ include(locate_template('template-parts/partials/top.php'));
             <section id="content" class="content section">
                 <div class="container">
                     <div class="entry-content">
+                        <h1><?php echo($subhead != '' ? '<span class="subtitle">' . $subhead . '</span>' : null); ?></h1>
                         <?php the_content(); ?>
 
                         <?php
