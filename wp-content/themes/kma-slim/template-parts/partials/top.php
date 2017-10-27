@@ -28,8 +28,8 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
 <header id="top" class="header">
     <div class="container-fluid">
         <nav class="navbar">
-            <a href="/" ><img id="main-logo" src="<?php echo get_template_directory_uri() . '/img/bjc-logo-white.png'; ?>" alt="<?php echo get_bloginfo(); ?>" ></a>
             <div id="TopNavMenu" class="navbar-menu">
+                <a id="main-logo" href="/" ><img src="<?php echo get_template_directory_uri() . '/img/bjc-logo-white.png'; ?>" alt="<?php echo get_bloginfo(); ?>" ></a>
                 <?php wp_nav_menu(array(
                     'theme_location' => 'main-menu',
                     'container'      => false,
@@ -41,11 +41,9 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
                     'items_wrap'     => '<div id="%1$s" class="%2$s">%3$s</div>',
                     'walker'         => new BulmaNavwalker()
                 )); ?>
-                <span class="top-slash"></span>
             </div>
 
             <div class="navbar-end">
-
                 <div class="navbar-item go-arrow">
                     <a href="/patient-center/appointments/" class="navbar-link">
                         <span>Request an</span>
@@ -56,6 +54,7 @@ use Includes\Modules\Navwalker\BulmaNavwalker;
                         <span class="mobile-hide tablet-hide">Contact Us</span>
                         225-766-0050</a>
                 </div>
+                <span class="top-slash"></span>
             </div>
 
             <div class="navbar-brand">
