@@ -902,14 +902,20 @@ a#main-logo {
       }
 
       .physician-name {
-        font-size: 20px;
+        font-size: 16px;
         text-transform: uppercase;
         margin: 1rem 0;
+        @media screen and (min-width: $desktop){
+          font-size: 20px;
+        }
       }
 
       .physician-specialties {
-        font-size: 18px;
+        font-size: 14px;
         line-height: 1.4em;
+        @media screen and (min-width: $desktop){
+          font-size: 18px;
+        }
       }
 
       .physician-link {
