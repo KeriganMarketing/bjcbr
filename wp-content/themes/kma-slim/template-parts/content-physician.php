@@ -34,7 +34,7 @@ include(locate_template('template-parts/partials/top.php'));
                                             echo $specialty.'<br>';
                                         } ?>
                                     </p>
-                                    <a class="button is-primary" href="/patient-center/appointments/?requested_physician=<?php echo $physician['slug']; ?>" >Request an appointment</a>
+                                    <a class="button is-primary" href="/patient-center/appointments/?requested_physician=<?php echo $physician['name']; ?>" >Request an appointment</a>
                                 </div>
                             </div>
                         </div>
