@@ -136,7 +136,7 @@ if ($_POST) {
                     <div class="field">
                         <div class="control">
                             <label class="radio">
-                                <input type="radio" name="requested_physician" value="<?php echo $physician['name']; ?>" <?php echo $requestedPhysician == $physician['slug'] ? 'checked' : '' ?> >
+                                <input type="radio" name="requested_physician" value="<?php echo $physician['name']; ?>" <?php echo $requestedPhysician == $physician['name'] ? 'checked' : '' ?> >
                                 <?php echo $physician['name']; ?><br>
                                 <p class="help"><?php echo $specialties; ?></p>
                             </label>
