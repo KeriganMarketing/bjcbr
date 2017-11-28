@@ -1,6 +1,7 @@
 <?php
 
-use Includes\Modules\Facebook\FacebookFeed;
+use KeriganSolutions\FacebookFeed\FacebookFeed;
+
 
 $headline = ($post->page_information_headline != '' ? $post->page_information_headline : $post->post_title);
 $subhead = ($post->page_information_subhead != '' ? $post->page_information_subhead : '');
@@ -15,16 +16,15 @@ if(strlen($content) > 200) {
 $numberOfPosts = is_page('home') ? 3 : 9;
 $feed    = new FacebookFeed();
 $results = $feed->fetch($numberOfPosts);
-//echo '<pre>', print_r($results) , '</pre>';
 $now     = time();
-foreach ($results->data as $result) {
+foreach ($results->posts as $result) {
     if (strlen($result->message) > 0) {
         $trimmed = wp_trim_words($result->message, $num_words = 26, '...');
     } else {
         $trimmed = 'This just in...';
     }
 
-    $photo_url = $feed->photo($result);
+    $picture = $result->full_picture ?? 'http://bjcbr.dev/wp-content/uploads/2017/10/walker-bjcbr.jpg';
     ?>
 
     <div class="column is-4">
@@ -33,13 +33,13 @@ foreach ($results->data as $result) {
                 <?php if($result->type != 'video') { ?>
                 <figure class="image is-4by3">
                         <a href="<?php echo $result->link; ?>" target="_blank">
-                            <img src="<?php echo $photo_url; ?>" alt="<?php echo $result->caption; ?>" >
+                            <img src="<?= $picture; ?>" alt="<?php echo $result->caption; ?>" >
                         </a>
                 </figure>
                 <?php } else { ?>
                 <figure class="image video is-4by3">
                     <iframe
-                            src="<?php echo 'https://www.facebook.com/plugins/video.php?href='.$result->link ?>"
+                            src="<?= $result->link ?>"
                             style="border:none;overflow:hidden"
                             scrolling="no"
                             frameborder="0"
@@ -58,7 +58,7 @@ foreach ($results->data as $result) {
                 <p><?php echo $trimmed; ?></p>
             </div>
             <div class="article-footer">
-                <a class="article-footer-item" href="<?php echo $result->link; ?>" target="_blank" >Read more on Facebook</a>
+                <a class="article-footer-item" href="<?php echo $result->permalink_url; ?>" target="_blank" >Read more on Facebook</a>
             </div>
         </div>
     </div>
