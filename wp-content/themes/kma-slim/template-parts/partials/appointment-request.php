@@ -9,12 +9,19 @@
 use Includes\Modules\Leads\KmaLeads;
 use Includes\Modules\Team\Physicians;
 use Includes\Modules\Locations\Locations;
+use Includes\Modules\Helpers\MailChimp;
 
 $requestedPhysician = isset($_GET['requested_physician']) ? $_GET['requested_physician'] : null;
 $requestedLocation = isset($_GET['office']) ?  $_GET['office'] : null;
-if ($_POST) {
+if ($_POST['email_address'] != '' && $_POST['b_b5e9771d295b9a44f4aff96a6_a8de836e2a'] == '') {
     $lead = new KmaLeads();
     $lead->addToDashboard($_POST);
+
+    if($_POST['newsletter_signup']){
+        $mailChimp = new MailChimp();
+        $newsletterResponse = $mailChimp->handleSubscriber($_POST['email_address']);
+        echo $newsletterResponse;
+    }
 }
 ?>
 <div class="container">
@@ -156,6 +163,7 @@ if ($_POST) {
             </div>
 
         </div>
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b5e9771d295b9a44f4aff96a6_a8de836e2a" tabindex="-1" value=""></div>
 
         <button type="submit" class="button is-primary is-large">Submit Appointment Request</button>
     </form>
