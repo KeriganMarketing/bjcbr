@@ -27,9 +27,9 @@ class KmaLeads
         $this->domain = 'boneandjointclinicbr.com';
 
         //separate multiple email addresses with a ';'
-        $this->adminEmail = 'web@kerigan.com';
-        $this->ccEmail    = 'web@kerigan.com'; //Admin email only
-        $this->bccEmail   = 'support@kerigan.com';
+        $this->adminEmail = 'appt@bjcbr.com';
+        //$this->ccEmail    = 'web@kerigan.com'; //Admin email only
+        $this->bccEmail   = 'support@kerigan.com; ddarby@bjcbr.com; jack@kerigan.com';
     }
 
     public function handleAppointment($contactInfo){
