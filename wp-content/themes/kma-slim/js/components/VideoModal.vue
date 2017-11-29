@@ -67,7 +67,7 @@
                     this.modalContent = '<div id="' + code + '" ></div>';
 
                     var vmconfig = {
-                        client: "6053",
+                        client: "4725",
                         openthis: code,
                         width: 720,
                         captions: true,
