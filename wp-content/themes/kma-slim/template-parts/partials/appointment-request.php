@@ -15,7 +15,7 @@ $requestedPhysician = isset($_GET['requested_physician']) ? $_GET['requested_phy
 $requestedLocation = isset($_GET['office']) ?  $_GET['office'] : null;
 if ($_POST['email_address'] != '' && $_POST['b_b5e9771d295b9a44f4aff96a6_a8de836e2a'] == '') {
     $lead = new KmaLeads();
-    $lead->addToDashboard($_POST);
+    $lead->handleAppointment($_POST);
 
     if($_POST['newsletter_signup']){
         $mailChimp = new MailChimp();
