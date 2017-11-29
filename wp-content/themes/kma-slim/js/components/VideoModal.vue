@@ -66,7 +66,7 @@
 
                     this.modalContent = '<div id="' + code + '" ></div>';
 
-                    var vmconfig = {
+                    let vmconfig = {
                         client: "4725",
                         openthis: code,
                         width: 720,
@@ -85,7 +85,7 @@
                         markup: false,
                         search: false,
                         sections: false
-                    }
+                    };
 
                     this.$emit('vmloaded', vmconfig);
 
@@ -95,7 +95,7 @@
         },
 
         created() {
-            var vm = document.createElement('script');
+            let vm = document.createElement('script');
             vm.type = 'text/javascript';
             vm.src = 'https://www.swarminteractive.com/js/vm.js';
             document.body.appendChild(vm);
