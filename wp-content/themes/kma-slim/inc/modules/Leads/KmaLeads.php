@@ -35,6 +35,7 @@ class KmaLeads
     public function handleAppointment($contactInfo){
         $this->addToDashboard($contactInfo);
         $this->sendNotifications($contactInfo);
+        //echo '<pre>',print_r($contactInfo),'</pre>';
     }
 
     /**
@@ -42,10 +43,7 @@ class KmaLeads
      */
     public function addToDashboard($contactInfo)
     {
-
-        echo '<pre>',print_r($contactInfo),'</pre>';
-
-        $name    = $contactInfo['first_name'] . ' ' . $contactInfo['last_name'];
+        $name = $contactInfo['first_name'] . ' ' . $contactInfo['last_name'];
 
         wp_insert_post(
             [ //POST INFO

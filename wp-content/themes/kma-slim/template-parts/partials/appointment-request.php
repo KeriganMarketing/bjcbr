@@ -17,15 +17,17 @@ if ($_POST['email_address'] != '' && $_POST['b_b5e9771d295b9a44f4aff96a6_a8de836
     $lead = new KmaLeads();
     $lead->handleAppointment($_POST);
 
+    $message = 'Thank you for requesting an appointment with us. A confirmation email from noreply@boneandjointclinicbr.com will be sent momentarily. A representative will be contacting you soon to schedule the closest time slot available.';
+
     if($_POST['newsletter_signup']){
         $mailChimp = new MailChimp();
-        $newsletterResponse = $mailChimp->handleSubscriber($_POST['email_address']);
-        echo $newsletterResponse;
+        $mailChimp->handleSubscriber($_POST['email_address']);
     }
 }
 ?>
 <div class="container">
     <div class="intro-text">
+        <?= $message!='' ? '<p>' . $message . '</p>' : ''; ?>
         <p class="help" style="margin-bottom:1rem;">*You must complete all fields.</p>
     </div>
 
