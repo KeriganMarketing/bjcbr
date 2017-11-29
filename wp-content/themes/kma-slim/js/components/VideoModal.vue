@@ -33,29 +33,29 @@
 
         mounted() {
 
-            this.$parent.$on('vmloaded', function (vm) {
-                client = vm.client;
-                openthis = vm.openthis;
-                width = vm.width;
-                captions = vm.captions;
-                disclaimer = vm.disclaimer;
-                social = vm.social;
-                target_div = vm.target_div;
-                secure = vm.secure;
-                lang = vm.lang;
-                fullscreen = vm.fullscreen;
-                autoplay = vm.autoplay;
-                menuaccess = vm.menuaccess;
-                audio = vm.audio;
-                brochure = true;
-                subtitles = true;
-                markup = false;
-                search = false;
-                sections = false;
-
-                vm_open();
-
-            });
+//            this.$parent.$on('vmloaded', function (vm) {
+//                client = vm.client;
+//                openthis = vm.openthis;
+//                width = vm.width;
+//                captions = vm.captions;
+//                disclaimer = vm.disclaimer;
+//                social = vm.social;
+//                target_div = vm.target_div;
+//                secure = vm.secure;
+//                lang = vm.lang;
+//                fullscreen = vm.fullscreen;
+//                autoplay = vm.autoplay;
+//                menuaccess = vm.menuaccess;
+//                audio = vm.audio;
+//                brochure = true;
+//                subtitles = true;
+//                markup = false;
+//                search = false;
+//                sections = false;
+//
+//                vm_open();
+//
+//            });
 
             this.$parent.$on('toggleModal', function (modal, code) {
                 this.modalOpen = modal;
@@ -66,28 +66,34 @@
 
                     this.modalContent = '<div id="' + code + '" ></div>';
 
-                    let vmconfig = {
-                        client: "4725",
-                        openthis: code,
-                        width: 720,
-                        captions: true,
-                        disclaimer: true,
-                        social: true,
-                        target_div: code,
-                        secure: true,
-                        autoplay: true,
-                        menuaccess: false,
-                        lang: "en",
-                        fullscreen: true,
-                        audio: true,
-                        brochure: true,
-                        subtitles: true,
-                        markup: false,
-                        search: false,
-                        sections: false
-                    };
+                    client   = "4725";
+                    openthis = code;
+                    width    = 720;
+                    vm_open();
 
-                    this.$emit('vmloaded', vmconfig);
+
+//                    let vmconfig = {
+//                        client: "4725",
+//                        openthis: code,
+//                        width: 720,
+//                        captions: true,
+//                        disclaimer: true,
+//                        social: true,
+//                        target_div: code,
+//                        secure: true,
+//                        autoplay: true,
+//                        menuaccess: false,
+//                        lang: "en",
+//                        fullscreen: true,
+//                        audio: true,
+//                        brochure: true,
+//                        subtitles: true,
+//                        markup: false,
+//                        search: false,
+//                        sections: false
+//                    };
+//
+//                    this.$emit('vmloaded', vmconfig);
 
                 }
             });
@@ -97,8 +103,8 @@
         created() {
             let vm = document.createElement('script');
             vm.type = 'text/javascript';
-            vm.src = 'https://www.swarminteractive.com/js/vm.js';
-            document.body.appendChild(vm);
+            vm.src = 'https://swarminteractive.com/js/vm.js';
+            document.getElementsByTagName('head')[0].appendChild(vm);
         }
 
     }

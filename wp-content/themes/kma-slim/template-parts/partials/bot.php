@@ -78,5 +78,5 @@ use Includes\Modules\Social\SocialSettingsPage;
     </div>
 
 </footer>
-<video-modal></video-modal>
 </div>
+<video-modal></video-modal>
