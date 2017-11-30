@@ -81,7 +81,7 @@ if ($_POST['email_address'] != '' && $_POST['b_b5e9771d295b9a44f4aff96a6_a8de836
                     <div class="column is-6">
                         <label class="label">Desired Time</label>
                         <div class="field flatpickr" id="requested_time">
-                            <date-picker name="requested_time" icon="fa-clock-o" placeholder="Select a time" :config="{ enableTime: true, noCalendar: true, minuteIncrement: 15, appendTo: requested_time }"></date-picker>
+                            <date-picker name="requested_time" icon="fa-clock-o" placeholder="Select a time" :config="{ enableTime: true, noCalendar: true, minuteIncrement: 15, appendTo: requested_time, time_24hr: false, dateFormat: 'h:i K' }"></date-picker>
                         </div>
                     </div>
                     <div class="column is-12">
