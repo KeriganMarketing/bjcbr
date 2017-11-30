@@ -69,7 +69,7 @@ use Includes\Modules\Social\SocialSettingsPage;
                         </div>
                     </div>
                     <div class="column is-12 is-4-widescreen is-5-fullhd">
-                        <p class="help non-discriminatory-notice">Bone & Joint Clinic of Baton Rouge, Inc. complies with applicable Federal civil rights laws and does not discriminate on the basis of race, color, national origin, age, disability or sex. <a href="http://bjcbr.com/downloads/nondiscrimination-notice_2016.pdf">Click&nbsp;to&nbsp;view&nbsp;our&nbsp;notice</a>.</p>
+                        <p class="help non-discriminatory-notice">Bone & Joint Clinic of Baton Rouge, Inc. complies with applicable Federal civil rights laws and does not discriminate on the basis of race, color, national origin, age, disability or sex. <a href="https://boneandjointclinicbr.com/wp-content/uploads/2017/11/nondiscrimination-notice_2016.pdf">Click&nbsp;to&nbsp;view&nbsp;our&nbsp;notice</a>.</p>
                     </div>
                 </div>
 
