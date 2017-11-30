@@ -8,12 +8,12 @@
     <div class="field">
         <label class="label" for="comment-box">Comments:</label>
         <div class="control">
-            <textarea name="commentBox" id="comment-box" cols="30" rows="10" class="textarea" placeholder="Let us know how we did"></textarea>
+            <textarea name="commentBox" id="comment-box" cols="30" rows="10" class="textarea" placeholder="Let us know how we did. Your comments will be kept strictly confidential."></textarea>
         </div>
     </div>
     <div class="field">
         <div class="control">
-            <button class="button is-primary is-large" type="submit">Submit</button> <span class="small">Your comments will be kept strictly confidential.</span>
+            <button class="button is-primary is-large" type="submit">Submit</button>
         </div>
     </div>
 </form>
