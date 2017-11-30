@@ -5,13 +5,91 @@ use Includes\Modules\CPT\CustomPostType;
 
 class CommentBox
 {
+    public $adminEmail;
+    public $domain;
+    public $ccEmail;
+    public $bccEmail;
+    public $siteName;
+
     public function __construct()
     {
+        date_default_timezone_set('America/Chicago');
+
+        $this->domain = 'boneandjointclinicbr.com';
+
+        //separate multiple email addresses with a ';'
+        $this->adminEmail = 'ddarby@bjcbr.com';
+        //$this->adminEmail = 'web@kerigan.com';
+        //$this->ccEmail    = 'web@kerigan.com'; //Admin email only
+        $this->bccEmail   = 'support@kerigan.com; jack@kerigan.com';
+
+        if(isset($_POST['sfg354fgefrfedt45gfe4rfag']) && $_POST['sfg354fgefrfedt45gfe4rfag'] == ''){
+            $this->handleComment($_POST);
+        }
     }
 
-    public function display()
+    public function registerShortcode()
+    {
+        add_shortcode('comment_box', function() {
+            return $this->displayForm();
+        });
+    }
+
+    public function displayForm()
     {
         return file_get_contents(wp_normalize_path(get_template_directory() .'/inc/modules/Comments/display.php'));
+    }
+
+    protected function handleComment($submissionInfo){
+        //echo '<pre>',print_r($submissionInfo),'</pre>';
+        $this->addToDashboard($submissionInfo);
+        $this->sendNotifications($submissionInfo);
+    }
+
+    /*
+     * Sends notification email(s)
+     * @param array $leadInfo
+     */
+    protected function sendNotifications ($contactInfo)
+    {
+
+        $requestData = [
+            'Email Address' => $contactInfo['email_address'],
+            'Feedback' => $contactInfo['commentBox'],
+        ];
+
+        $tableData = '';
+        foreach ($requestData as $key => $var) {
+            if ($var != '') {
+                $tableData .= '<tr><td class="label"><strong>' . $key . '</strong></td><td>' . $var . '</td>';
+            }
+        }
+
+        $this->sendEmail(
+            [
+                'to'        => $this->adminEmail,
+                'from'      => urldecode(get_bloginfo()) . ' <noreply@' . $this->domain . '>',
+                'subject'   => 'Patient feedback submitted on website',
+                'cc'        => $this->ccEmail,
+                'bcc'       => $this->bccEmail,
+                'replyto'   => $contactInfo['email_address'],
+                'headline'  => 'New Appointment Request From Website',
+                'introcopy' => 'A patient has provided feedback using the website. Details are below:',
+                'leadData'  => $tableData
+            ]
+        );
+
+        $this->sendEmail(
+            [
+                'to'        => $contactInfo['email_address'],
+                'from'      => urldecode(get_bloginfo()). ' <noreply@' . $this->domain . '>',
+                'subject'   => 'Your feedback has been received',
+                'bcc'       => $this->bccEmail,
+                'headline'  => 'Thank you',
+                'introcopy' => 'Thank you for taking the time to help us. Your comments will be kept strictly confidential.',
+                'leadData'  => $tableData
+            ]
+        );
     }
 
     public function createPostType()
@@ -40,84 +118,53 @@ class CommentBox
 
     public function createAdminColumns()
     {
-        add_filter('manage_lead_posts_columns', function () {
+        add_filter('manage_feedback_posts_columns', function () {
             $defaults = [
+                'cb'            => '',
                 'email_address' => 'Email',
+                'date'          => 'Date Posted'
             ];
             return $defaults;
         }, 0);
-        add_action('manage_lead_posts_custom_column', function ($column_name, $post_ID) {
+        add_action('manage_feedback_posts_custom_column', function ($column_name, $post_ID) {
             switch ($column_name) {
                 case 'email_address':
-                    $email_address = get_post_meta($post_ID, 'lead_info_email_address', true);
-                    echo(isset($email_address) ? '<a href="mailto:'.$email_address.'" >'.$email_address.'</a>' : null);
+                    $email_address = get_post_meta($post_ID, 'feedback_email_address', true);
+                    echo(isset($email_address) ? $email_address : null);
                     break;
             }
         }, 0, 2);
     }
 
-    public function sendEmail(
-        $sendadmin = [
-            'to'      => 'daron@kerigan.com',
-            'from'    => 'Website <noreply@kerigan.com>',
-            'subject' => 'Email from website'
-        ],
-        $emaildata = [
-            'headline'  => 'This is an email from the website!',
-            'introcopy' => 'If we weren\'t testing, there would be stuff here.',
-            'filedata'  => '',
-            'fileinfo'  => ''
-        ],
-        $emailTemplate = ''
-    ) {
-        $eol = "\r\n";
+    protected function createEmailTemplate ($emailData)
+    {
+        $eol           = "\r\n";
+        $emailTemplate = file_get_contents(wp_normalize_path(get_template_directory() . '/inc/modules/Leads/emailtemplate.php'));
+        $emailTemplate = str_replace('{headline}', $eol . $emailData['headline'] . $eol, $emailTemplate);
+        $emailTemplate = str_replace('{introcopy}', $eol . $emailData['introcopy'] . $eol, $emailTemplate);
+        $emailTemplate = str_replace('{data}', $eol . $emailData['leadData'] . $eol, $emailTemplate);
+        $emailTemplate = str_replace('{datetime}', date('M j, Y') . ' @ ' . date('g:i a'), $emailTemplate);
+        $emailTemplate = str_replace('{website}', 'www.' . $this->domain, $emailTemplate);
+        $emailTemplate = str_replace('{url}', 'https://' . $this->domain, $emailTemplate);
+        $emailTemplate = str_replace('{copyright}', date('Y') . ' ' . get_bloginfo(), $emailTemplate);
+        return $emailTemplate;
+    }
 
-        //search for directory in active WP template
-        if (file_exists(wp_normalize_path(get_template_directory().'/inc/modules/leads/emailtemplate.php'))) {
-            $emailTemplate = file_get_contents(wp_normalize_path(get_template_directory().'/inc/modules/leads/emailtemplate.php'));
-        } else {
-            $emailTemplate = '<!doctype html>
-                <html>
-                    <head>
-                        <meta charset="utf-8">
-                    </head>
-                    <body bgcolor="#EAEAEA" style="background-color:#EAEAEA;">
-                        <table cellpadding="0" cellspacing="0" border="0" align="center" style="width:650px; background-color:#FFFFFF; margin:30px auto;" bgcolor="#FFFFFF" >
-                            <tbody>
-                                <tr>
-                                    <td style="padding:20px; border-top:10px solid #333333; border-bottom: #333333 solid 2px;" >
-                                    <!--[content]-->
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </body>
-                </html>';
-        }
-
-        $split       = strrpos($emailTemplate, '<!--[content]-->');
-        $templatebot = substr($emailTemplate, $split);
-        $templatetop = substr($emailTemplate, 0, $split);
-
-        $bottomsplit = strrpos($templatebot, '<!--[date]-->');
-        $bottombot   = substr($templatebot, $bottomsplit);
-        $bottomtop   = substr($templatebot, 0, $bottomsplit);
-        $senddate    = date('M j, Y').' @ '.date('g:i a');
-
-        //build headers
-        $headers  = 'From: ' . $sendadmin['from'] . $eol;
-        $headers .= (isset($sendadmin['cc']) ? 'Cc: ' . $sendadmin['cc'] . $eol : '');
-        $headers .= (isset($sendadmin['bcc']) ? 'Bcc: ' . $sendadmin['bcc'] . $eol : '');
-        $headers .= 'MIME-Version: 1.0' . $eol;
-
-        //noreply pass: raw9z.kvc@b*
+    /*
+     * actually send an email
+     * TODO: Add handling for attachments
+     */
+    public function sendEmail ( $emailData = [] ) {
+        $eol           = "\r\n";
+        $emailTemplate = $this->createEmailTemplate($emailData);
+        $headers       = 'From: ' . $emailData['from'] . $eol;
+        $headers       .= (isset($emailData['cc']) ? 'Cc: ' . $emailData['cc'] . $eol : '');
+        $headers       .= (isset($emailData['bcc']) ? 'Bcc: ' . $emailData['bcc'] . $eol : '');
+        $headers       .= (isset($emailData['replyto']) ? 'Reply-To: ' . $emailData['replyto'] . $eol : '');
+        $headers       .= 'MIME-Version: 1.0' . $eol;
         $headers       .= 'Content-type: text/html; charset=utf-8' . $eol;
-        $emailcontent   = $templatetop . $eol . $eol;
-        $emailcontent  .= '<h2>'.$emaildata['headline'].'</h2>';
-        $emailcontent  .= '<p>'.$emaildata['introcopy'].'</p>';
-        $emailcontent  .= $templatebot . $eol . $eol;
 
-        mail($sendadmin['to'], $sendadmin['subject'], $emailcontent, $headers);
+        wp_mail($emailData['to'], $emailData['subject'], $emailTemplate, $headers);
     }
 
     public function addToDashboard($contactInfo)
@@ -126,7 +173,7 @@ class CommentBox
             [ //POST INFO
                 'post_content'   => '',
                 'post_status'    => 'publish',
-                'post_type'      => 'response',
+                'post_type'      => 'feedback',
                 'post_title'     => $contactInfo['email_address'],
                 'comment_status' => 'closed',
                 'ping_status'    => 'closed',

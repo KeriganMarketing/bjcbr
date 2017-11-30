@@ -9,7 +9,7 @@ use Includes\Modules\Helpers\MailChimp;
  * @version 1.2
  */
 
-if($_POST['email_address'] != '' && $_POST['c_b5e9771d295b9a44f4aff96a6_a8de836e2a'] == ''){
+if(isset($_POST['srgaerg534qgq34erg4wq5g45gq45g']) && $_POST['srgaerg534qgq34erg4wq5g45gq45g'] == ''){
     $mailChimp = new MailChimp();
     $message = $mailChimp->handleSubscriber($_POST['email_address']);
 }
@@ -27,7 +27,7 @@ if($_POST['email_address'] != '' && $_POST['c_b5e9771d295b9a44f4aff96a6_a8de836e
                     <p class="control is-expanded">
                         <input type="email" value="" name="email_address" class="input is-centered" placeholder="email address">
                     </p>
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="c_b5e9771d295b9a44f4aff96a6_a8de836e2a" tabindex="-1" value=""></div>
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="srgaerg534qgq34erg4wq5g45gq45g" tabindex="-1" value=""></div>
                     <p class="control">
                         <button type="submit" class="button is-primary is-outlined">
                             sign up

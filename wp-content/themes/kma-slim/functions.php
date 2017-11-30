@@ -49,6 +49,7 @@ $kmaLeads->createAdminColumns();
 $commentBox = new CommentBox();
 $commentBox->createPostType();
 $commentBox->createAdminColumns();
+$commentBox->registerShortcode();
 
 $videos = new Videos();
 $videos->createPostType();
@@ -113,21 +114,3 @@ function kmaslim_scripts()
     wp_register_script('scripts', get_template_directory_uri() . '/app.js', [], null, false);
     wp_enqueue_script('scripts');
 }
-////////////////////////////////////////////////////////////////
-// fix this garbage
-add_action('init', function () {
-    if (isset($_POST['commentBox'])) {
-        $commentBox = new CommentBox();
-        $commentBox->addToDashboard($_POST);
-    }
-});
-
-function comment_box_shortcode()
-{
-    $cb = new CommentBox();
-
-    return $cb->display();
-}
-add_shortcode('comment_box', 'comment_box_shortcode');
-/////////////////////////////////////////////////////////////////////
-//add_action('wp_enqueue_scripts', 'kmaslim_scripts');
