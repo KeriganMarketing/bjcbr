@@ -1,11 +1,11 @@
 <?php
 $parentId = wp_get_post_parent_id( $post->ID );
 $pageList = get_children($parentId, [
-    'post_parent' => $parentId,
-    'post_type'   => 'page',
-    'numberposts' => -1,
-    'orderby'     => 'menu_order',
-    'order'       => 'ASC',
+    'post_parent'    => $parentId,
+    'post_type'      => 'page',
+    'posts_per_page' => -1,
+    'orderby'        => 'menu_order',
+    'order'          => 'ASC',
 ]);
 ?>
 <div class="sidebar-module specialties-list">
