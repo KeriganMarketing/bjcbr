@@ -73,7 +73,7 @@ class CommentBox
                 'cc'        => $this->ccEmail,
                 'bcc'       => $this->bccEmail,
                 'replyto'   => $contactInfo['email_address'],
-                'headline'  => 'New Appointment Request From Website',
+                'headline'  => 'Patient feedback submitted on website',
                 'introcopy' => 'A patient has provided feedback using the website. Details are below:',
                 'leadData'  => $tableData
             ]
