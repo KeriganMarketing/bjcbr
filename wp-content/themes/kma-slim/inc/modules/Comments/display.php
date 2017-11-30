@@ -13,7 +13,7 @@
     </div>
     <div class="field">
         <div class="control">
-            <button class="button is-primary is-large" type="submit">Submit</button></button>
+            <button class="button is-primary is-large" type="submit">Submit</button> <span class="small">Your comments will be kept strictly confidential.</span>
         </div>
     </div>
 </form>
