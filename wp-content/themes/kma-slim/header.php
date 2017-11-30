@@ -14,7 +14,9 @@
 	<?php wp_head(); ?>
     <style>
         #app {
-            display: none;
+            @media screen and (min-width: 1024px){
+                display: none;
+            }
         }
     </style>
 </head>
