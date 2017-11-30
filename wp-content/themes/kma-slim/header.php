@@ -13,8 +13,8 @@
     <link rel="profile" href="http://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
     <style>
-        #app {
-            @media screen and (min-width: 1024px){
+        @media screen and (min-width: 1024px){
+            #app {
                 display: none;
             }
         }
