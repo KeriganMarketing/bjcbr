@@ -12,8 +12,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="http://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
+    <style>
+        #app {
+            display: none;
+        }
+    </style>
 </head>
 
 <body <?php body_class(); ?> >
 <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'kmaslim' ); ?></a>
-<div id="app">
+<div id="app" >

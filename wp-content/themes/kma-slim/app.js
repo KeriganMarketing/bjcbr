@@ -22784,6 +22784,7 @@ var app = new Vue({
     },
 
     data: {
+        isLoaded: false,
         isOpen: false,
         isScrolling: false,
         modalOpen: false,
@@ -22813,6 +22814,9 @@ var app = new Vue({
     },
 
     mounted: function mounted() {
+
+        this.$el.style.display = 'flex';
+
         this.footerStuck = window.innerHeight > this.$root.$el.clientHeight;
         this.clientHeight = this.$root.$el.clientHeight;
         this.windowHeight = window.innerHeight;
