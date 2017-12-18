@@ -22,7 +22,7 @@
     <style>
         @media screen and (min-width: 1024px){
             #app {
-                /*display: none;*/
+                display: none;
             }
         }
     </style>
